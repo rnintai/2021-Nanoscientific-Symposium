@@ -1,7 +1,13 @@
 <script src="https://kit.fontawesome.com/9082949df5.js" crossorigin="anonymous"></script>
+<script>
+  // check if it is mobile env
+  if (window.innerWidth < 768) {
+    // if mobile, go to mobile page
+    location.href = "/m"
+  }
+</script>
 
 <div class="main-wrap">
-
   <section class="background-wrap">
     <img class="background" draggable="false" src="https://d25unujvh7ui3r.cloudfront.net/event/NSS_landingpage.jpg"
       alt="" class="">
@@ -508,4 +514,5 @@
   }
 
   init();
+
 </script>
