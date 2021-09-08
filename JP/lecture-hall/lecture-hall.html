@@ -12,167 +12,92 @@
   <video src="https://d25unujvh7ui3r.cloudfront.net/lecture_hall.mp4" alt="lecture hall" muted autoplay loop></video>
 </div>
 
-<div class="container">
+<div class="meeting-container">
+  <!-- lecture 1 -->
   <div class="card">
-    <div class="box">
-      <div class="content">
-        <h1>Morning Session</h2>
-          <p>Mon, Nov 22, 2021 09:00 AM</p>
-          <p>Meeting ID: 869 2544 5012 </p>
-
-          <p>&nbsp </p>
-          <a href="https://meet143.webex.com/meet/pr26414726789" class="a1" target="_blank">Join via Webex App</a>
-          <p>&nbsp </p>
-      </div>
-
-
-
-
-
-      <style>
-        body {
-          text-align: center;
-          font-family: 'Rubik', sans-serif;
-          align-content: center;
-          align-items: center;
-          align-self: center;
-
-          -webkit-background-size: cover;
-          -moz-background-size: cover;
-          -o-background-size: cover;
-          background-size: 400% 400%;
-          display: flex;
-          flex-wrap: wrap;
-          animation: bgi 14s ease infinite;
-          transition: 5s;
-        }
-
-        .container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          max-width: 1200px;
-          flex-wrap: wrap;
-          padding: 40px 0;
-        }
-
-        p {
-          font-weight: 600;
-          line-height: 0.5vw;
-
-        }
-
-        .container .card {
-          position: absolute;
-          left: 30px;
-          top: 300px;
-          width: 320px;
-          height: 300px;
-          text-align: left;
+    <h1 class="meeting-title">Morning Session</h1>
+    <p class="meeting-start-date text-gray">Start:&nbsp;<strong>Mon, Nov 22, 2021 09:00 AM</strong></p>
+    <p class="meeting-timezone text-gray">Timezone:&nbsp;<strong>Tokyo</strong></p>
+    <p class="meeting-id text-gray">Meeting ID:&nbsp;<strong> 869 2544 5012</strong></p>
+    <div class="link-btn-wrap">
+      <a href="https://meet143.webex.com/meet143-ko/j.php?MTID=mbb4f2b1ae58850e06559399d5d7f3aea"
+        class="link-btn link-meeting-app" target="_blank">Join via
+        Webex App</a>
+    </div>
+  </div>
+  <!--  -->
+</div>
 
 
 
-          border-radius: 15px;
-          margin: 30px;
-        }
 
-        .container .card .box {
-          position: absolute;
-          background: #ebf5fc;
-          border-radius: 15px;
+<style>
+  /* reset */
+  p {
+    margin: 0;
+  }
 
-          top: 20px;
-          left: 20px;
-          right: 20px;
-          bottom: 20px;
-          box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.05), inset -5px -5px 5px rgba(255, 255, 255, 0.5), 5px 5px 5px rgba(0, 0, 0, 0.05), -5px -5px 5px rgba(255, 255, 255, 0.5);
-          display: flex;
-          justify-content: center;
-          align-items: center;
+  #vczapi-show-webinars-list-table_wrapper,
+  .vczapi-wrap.vczapi-items-wrap {
+    display: none;
+  }
 
-          color: gray;
-        }
+  .meeting-container {
+    display: flex;
+    top: 60px;
+    position: absolute;
+    margin: 80px;
+    flex-wrap: wrap;
+  }
 
-        .container .card .box .a1 .a2 {
-          position: relative;
-          left: 30px;
-          display: inline;
-          padding: 8px 20px;
+  .card {
+    display: flex;
+    flex-direction: column;
+    background-color: #ebf5fc;
+    align-items: center;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 3px 3px 12px #00000070;
+  }
 
-          background: #03a9f4;
-          text-decoration: None;
-          border-radius: 15px;
-          color: #fff;
-          box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-        }
+  .card:not(:last-child) {
+    margin-right: 20px;
+  }
 
-        .a1 {
-          position: relative;
-          left: 20px;
-          display: inline;
-          padding: 8px 20px;
+  .link-btn-wrap {
+    margin-top: 15px;
+  }
 
-          background: #03a9f4;
-          text-decoration: None;
-          border-radius: 15px;
-          color: #fff;
-          box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-        }
+  .link-btn {
+    background-color: #21ade5;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 7px;
+    font-size: 18px;
+  }
 
-        .a2 {
-          position: relative;
-          left: 20px;
-          display: inline;
-          padding: 8px 20px;
+  .link-btn:hover {
+    background: #ff568f;
+    color: white;
+  }
 
-          background: #03a9f4;
-          text-decoration: None;
-          border-radius: 15px;
-          color: #fff;
-          box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-        }
+  .link-meeting-app {
+    font-size: 16px;
+  }
 
-        .a1:hover {
-          background: #ff568f;
-          color: white;
-        }
+  .text-gray {
+    color: #8a8a8a;
+  }
 
-        .a2:hover {
-          background: #ff568f;
-          color: white;
-        }
+  /* background */
+  .lecture-hall-wrap {
+    position: relative;
+    height: 100vh;
+  }
 
-        .c .container .card .box .a1 .a2:hover {
-          background: #ff568f;
-        }
-
-        @keyframes bgi {
-          0% {
-            background-position: 0% 50%;
-          }
-
-          50% {
-            background-position: 100% 50%;
-          }
-
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-
-        .lecture-hall-wrap {
-          position: relative;
-          height: 120vh;
-        }
-
-        .lecture-hall-wrap {
-          position: relative;
-          height: 100vh;
-        }
-
-        video {
-          height: 100%;
-          object-fit: cover;
-          object-position: center top;
-        }
-      </style>
+  video {
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+</style>
