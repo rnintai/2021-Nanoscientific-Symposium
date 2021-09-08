@@ -1,0 +1,7 @@
+**/*.txt
+**/dump
+**/*.mp4
+**/*.jpg
+**/*.svg
+**/*.png
+**/media
