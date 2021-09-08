@@ -1,75 +1,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 
-<article class="timeline-wrap m-20">
-  <table class="styled-table">
-    <tr class="styled-tr">
-      <td>&nbsp;&nbsp;Morning Session
-    </tr>
-  </table>
-
-  <ul class="cbp_tmtimeline">
-    <li>
-      <time class="cbp_tmtime"><span>08:40 AM</span></time>
-      <div class="cbp_tmicon"></div>
-      <div class="cbp_tmlabel">
-        <h2>Welcome Message - Stefan Kaemmer</h2>
-        <p>General Manage, Park Systems</p>
-      </div>
-    </li>
-    <li>
-      <time class="cbp_tmtime"><span>09:15 AM</span></time>
-      <div class="cbp_tmicon"></div>
-      <div class="cbp_tmlabel">
-        <h2>Dr. Ye Tao</h2>
-        <p>RowlandFellow, The Rowland Institute at Harvard
-          Mirrors for Earth’s Energy Rebalancing (MEERreflEction)</p>
-      </div>
-    </li>
-    <li>
-      <time class="cbp_tmtime"><span>09:45 AM</span></time>
-      <div class="cbp_tmicon"></div>
-      <div class="cbp_tmlabel">
-        <h2>Prof. Jia Deng</h2>
-        <p>Assistant Professor, Department of Sysmtems Science and Industrial Engineering<br>External Energy Assisted
-          Nanmachining Using Soft AFM Probes</p>
-      </div>
-    </li>
-    <li>
-      <time class="cbp_tmtime"><span>10:15 AM</span></time>
-      <div class="cbp_tmicon"></div>
-      <div class="cbp_tmlabel">
-        <h2>Morning Break - Nanofab South Rotunda</h2>
-      </div>
-    </li>
-    <li>
-      <time class="cbp_tmtime"><span>10:30 AM</span></time>
-      <div class="cbp_tmicon"></div>
-      <div class="cbp_tmlabel">
-        <h2>Dr. Ji Ung Lee</h2>
-        <p>Professor of Nanoscale Engineering, SUNY Polytechnic Institute 2D Reconfigurable Devices</p>
-      </div>
-    </li>
-    <li>
-      <time class="cbp_tmtime"><span>11:00 AM</span></time>
-      <div class="cbp_tmicon"></div>
-      <div class="cbp_tmlabel">
-        <h2>Phil Kaszuba</h2>
-        <p>Senior Member of Technical Staffand Lead Engineer, Scanning Probe Microscope Laboratory, Global Foundries
-          (SFM)
-        </p>
-      </div>
-    </li>
-    <li>
-      <time class="cbp_tmtime"><span>11:30 AM</span></time>
-      <div class="cbp_tmicon"></div>
-      <div class="cbp_tmlabel">
-        <h2>Dr. Lane Bakera</h2>
-        <p>James L.Jackson Professor of Chemistry, Indiana University Measuring Ions and Electrons with Nanoscale
-          Pipettes
-        </p>
-      </div>
-    </li>
-  </ul>
+<article class="program-wrap">
 </article>
 
 <style>
@@ -77,8 +8,8 @@
     margin: 20px;
   }
 
-  .timeline-wrap {
-    margin-top: 80px;
+  .program-wrap {
+    margin-top: 60px;
   }
 
   .styled-table {
@@ -93,7 +24,7 @@
   }
 
   .styled-tr {
-    padding: 20px;
+    padding: 10px 20px;
     margin: 20px;
   }
 
@@ -302,10 +233,110 @@
       left: auto;
       margin: -55px 5px 0 0px;
     }
+  }
 
+  .last-program {
+    margin-bottom: 50px
   }
 </style>
 
 <script>
+  var cnt = 0;
 
+  /**
+   * USAGE
+   * 
+   * Session Title:     
+   *  generate_title("session title")
+   * 
+   * Program:           
+   *  generate_program("time", "program title", "description")
+   * 
+   * Program(last one): 
+   *  generate_program_last("time", "program title", "description")
+   * 
+   * DON'T forget to use 'generate_program_last' on last program!
+   */
+
+  generate_title("Morning Session");
+  generate_program(
+    "08:40 AM",
+    "Welcome Message - Stefan Kaemmer",
+    "General Manage, Park Systems"
+  );
+  generate_program(
+    "09:15 AM",
+    "Dr. Ye Tao",
+    "RowlandFellow, The Rowland Institute at Harvard Mirrors for Earth’s Energy Rebalancing (MEERreflEction)"
+  );
+  generate_program(
+    "09:45 AM",
+    "Prof. Jia Deng",
+    "Assistant Professor, Department of Sysmtems Science and Industrial Engineering<br>External Energy Assisted Nanmachining Using Soft AFM Probes"
+  );
+  generate_program(
+    "10:15 AM",
+    "Morning Break - Nanofab South Rotunda",
+    ""
+  );
+  generate_program(
+    "10:30 AM",
+    "Dr. Ji Ung Lee",
+    "Professor of Nanoscale Engineering, SUNY Polytechnic Institute 2D Reconfigurable Devices"
+  );
+  generate_program(
+    "11:00 AM",
+    "Phil Kaszuba",
+    "Senior Member of Technical Staffand Lead Engineer, Scanning Probe Microscope Laboratory, Global Foundries (SFM)"
+  );
+  generate_program_last(
+    "11:30 AM",
+    "Dr. Lane Bakera",
+    "James L.Jackson Professor of Chemistry, Indiana University Measuring Ions and Electrons with Nanoscale Pipettes"
+  );
+
+  /**
+   * Don't fix below here.
+   */
+  function generate_title(title) {
+    jQuery(`
+    <section class="timeline-wrap timeline-${cnt} m-20">
+      <table class="styled-table">
+        <tr class="styled-tr">
+          <td>${title}
+        </tr>
+      </table>
+
+      <ul class="cbp_tmtimeline">
+      </ul>
+    </section>
+    `).appendTo(".program-wrap");
+  }
+
+  function generate_program(time, heading, desc) {
+    jQuery(`
+    <li>
+      <time class="cbp_tmtime"><span>${time}</span></time>
+      <div class="cbp_tmicon"></div>
+      <div class="cbp_tmlabel">
+        <h2>${heading}</h2>
+        <p>${desc}</p>
+      </div>
+    </li>
+    `).appendTo(jQuery(jQuery(".cbp_tmtimeline")[cnt]));
+  }
+
+  function generate_program_last(time, heading, desc) {
+    jQuery(`
+    <li class="last-program">
+      <time class="cbp_tmtime"><span>${time}</span></time>
+      <div class="cbp_tmicon"></div>
+      <div class="cbp_tmlabel">
+        <h2>${heading}</h2>
+        <p>${desc}</p>
+      </div>
+    </li>
+    `).appendTo(jQuery(jQuery(".cbp_tmtimeline")[cnt]));
+    cnt++;
+  }
 </script>
