@@ -1,5 +1,6 @@
 <!-- ver 0.2, card css updated -->
 <!-- ver 0.3, get webinars and automatically generate cards. -->
+<!-- ver 0.4, fix:  -->
 
 <!-- check logged in state. if not, redirect to sign-in page -->
 <script>
@@ -97,12 +98,12 @@
     // get each zoom api data -> allocate to each cards.
     var $card_list = jQuery(".card");
     var metadata_arr = [];
-
+    var card_idx = 0;
 
     $vcz_list.each(function () {
       var $this = this;
       var i = 0;
-      var browser_link = jQuery(".vczapi-btn-link")[0].href;
+      var browser_link = jQuery(".vczapi-btn-link")[card_idx].href;
       jQuery($this.children).each(function () {
         if (this.children.length === 0) {
           // text
@@ -131,6 +132,7 @@
             </div>
       `);
       $card_template.appendTo($container);
+      card_idx++;
     });
   }
 
