@@ -1,0 +1,539 @@
+<!-- NX-10 modal -->
+<div class="modal-wrap modal-nx10">
+  <div class="modal-img"></div>
+  <div class="modal-content">
+    <div class="modal-content-text">
+      <div class="modal-nx10-name">
+        <span class="park">Park&nbsp</span>
+        <span class="nx10">NX10</span>
+      </div>
+      <p class="sub-heading">The quickest path to innovative research</p>
+      <div class="modal-description">
+        <span class="description">
+          Park NX10 produces data you can trust, replicate, and publish at the
+          highest nano resolution. From sample setting to full scan imaging,
+          measurement, and analysis, Park NX10 saves you time every step of the
+          way. With more time and better data, you can focus on doing more
+          innovative research. <br />
+          Park NX10 produces data you can trust, replicate, and publish at the
+          highest nano resolution. From sample setting to full scan imaging,
+          measurement, and analysis, Park NX10 saves you time every step of the
+          way. With more time and better data, you can focus on doing more
+          innovative research.
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="button-exit"><span class="exit-text">X</span></div>
+</div>
+<!-- NX-20 modal -->
+<div class="modal-wrap modal-nx20">
+  <div class="modal-img"></div>
+  <div class="modal-content">
+    <div class="modal-content-text">
+      <div class="modal-nx10-name">
+        <span class="park">Park&nbsp</span>
+        <span class="nx10">NX20</span>
+      </div>
+      <p class="sub-heading">The quickest path to innovative research</p>
+      <div class="modal-description">
+        <span class="description">
+          Park NX10 produces data you can trust, replicate, and publish at the
+          highest nano resolution. From sample setting to full scan imaging,
+          measurement, and analysis, Park NX10 saves you time every step of the
+          way. With more time and better data, you can focus on doing more
+          innovative research. <br />
+          Park NX10 produces data you can trust, replicate, and publish at the
+          highest nano resolution. From sample setting to full scan imaging,
+          measurement, and analysis, Park NX10 saves you time every step of the
+          way. With more time and better data, you can focus on doing more
+          innovative research.
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="button-exit"><span class="exit-text">X</span></div>
+</div>
+<!-- common modal components -->
+<div class="modal-overlay"></div>
+<!-- background (3D hall) -->
+<div class="background"></div>
+<!-- NX-10 tooltip -->
+<div class="tooltip-wrap tooltip-nx10">
+  <div class="tooltip-textbox">
+    <div class="tooltip-content">
+      <p class="heading">
+        <span class="park">Park </span>
+        <span class="nx10">NX10</span>
+      </p>
+      <p class="sub-heading">The quickest path to innovative research</p>
+    </div>
+    <div class="tooltip-img">
+      <img src="nx10-afm.png" alt="nx-10" class="img-nx-10" />
+    </div>
+  </div>
+  <div class="outer-circle">
+    <div class="inner-circle">
+      <div class="cross">
+        <div class="border border-1"></div>
+        <div class="border border-2"></div>
+        <div class="border border-3"></div>
+        <div class="border border-4"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- NX-20 tooltip -->
+<div class="tooltip-wrap tooltip-nx20">
+  <div class="tooltip-textbox">
+    <div class="tooltip-content">
+      <p class="heading">
+        <span class="park">Park </span>
+        <span class="nx10">NX20</span>
+      </p>
+      <p class="sub-heading">The quickest path to innovative research</p>
+    </div>
+    <div class="tooltip-img">
+      <img src="nx10-afm.png" alt="nx-10" class="img-nx-10" />
+    </div>
+  </div>
+  <div class="outer-circle">
+    <div class="inner-circle">
+      <div class="cross">
+        <div class="border border-1"></div>
+        <div class="border border-2"></div>
+        <div class="border border-3"></div>
+        <div class="border border-4"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* z-index : tooltip < hotspot < overlay < modal */
+  body {
+    background-color: #7c7c7c;
+    margin: 0;
+  }
+  p {
+    margin-block-start: 0em;
+    margin-block-end: 0.3em;
+  }
+  .background {
+    display: inline-block;
+    position: relative;
+    width: 1500px;
+    height: 500px;
+    z-index: 5;
+    background-color: #000;
+  }
+  .tooltip-wrap {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+  }
+  .tooltip-wrap--active {
+    cursor: pointer;
+  }
+  /*
+    button
+  */
+  .outer-circle {
+    position: absolute;
+    width: 3.6rem;
+    height: 3.6rem;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translateY(-100%);
+    z-index: 6;
+  }
+  .outer-circle--active {
+    border-radius: 0;
+    transition: border-radius ease 0.3s;
+  }
+  .inner-circle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.8rem;
+    height: 1.8rem;
+    border: 0.5rem solid #6e9dc0;
+    border-radius: 100%;
+    background-color: #005ca1;
+  }
+  .inner-circle--active {
+    background-color: #fff;
+    border-color: #fff;
+    transition: background-color ease 0.5s, border-color ease 0.5s;
+  }
+  .cross {
+    background: white;
+    height: 0.4rem;
+    position: relative;
+    width: 0.01rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .cross:after {
+    background: white;
+    content: "";
+    height: 0.01rem;
+    position: absolute;
+    width: 0.4rem;
+    top: 0.18rem;
+    left: -0.17rem;
+  }
+  .cross--active,
+  .cross--active:after {
+    background: #005ca1;
+    transition: background ease 0.2s;
+  }
+
+  .border {
+    background: #005ca1;
+    position: absolute;
+    height: 0.7rem;
+    width: 0.05rem;
+    opacity: 0;
+  }
+  .border--active {
+    height: 0.7rem;
+    width: 0.05rem;
+  }
+  .border:after {
+    background: #005ca1;
+    content: "";
+    position: absolute;
+    height: 0.05rem;
+    width: 0.7rem;
+  }
+  .border--active:after {
+    height: 0.05rem;
+    width: 0.7rem;
+  }
+  .border-1 {
+    left: -0.7rem;
+    top: -0.5rem;
+  }
+  .border-1--active {
+    opacity: 1;
+    left: -1.2rem;
+    top: -1rem;
+    transition: left ease-in-out 0.3s, top ease-in-out 0.3s, opacity ease 0.6s;
+  }
+  .border-1:after {
+    top: 0rem;
+    left: 0rem;
+  }
+  .border-2 {
+    left: 0.7rem;
+    top: -0.5rem;
+  }
+  .border-2--active {
+    opacity: 1;
+    left: 1.2rem;
+    top: -1rem;
+    transition: left ease-in-out 0.3s, top ease-in-out 0.3s, opacity ease 0.6s;
+  }
+  .border-2:after {
+    top: 0rem;
+    left: -0.7rem;
+  }
+  .border-3 {
+    left: 0.7rem;
+    top: 0.2rem;
+  }
+  .border-3--active {
+    opacity: 1;
+    left: 1.2rem;
+    top: 0.8rem;
+    transition: left ease-in-out 0.3s, top ease-in-out 0.3s, opacity ease 0.6s;
+  }
+  .border-3:after {
+    top: 0.67rem;
+    left: -0.7rem;
+  }
+  .border-4 {
+    left: -0.7rem;
+    top: 0.2rem;
+  }
+  .border-4--active {
+    opacity: 1;
+    left: -1.2rem;
+    top: 0.8rem;
+    transition: left ease-in-out 0.3s, top ease-in-out 0.3s, opacity ease 0.6s;
+  }
+  .border-4:after {
+    top: 0.67rem;
+    left: 0rem;
+  }
+  /*
+    tooltip
+     */
+  .tooltip-textbox {
+    visibility: hidden;
+    position: relative;
+    display: flex;
+    width: 500px;
+    height: 250px;
+  }
+  .tooltip-textbox--active {
+    visibility: visible;
+    z-index: 6;
+  }
+  .tooltip-content {
+    width: 55%;
+    background-color: #cfd8e0;
+    padding: 2rem;
+  }
+  .heading {
+    font-family: "OpenSansSemiboldRegular";
+    font-size: 1.5em;
+    font-weight: 700;
+  }
+  .park {
+    color: #013c82;
+  }
+  .nx10 {
+    color: #01aae5;
+  }
+  .sub-heading {
+    font-family: "OpenSansSemiboldRegular";
+    font-size: 1em;
+    color: #797979;
+    font-weight: 700;
+  }
+
+  .tooltip-img {
+    width: 45%;
+    font-size: 0;
+    text-align: center;
+    background-color: #fff;
+  }
+  .tooltip-img:after {
+    display: inline-block;
+    height: 100%;
+    content: "";
+    vertical-align: middle;
+  }
+  .img-nx-10 {
+    width: 40%;
+    vertical-align: middle;
+  }
+
+  /*
+  popup
+  */
+  .modal-wrap {
+    display: flex;
+    position: absolute;
+    width: 800px;
+    height: 0px;
+    background-color: #fff;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 8;
+    /* display: none; */
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s ease, height 0.3s ease-in-out, opacity 0.6s ease;
+  }
+  .modal-wrap--active {
+    /* display: block; */
+    visibility: visible;
+    height: 600px;
+    opacity: 1;
+  }
+  .modal-overlay {
+    display: none;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 7;
+  }
+  .modal-overlay--active {
+    display: inline-block;
+  }
+  .button-exit {
+    position: absolute;
+    padding: 0.5rem;
+    cursor: pointer;
+    left: 100%;
+    transform: translateX(-100%);
+  }
+  .exit-text {
+    font-weight: 700;
+    font-size: 1.5em;
+    margin: 0;
+  }
+  .modal-img {
+    display: inline-block;
+    background-color: #cfd8e0;
+    width: 45%;
+    height: 100%;
+  }
+  .modal-content {
+    display: inline-block;
+    background-color: #fff;
+    width: 55%;
+    height: 100%;
+  }
+  .modal-content-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 0 3rem;
+  }
+  .modal-nx10-name {
+    display: flex;
+    font-family: "OpenSansSemiboldRegular";
+    font-size: 1.5em;
+    font-weight: 700;
+  }
+  .modal-description {
+    font-family: "OpenSansSemiboldRegular";
+    font-size: 1em;
+    height: 35%;
+    overflow-y: scroll;
+  }
+  .modal-description::-webkit-scrollbar {
+    background-color: #013b821e;
+    border-radius: 15px;
+    width: 0.7em;
+  }
+  .modal-description::-webkit-scrollbar-thumb {
+    background-color: #013c82;
+    border-radius: 15px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  /* nx20 */
+  .tooltip-nx20 {
+    top: 1rem;
+    left: 2rem;
+  }
+</style>
+<script>
+  var outer_circle_nx10 = document.querySelector(".tooltip-nx10 .outer-circle");
+  var outer_circle_nx20 = document.querySelector(".tooltip-nx20 .outer-circle");
+  var tooltip_wrap_nx10 = document.querySelector(".tooltip-nx10");
+  var tooltip_wrap_nx20 = document.querySelector(".tooltip-nx20");
+  var modal_nx10 = document.querySelector(".modal-nx10");
+  var modal_nx20 = document.querySelector(".modal-nx20");
+  var modal_overlay = document.querySelector(".modal-overlay");
+  var modal_exit_nx10 = document.querySelector(".modal-nx10 .button-exit");
+  var modal_exit_nx20 = document.querySelector(".modal-nx20 .button-exit");
+
+  function outerActive(parent) {
+    document
+      .querySelector(parent + ".outer-circle")
+      .classList.add("outer-circle--active");
+    document
+      .querySelector(parent + ".inner-circle")
+      .classList.add("inner-circle--active");
+    document.querySelector(parent + " .cross").classList.add("cross--active");
+    document
+      .querySelector(parent + ".border-1")
+      .classList.add("border-1--active");
+    document
+      .querySelector(parent + ".border-2")
+      .classList.add("border-2--active");
+    document
+      .querySelector(parent + ".border-3")
+      .classList.add("border-3--active");
+    document
+      .querySelector(parent + ".border-4")
+      .classList.add("border-4--active");
+    document.querySelector(parent).classList.add("tooltip-wrap--active");
+    document
+      .querySelector(parent + ".tooltip-textbox")
+      .classList.add("tooltip-textbox--active");
+  }
+  function outerInactive(parent) {
+    document
+      .querySelector(parent + ".outer-circle")
+      .classList.remove("outer-circle--active");
+    document
+      .querySelector(parent + ".inner-circle")
+      .classList.remove("inner-circle--active");
+    document
+      .querySelector(parent + " .cross")
+      .classList.remove("cross--active");
+    document
+      .querySelector(parent + ".border-1")
+      .classList.remove("border-1--active");
+    document
+      .querySelector(parent + ".border-2")
+      .classList.remove("border-2--active");
+    document
+      .querySelector(parent + ".border-3")
+      .classList.remove("border-3--active");
+    document
+      .querySelector(parent + ".border-4")
+      .classList.remove("border-4--active");
+    document.querySelector(parent).classList.remove("tooltip-wrap--active");
+    document
+      .querySelector(parent + ".tooltip-textbox")
+      .classList.remove("tooltip-textbox--active");
+  }
+  function openModal(parent) {
+    document.querySelector(parent).classList.add("modal-wrap--active");
+    modal_overlay.classList.add("modal-overlay--active");
+  }
+  function closeModal(parent) {
+    document.querySelector(parent).classList.remove("modal-wrap--active");
+    modal_overlay.classList.remove("modal-overlay--active");
+  }
+  function closeAllModals() {
+    var modal_wrap = document.getElementsByClassName("modal-wrap");
+    for (var i = 0; i < modal_wrap.length; i++) {
+      modal_wrap[i].classList.remove("modal-wrap--active");
+    }
+    modal_overlay.classList.remove("modal-overlay--active");
+  }
+
+  outer_circle_nx10.addEventListener("mouseover", (event) =>
+    outerActive(".tooltip-nx10 ")
+  );
+  outer_circle_nx20.addEventListener("mouseover", (event) =>
+    outerActive(".tooltip-nx20 ")
+  );
+  outer_circle_nx10.addEventListener("click", (event) =>
+    openModal(".modal-nx10 ")
+  );
+  outer_circle_nx20.addEventListener("click", (event) =>
+    openModal(".modal-nx20 ")
+  );
+  tooltip_wrap_nx10.addEventListener("mouseover", (event) =>
+    outerActive(".tooltip-nx10 ")
+  );
+  tooltip_wrap_nx20.addEventListener("mouseover", (event) =>
+    outerActive(".tooltip-nx20 ")
+  );
+  tooltip_wrap_nx10.addEventListener("mouseout", (event) =>
+    outerInactive(".tooltip-nx10 ")
+  );
+  tooltip_wrap_nx20.addEventListener("mouseout", (event) =>
+    outerInactive(".tooltip-nx20 ")
+  );
+  tooltip_wrap_nx10.addEventListener("click", (event) =>
+    openModal(".modal-nx10 ")
+  );
+  tooltip_wrap_nx20.addEventListener("click", (event) =>
+    openModal(".modal-nx20 ")
+  );
+  modal_exit_nx10.addEventListener("click", (event) =>
+    closeModal(".modal-nx10 ")
+  );
+  modal_exit_nx20.addEventListener("click", (event) =>
+    closeModal(".modal-nx20 ")
+  );
+  modal_overlay.addEventListener("click", closeAllModals);
+</script>

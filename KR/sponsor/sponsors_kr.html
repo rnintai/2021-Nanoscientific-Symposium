@@ -1,0 +1,53 @@
+<div class="video-wrap">
+  <video id="sponsors-video" src="https://d25unujvh7ui3r.cloudfront.net/sponsor_kr.mp4" autoplay loop muted>
+  </video>
+  <img class="map-thumb" src="https://d25unujvh7ui3r.cloudfront.net/sponsor_thumbnail.jpg" usemap="#image-map">
+
+  <map name="image-map" id="image-map">
+    <area target="" class="sponsor-link-1" alt="sponsor-link-1" title="sponsor-link-1"
+      onclick="window.open('http://microscopy.or.kr/')" coords="481,360,738,560" shape="rect">
+    <area target="" class="sponsor-link-2" alt="sponsor-link-2" title="sponsor-link-2" coords="893,360,1062,560"
+      shape="rect">
+    <area target="" class="sponsor-link-3" alt="sponsor-link-3" title="sponsor-link-3"
+      onclick="window.open('https://parksystems.com/')" coords="1220,360,1368,560" shape="rect">
+    <area target="" class="sponsor-link-4" alt="sponsor-link-4" title="sponsor-link-4"
+      onclick="window.open('https://nanoscientific.org/')" coords="1379,360,1574,560" shape="rect">
+  </map>
+
+</div>
+
+
+<style>
+  .map-thumb {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100% !important;
+  }
+
+  .video-wrap {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+  }
+
+  #sponsors-video {
+    position: relative;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    -o-object-fit: fill;
+  }
+
+  area {
+    cursor: pointer;
+  }
+
+  .sponsor-link-2 {
+    cursor: default;
+  }
+</style>

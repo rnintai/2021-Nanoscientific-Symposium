@@ -1,0 +1,268 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+  rel="stylesheet">
+
+<div class="slider-wrap">
+  <div class="slider-text">
+    <span class="a">
+      Research AFM
+    </span><span class="a">
+      Center
+    </span><span class="a">
+      Industrial AFM
+    </span>
+  </div>
+  <div class="helper-wrap">
+    <button class="helper-wrap-1" onclick="degZero()">
+      <div class="helper-1"></div>
+    </button>
+    <div class="helper-btwn"></div>
+    <button class="helper-wrap-2 helper-wrap-2--active" onclick="degNinty()">
+      <div class="helper-2 helper-2--active"></div>
+    </button>
+    <div class="helper-btwn"></div>
+    <button class="helper-wrap-3" onclick="degOneEighty()">
+      <div class="helper-3"></div>
+    </button>
+  </div>
+</div>
+<style>
+  * {
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  button {
+    display: inline-block;
+    border-style: none;
+    padding: 0px;
+    background-color: transparent;
+  }
+
+  .slider-wrap {
+    width: 500px;
+    display: inline-block;
+    position: relative;
+    top: 3.5rem;
+    left: 7vw;
+    z-index: 5;
+  }
+
+  /* text */
+  .slider-text {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .slider-text span {
+    font-weight: 700;
+    color: #8a8a8a
+  }
+
+  /* helper */
+  .helper-wrap {
+    width: 454px;
+    margin: 0 auto;
+    justify-content: space-between;
+  }
+
+  .helper-btwn {
+    display: inline-block;
+    margin: 2px -4px;
+    width: 125px;
+    height: 2px;
+    background-color: #d8d8d8;
+  }
+
+  .helper-wrap-1,
+  .helper-wrap-2,
+  .helper-wrap-3 {
+    /* display: flex;
+    align-items: center; */
+    width: 68px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .helper-1,
+  .helper-2,
+  .helper-3 {
+    width: 100%;
+    height: 6px;
+    background-color: #acadac;
+    border-radius: 3px;
+  }
+
+  .helper-wrap-1:hover .helper-1,
+  .helper-wrap-2:hover .helper-2,
+  .helper-wrap-3:hover .helper-3 {
+    transition: background-color 0.5s;
+    background-color: #58c5ff;
+    border-radius: 3px;
+  }
+
+  .helper-wrap-1--active,
+  .helper-wrap-2--active,
+  .helper-wrap-3--active {
+    height: 2px;
+    background-color: white;
+  }
+
+  .helper-1--active,
+  .helper-2--active,
+  .helper-3--active {
+    background-color: #58c5ff;
+    width: 100%;
+  }
+</style>
+<script>var cur_deg = 2;
+  var bar_zero = document.querySelector(".helper-1");
+  var bar_zero_wrap = document.querySelector(".helper-wrap-1");
+  var bar_ninty = document.querySelector(".helper-2");
+  var bar_ninty_wrap = document.querySelector(".helper-wrap-2");
+  var bar_oneeighty = document.querySelector(".helper-3");
+  var bar_oneeighty_wrap = document.querySelector(".helper-wrap-3");
+  var arrow_left_wrap = document.querySelector(".arrow-left-wrap");
+  var arrow_right_wrap = document.querySelector(".arrow-right-wrap");
+  var image_list = document.getElementsByClassName("hall-image-switch");
+
+  function addDisabled() {
+    bar_zero_wrap.disabled = true;
+    bar_ninty_wrap.disabled = true;
+    bar_oneeighty_wrap.disabled = true;
+    arrow_left_wrap.disabled = true;
+    arrow_right_wrap.disabled = true;
+  }
+  function removeDisabled() {
+    bar_zero_wrap.disabled = false;
+    bar_ninty_wrap.disabled = false;
+    bar_oneeighty_wrap.disabled = false;
+    arrow_left_wrap.disabled = false;
+    arrow_right_wrap.disabled = false;
+  }
+
+  function clickLeft() {
+    // addDisabled();
+    switch (cur_deg) {
+      case 2:
+        image_slide_neg(20, 0, image_list);
+        cur_deg = 1;
+        activateZero();
+        break;
+      case 3:
+        image_slide_neg(39, 20, image_list);
+        cur_deg = 2;
+        activateNinty();
+        break;
+    }
+    // removeDisabled();
+  }
+  function clickRight() {
+    // addDisabled();
+    switch (cur_deg) {
+      case 1:
+        image_slide_pos(0, 20, image_list);
+        cur_deg = 2;
+        activateNinty();
+        break;
+      case 2:
+        image_slide_pos(20, 39, image_list);
+        cur_deg = 3;
+        activateOneEighty();
+        break;
+    }
+    // removeDisabled();
+  }
+
+
+  function degZero() {
+    // addDisabled();
+    activateZero();
+    switch (cur_deg) {
+      case 2:
+        image_slide_neg(20, 0, image_list);
+        break;
+      case 3:
+        image_slide_neg(39, 0, image_list);
+        break;
+    }
+    cur_deg = 1;
+    // removeDisabled();
+  }
+
+  function degNinty() {
+    // addDisabled();
+    activateNinty();
+    switch (cur_deg) {
+      case 1:
+        image_slide_pos(0, 20, image_list);
+        break;
+      case 3:
+        image_slide_neg(39, 20, image_list);
+        break;
+    }
+    cur_deg = 2;
+    // removeDisabled();
+  }
+
+  function degOneEighty() {
+    // addDisabled();
+    activateOneEighty();
+    switch (cur_deg) {
+      case 1:
+        image_slide_pos(0, 39, image_list);
+        break;
+      case 2:
+        image_slide_pos(20, 39, image_list);
+        break;
+    }
+    cur_deg = 3;
+    // removeDisabled();
+  }
+
+  function image_slide_neg(from, to, list) {
+    setTimeout(() => {
+      list[from].classList.remove("image-active");
+      list[from - 1].classList.add("image-active");
+      from--;
+      if (from > to) {
+        image_slide_neg(from, to, list);
+      }
+    }, 40);
+  }
+  function image_slide_pos(from, to, list) {
+    setTimeout(() => {
+      list[from].classList.remove("image-active");
+      list[from + 1].classList.add("image-active");
+      from++;
+      if (from < to) {
+        image_slide_pos(from, to, list);
+      }
+    }, 40);
+  }
+
+  function activateZero() {
+    bar_zero.classList.add("helper-1--active");
+    bar_zero_wrap.classList.add("helper-wrap-1--active");
+    bar_ninty.classList.remove("helper-2--active");
+    bar_ninty_wrap.classList.remove("helper-wrap-2--active");
+    bar_oneeighty.classList.remove("helper-3--active");
+    bar_oneeighty_wrap.classList.remove("helper-wrap-3--active");
+  }
+  function activateNinty() {
+    bar_ninty.classList.add("helper-2--active");
+    bar_ninty_wrap.classList.add("helper-wrap-2--active");
+    bar_zero.classList.remove("helper-1--active");
+    bar_zero_wrap.classList.remove("helper-wrap-1--active");
+    bar_oneeighty.classList.remove("helper-3--active");
+    bar_oneeighty_wrap.classList.remove("helper-wrap-3--active");
+  }
+  function activateOneEighty() {
+    bar_oneeighty.classList.add("helper-3--active");
+    bar_oneeighty_wrap.classList.add("helper-wrap-3--active");
+    bar_zero.classList.remove("helper-1--active");
+    bar_zero_wrap.classList.remove("helper-wrap-1--active");
+    bar_ninty.classList.remove("helper-2--active");
+    bar_ninty_wrap.classList.remove("helper-wrap-2--active");
+  }</script>

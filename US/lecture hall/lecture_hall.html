@@ -1,0 +1,25 @@
+<script>
+  if (jQuery("body").hasClass("logged-in")) {
+
+  }
+  else {
+    window.location = "/sign-in?url=%2Flecture-hall%2F"
+  }
+</script>
+
+<div class="lecture-hall-wrap">
+  <video src="https://d25unujvh7ui3r.cloudfront.net/lecture_hall.mp4" alt="lecture hall" muted autoplay loop></video>
+</div>
+
+<style>
+  .lecture-hall-wrap {
+    position: relative;
+    height: 100vh;
+  }
+
+  video {
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+</style>

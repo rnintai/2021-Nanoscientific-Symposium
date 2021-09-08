@@ -1,0 +1,388 @@
+<div class="magazine-wrap">
+  <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/NS-magazine.jpg" class="background"
+    usemap="#image-map">
+
+  <map id="image-map" name="image-map">
+    <area class="background" target="_blank" alt="" title=""
+      href="https://www.parksystems.com/images/media/nanoscientific/Nano_Scientific_22_SUMMER-2021-WEB_final.pdf"
+      coords="1492,464,1697,731" shape="rect">
+  </map>
+</div>
+
+<style>
+  .magazine-wrap {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .magazine-wrap .background {
+    width: 100%;
+    height: 100%
+  }
+
+  .map-wrap {
+    z-index: 0;
+    cursor: pointer;
+    transition-property: left, top, width, height;
+    transition-duration: 0.2s, 0.2s, 0.2s, 0.2s;
+    transition-timing-function: ease, ease, ease, ease;
+  }
+
+  /* hotspot */
+  @keyframes flickerAnimation {
+    0% {
+      opacity: 0.35;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0.35;
+    }
+  }
+
+  @-o-keyframes flickerAnimation {
+    0% {
+      opacity: 0.35;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0.35;
+    }
+  }
+
+  @-moz-keyframes flickerAnimation {
+    0% {
+      opacity: 0.35;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0.35;
+    }
+  }
+
+  @-webkit-keyframes flickerAnimation {
+    0% {
+      opacity: 0.35;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0.35;
+    }
+  }
+
+  .outer-circle {
+    position: absolute;
+    width: 2.7em;
+    height: 2.7em;
+    background-color: #fff;
+    border-radius: 50%;
+    left: 0%;
+    top: 0%;
+    cursor: pointer;
+    transform: translate(-100%, 0);
+    z-index: 6;
+    box-shadow: 5px 5px 6px 1px rgb(0 0 0 / 25%);
+    -webkit-animation: flickerAnimation 2s ease-in-out 0.5s infinite;
+    -moz-animation: flickerAnimation 2s ease-in-out 0.5s infinite;
+    -o-animation: flickerAnimation 2s ease-in-out 0.5s infinite;
+    animation: flickerAnimation 2s ease-in-out 0.5s infinite;
+  }
+
+  .outer-circle--active {
+    border-radius: 0;
+    opacity: 1;
+    transition: border-radius ease 0.3s;
+    box-shadow: none;
+    z-index: 8;
+    animation: none;
+  }
+
+  /* hotspot flickering */
+
+  .inner-circle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 2.1em;
+    height: 2.1em;
+    border: 0.45em solid #6e9dc0;
+    border-radius: 100%;
+    background-color: #005ca1;
+  }
+
+  .inner-circle--active {
+    background-color: #fff;
+    border-color: #fff;
+    transition: background-color ease 0.5s, border-color ease 0.5s;
+  }
+
+  .border {
+    background: #005ca1;
+    position: absolute;
+    height: 0.7rem;
+    width: 0.05rem;
+    opacity: 0;
+  }
+
+  .border--active {
+    height: 0.7rem;
+    width: 0.05rem;
+  }
+
+  .border:after {
+    background: #005ca1;
+    content: "";
+    position: absolute;
+    height: 0.05rem;
+    width: 0.7rem;
+  }
+
+  .border--active:after {
+    height: 0.05rem;
+    width: 0.7rem;
+  }
+
+  /* svg */
+  .cross-zoom-svg {
+    transform: scale(0.6) translate(-51.9%, -50%);
+  }
+
+  .cross--active {
+    stroke: #005ca1;
+  }
+
+  .zoom {
+    opacity: 0;
+  }
+
+  .zoom-1 {
+    transform: translate(20%, 20%);
+  }
+
+  .zoom-2 {
+    transform: translate(-20%, 20%);
+  }
+
+  .zoom-3 {
+    transform: translate(20%, -20%);
+  }
+
+  .zoom-4 {
+    transform: translate(-20%, -20%);
+  }
+
+  .zoom--active {
+    opacity: 1;
+    stroke: #005ca1;
+    transform: translate(0, 0);
+    transition: opacity 0.5s ease, transform 0.3s ease-in-out;
+  }
+
+  .download-wrap {
+    display: inline-block;
+    position: relative;
+    left: 100%;
+    cursor: pointer;
+    color: #fff;
+    padding: 0.4em;
+    text-align: center;
+    background-color: #21ade5;
+    transition: opacity 0.3s ease-in-out;
+    transform: translate(-100%, -5%);
+    -webkit-animation: flickerAnimation 2.5s ease-in-out 0.5s infinite;
+    -moz-animation: flickerAnimation 2.5s ease-in-out 0.5s infinite;
+    -o-animation: flickerAnimation 2.5s ease-in-out 0.5s infinite;
+    animation: flickerAnimation 2.5s ease-in-out 0.5s infinite;
+  }
+
+  .download-wrap:hover,
+  .download-wrap.hover {
+    opacity: 1;
+    -webkit-animation: none;
+    -moz-animation: none;
+    -o-animation: none;
+    animation: none;
+  }
+
+
+  .download-wrap .fas.fa-download {
+    font-size: 1.5em;
+  }
+</style>
+
+<script type="text/javascript">
+  $this = jQuery("area");
+
+  var class_name = jQuery($this).attr("class");
+  var coor = jQuery($this).attr("coords");
+  var coorA = coor.split(",");
+  var left = coorA[0];
+  var top = coorA[1];
+  var width = coorA[2] - coorA[0];
+  var height = coorA[3] - coorA[1];
+
+  var $div = jQuery(
+    `<div class="${class_name}-map-wrap map-wrap" onclick="window.open('https://www.parksystems.com/images/media/nanoscientific/Nano_Scientific_22_SUMMER-2021-WEB_final.pdf')"></div>`
+  ),
+
+    $download_btn = jQuery(`
+    <div class="download-wrap"
+    onclick="window.open('https://www.parksystems.com/images/media/nanoscientific/Nano_Scientific_22_SUMMER-2021-WEB_final.pdf')">
+    <i class="fas fa-download"></i>
+    </div>`
+    ),
+    $hotspot = jQuery(`
+    <div class="outer-circle">
+        <div class="inner-circle">
+          <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" version="1.1"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="-1.0036289068035202 -0.9996747277614659 47.88999999999999 47.999999999999986" width="43.89"
+            height="44" class="cross-zoom-svg">
+            <defs>
+              <path class="cross cross-v"
+                d="M23.4 17.68C23.4 17.68 23.4 17.68 23.4 17.68C23.4 23.11 23.4 26.12 23.4 26.72C23.4 26.72 23.4 26.72 23.4 26.72C23.01 26.72 22.8 26.72 22.75 26.72C22.75 26.72 22.75 26.72 22.75 26.72C22.75 21.3 22.75 18.28 22.75 17.68C22.75 17.68 22.75 17.68 22.75 17.68C23.14 17.68 23.35 17.68 23.4 17.68Z"
+                id="g1biIP06Yw" />
+              <path class="cross cross-h"
+                d="M27.59 22.52C27.59 22.52 27.59 22.52 27.59 22.52C22.17 22.52 19.16 22.52 18.56 22.52C18.56 22.52 18.56 22.52 18.56 22.52C18.56 22.14 18.56 21.92 18.56 21.88C18.56 21.88 18.56 21.88 18.56 21.88C23.98 21.88 26.99 21.88 27.59 21.88C27.59 21.88 27.59 21.88 27.59 21.88C27.59 22.26 27.59 22.48 27.59 22.52Z"
+                id="aiTp6JzbI" />
+              <path class="zoom zoom-1"
+                d="M0.18 0L0 0L0 0.19L0 10.39L0.18 10.39L0.18 0.19L10.38 0.19L10.38 0L10.38 0L0.18 0Z"
+                id="a3rf5jiyfR" />
+              <path class="zoom zoom-2"
+                d="M43.89 0.19L43.89 0L43.7 0L33.5 0L33.5 0.19L43.7 0.19L43.7 10.39L43.89 10.39L43.89 10.39L43.89 0.19Z"
+                id="cBrYcMxvl" />
+              <path class="zoom zoom-3"
+                d="M0.18 44L0 44L0 43.81L0 33.61L0.18 33.61L0.18 43.81L10.38 43.81L10.38 44L10.38 44L0.18 44Z"
+                id="bHITJpG9n" />
+              <path class="zoom zoom-4"
+                d="M43.69 44L43.88 44L43.88 43.81L43.88 33.61L43.69 33.61L43.69 43.81L33.49 43.81L33.49 44L33.49 44L43.69 44Z"
+                id="c33nJnWRqb" />
+            </defs>
+            <g>
+              <g>
+                <use xlink:href="#g1biIP06Yw" opacity="1" fill="#ffffff" fill-opacity="0" />
+                <g>
+                  <use xlink:href="#g1biIP06Yw" opacity="1" fill-opacity="0" stroke="#ffffff" stroke-width="1"
+                    stroke-opacity="1" />
+                </g>
+              </g>
+              <g>
+                <use xlink:href="#aiTp6JzbI" opacity="1" fill="#ffffff" fill-opacity="0" />
+                <g>
+                  <use xlink:href="#aiTp6JzbI" opacity="1" fill-opacity="0" stroke="#ffffff" stroke-width="1"
+                    stroke-opacity="1" />
+                </g>
+              </g>
+              <g>
+                <use xlink:href="#a3rf5jiyfR" opacity="1" fill="#ffffff" fill-opacity="0" />
+                <g>
+                  <use xlink:href="#a3rf5jiyfR" opacity="1" fill-opacity="0" stroke="#ffffff" stroke-width="1"
+                    stroke-opacity="1" />
+                </g>
+              </g>
+              <g>
+                <use xlink:href="#cBrYcMxvl" opacity="1" fill="#ffffff" fill-opacity="0" />
+                <g>
+                  <use xlink:href="#cBrYcMxvl" opacity="1" fill-opacity="0" stroke="#ffffff" stroke-width="1"
+                    stroke-opacity="1" />
+                </g>
+              </g>
+              <g>
+                <use xlink:href="#c33nJnWRqb" opacity="1" fill="#ffffff" fill-opacity="0" />
+                <g>
+                  <use xlink:href="#c33nJnWRqb" opacity="1" fill-opacity="0" stroke="#ffffff" stroke-width="1"
+                    stroke-opacity="1" />
+                </g>
+              </g>
+              <g>
+                <use xlink:href="#bHITJpG9n" opacity="1" fill="#ffffff" fill-opacity="0" />
+                <g>
+                  <use xlink:href="#bHITJpG9n" opacity="1" fill-opacity="0" stroke="#ffffff" stroke-width="1"
+                    stroke-opacity="1" />
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>`);
+
+  $div.offset({
+    left: left + "px",
+    top: top + "px",
+  });
+  $div.width(width + "px");
+  $div.height(height + "px");
+  $div.css({
+    position: "absolute"
+  });
+
+  $div.appendTo("#image-map");
+  $download_btn.appendTo(`.${class_name}-map-wrap`);
+  // $hotspot.appendTo(`.${class_name}-map-wrap`);
+
+  var left_coor = [];
+  var top_coor = [];
+  var width = [];
+  var height = [];
+
+  var timer = null;
+
+  jQuery(window).resize(function () {
+    clearTimeout(timer);
+
+    timer = setTimeout(function () {
+      setSize();
+    }, 200);
+  });
+
+  jQuery(".background-map-wrap").mouseover(function () {
+    jQuery(".download-wrap").addClass("hover");
+  });
+  jQuery(".background-map-wrap").mouseout(function () {
+    jQuery(".download-wrap").removeClass("hover");
+  });
+
+  function setSize() {
+    var i = 0;
+    jQuery("area").each(function () {
+      var class_name = jQuery(this).attr("class");
+      var href = jQuery(this).attr("href");
+      var txt = jQuery(this).data("name");
+      var coor = jQuery(this).attr("coords");
+      var coorA = coor.split(",");
+      left_coor[i] = coorA[0];
+      top_coor[i] = coorA[1];
+      width[i] = coorA[2] - coorA[0];
+      height[i] = coorA[3] - coorA[1];
+      i = i + 1;
+    });
+    var i = 0;
+    jQuery(".map-wrap").each(function () {
+      // console.log(left_coor[i] + ", " + top_coor[i]);
+      // console.log(jQuery(this));
+      jQuery(this).offset({
+        left: left_coor[i],
+        top: top_coor[i],
+      });
+      jQuery(this).width(width[i] + "px");
+      jQuery(this).height(height[i] + "px");
+      i = i + 1;
+    });
+  }
+</script>

@@ -1,0 +1,133 @@
+<div class="slider-wrap">
+  <div class="helper-wrap-1">
+
+    <div class="helper-1"></div>
+
+  </div>
+  <div class="helper-wrap-2">
+
+    <div class="helper-2"></div>
+
+  </div>
+  <div class="helper-wrap-3">
+
+    <div class="helper-3"></div>
+
+  </div>
+  <div class="helper-wrap-4">
+
+    <div class="helper-4"></div>
+
+  </div>
+</div>
+<style>
+  /**********/
+  /* slider */
+  /**********/
+  .slider-wrap {
+    width: 70px;
+    height: 70px;
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: rotate(45deg) translate(-50%, -50%);
+    z-index: 5;
+    border: 2px solid #d8d8d8;
+  }
+
+
+  /* text */
+  .slider-text {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .slider-text span {
+    font-weight: 700;
+    color: #8a8a8a
+  }
+
+  /* helper */
+  .helper-wrap {
+    width: 471px;
+    margin: 0 auto;
+    justify-content: space-between;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .helper-btwn {
+    display: inline-block;
+    margin: 2px -4px;
+    width: 20px;
+    height: 2px;
+    background-color: #d8d8d8;
+  }
+
+  .helper-wrap-1,
+  .helper-wrap-2,
+  .helper-wrap-3,
+  .helper-wrap-4 {
+    /* display: flex;
+  align-items: center; */
+    width: 100%;
+    height: 6px;
+    margin: -4px 10px;
+    cursor: pointer;
+    position: absolute;
+  }
+
+
+  .helper-wrap-2 {
+    transform: translateX(37%) rotate(90deg);
+    top: 64%;
+  }
+
+  .helper-wrap-3 {
+    top: 103%;
+
+  }
+
+  .helper-wrap-4 {
+    transform: translateX(-65%) rotate(90deg);
+    top: 64%;
+    left: 0px;
+  }
+
+
+  .helper-1,
+  .helper-2,
+  .helper-3,
+  .helper-4 {
+    width: 50px;
+    height: 6px;
+    background-color: #acadac;
+    border-radius: 3px;
+  }
+
+  .helper-wrap-1:hover .helper-1,
+  .helper-wrap-2:hover .helper-2,
+  .helper-wrap-3:hover .helper-3,
+  .helper-wrap-4:hover .helper-4 {
+    transition: background-color 0.5s;
+    background-color: #58c5ff;
+    border-radius: 3px;
+  }
+
+  .helper-wrap-1--active,
+  .helper-wrap-2--active,
+  .helper-wrap-3--active,
+  .helper-wrap-4--active {
+    height: 2px;
+    background-color: white;
+  }
+
+  .helper-1--active,
+  .helper-2--active,
+  .helper-3--active,
+  .helper-4--active {
+    background-color: #58c5ff;
+    width: 100%;
+  }
+</style>

@@ -1,0 +1,247 @@
+<div class="image-wrap">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_01.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_02.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_03.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_04.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_05.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_06.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_07.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_08.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_09.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_10.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_11.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_12.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_13.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_14.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_15.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_16.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_17.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_18.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_19.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_20.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_21.png" alt="" class="image-switch image-active">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_22.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_23.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_24.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_25.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_26.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_27.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_28.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_29.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_30.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_31.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_32.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_33.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_34.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_35.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_36.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_37.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_38.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_39.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_40.png" alt="" class="image-switch">
+    <img src="http://event.nanoscientific.org/wp-content/uploads/2021/07/exhibit_41.png" alt="" class="image-switch">    
+</div>
+<div class="slider-wrap">
+    <div class="helper-wrap-1" onclick="degZero()">
+        <div class="helper-1"></div>
+    </div>
+    <div class="helper-wrap-2 helper-wrap-2--active" onclick="degNinty()">
+        <div class="helper-2 helper-2--active"></div>
+    </div>
+    <div class="helper-wrap-3" onclick="degOneEighty()">
+        <div class="helper-3"></div>
+    </div>
+</div>
+
+<script>
+    var cur_deg = 2; // 1: 0 deg, 2: 90deg, 3: 180deg
+	var bar_zero = document.querySelector(".helper-1");
+	var bar_zero_wrap = document.querySelector(".helper-wrap-1");
+	var bar_ninty = document.querySelector(".helper-2");
+	var bar_ninty_wrap = document.querySelector(".helper-wrap-2");
+	var bar_oneeighty = document.querySelector(".helper-3");
+	var bar_oneeighty_wrap = document.querySelector(".helper-wrap-3");
+
+    var image_list = document.getElementsByClassName("image-switch");
+	
+	// helper bar color change & play video
+	function degZero(){
+		bar_zero.classList.add("helper-1--active");
+		bar_zero_wrap.classList.add("helper-wrap-1--active");
+		bar_ninty.classList.remove("helper-2--active");
+		bar_ninty_wrap.classList.remove("helper-wrap-2--active");
+		bar_oneeighty.classList.remove("helper-3--active");
+		bar_oneeighty_wrap.classList.remove("helper-wrap-3--active");
+		switch (cur_deg){
+			case 2:
+				console.log("90 -> 0");
+                image_slide_neg(20, 0, image_list);
+				break;
+			case 3:
+				console.log("180 -> 0");
+                image_slide_neg(40, 0, image_list);
+				break;
+		}
+		cur_deg = 1;
+		
+		
+		
+	}
+	
+	function degNinty(){
+		bar_ninty.classList.add("helper-2--active");
+		bar_ninty_wrap.classList.add("helper-wrap-2--active");
+		bar_zero.classList.remove("helper-1--active");
+		bar_zero_wrap.classList.remove("helper-wrap-1--active");
+		bar_oneeighty.classList.remove("helper-3--active");
+		bar_oneeighty_wrap.classList.remove("helper-wrap-3--active");
+		
+		switch (cur_deg){
+			case 1:
+				console.log("0 -> 90");
+                image_slide_pos(0, 20, image_list);
+				break;
+			case 3:
+				console.log("180 -> 90");
+                image_slide_neg(40, 20, image_list);
+				break;
+		}
+		cur_deg = 2;
+	}
+	
+	function degOneEighty(){
+		bar_oneeighty.classList.add("helper-3--active");
+		bar_oneeighty_wrap.classList.add("helper-wrap-3--active");
+		bar_zero.classList.remove("helper-1--active");
+		bar_zero_wrap.classList.remove("helper-wrap-1--active");
+		bar_ninty.classList.remove("helper-2--active");
+		bar_ninty_wrap.classList.remove("helper-wrap-2--active");
+		
+		switch (cur_deg){
+			case 1:
+				console.log("0 -> 180");
+                image_slide_pos(0, 40, image_list);
+				break;
+			case 2:
+				console.log("90 -> 180");
+                image_slide_pos(20, 40, image_list);
+				break;
+		}
+		cur_deg = 3;
+	}
+
+    function image_slide_neg(from, to, list){ // parameter 0 : 0deg, 21: 90deg, 41: 180deg
+        setTimeout(()=>{
+            console.log(from);
+            list[from].classList.remove("image-active");
+            list[from-1].classList.add("image-active");
+            from--;
+            if(from>to){
+                image_slide_neg(from,to,list);
+            }
+        }, 40);
+    }
+    function image_slide_pos(from, to, list){ // parameter 0 : 0deg, 21: 90deg, 41: 180deg
+        setTimeout(()=>{
+            console.log(from);
+            list[from].classList.remove("image-active");
+            list[from+1].classList.add("image-active");
+            from++;
+            if(from<to-1){
+                image_slide_pos(from,to,list);
+            }
+        }, 40);
+
+        // for (i=from;i<to-1;i++){
+        //     list[i].classList.remove("image-active");
+        //     sleep(400);
+        //     list[i+1].classList.add("image-active");
+        // }
+        
+    }
+
+    function sleep(ms) {
+        const wakeUpTime = Date.now() + ms;
+        while (Date.now() < wakeUpTime) {}
+    }
+</script>
+
+<style>
+/* image */
+.image-wrap{
+    position:relative;
+    z-index:0;
+    top: -275px;
+}
+.image-switch{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* margin-top: 3rem; */
+    opacity: 0;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center top;
+    object-position: center top;
+}
+.image-active{
+    opacity: 1;
+}
+
+/* slider */
+.slider-wrap{
+	display: flex;
+	align-items: center;
+    position: relative;
+    top: 10.5rem;
+    left: 7vw;
+}
+.helper-wrap-1,
+.helper-wrap-2,
+.helper-wrap-3 {
+	display: flex;
+	align-items:center;
+	width:120px;
+	height:20px;
+	cursor: pointer;
+    z-index:10;
+}
+
+.helper-1, 
+.helper-2, 
+.helper-3{
+	width: 120px;
+	height: 2px;
+	background-color: white;
+
+}
+.helper-wrap-1:hover .helper-1, 
+.helper-wrap-2:hover .helper-2, 
+.helper-wrap-3:hover .helper-3 {
+	transition: background-color 0.5s;
+	background-color: blue;
+}
+
+.helper-wrap-1--active,
+.helper-wrap-2--active,
+.helper-wrap-3--active {
+	height: 2px;
+	background-color: white;
+}
+.helper-wrap-2--active {
+	justify-content: center;
+
+}
+.helper-wrap-3--active {
+	justify-content: flex-end;
+}
+.helper-1--active,
+.helper-2--active,
+.helper-3--active {
+	background-color: blue;
+	width: 90px;
+}
+</style>

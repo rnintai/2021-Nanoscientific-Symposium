@@ -1,0 +1,349 @@
+<script src="https://kit.fontawesome.com/9082949df5.js" crossorigin="anonymous"></script>
+<!-- <script src="../anime-master/lib/anime.min.js"></script> -->
+<div class="gallery-wrap" draggable=true>
+  <ul class="poster-list">
+    <li class="poster-item" data-bg="https://d25unujvh7ui3r.cloudfront.net/home_1_thumbnail.jpg"
+      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf">1</li>
+    <li class="poster-item" data-bg="https://d25unujvh7ui3r.cloudfront.net/home_1_thumbnail.jpg"
+      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf">2</li>
+    <li class="poster-item" data-bg="https://d25unujvh7ui3r.cloudfront.net/home_1_thumbnail.jpg"
+      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf">3</li>
+    <li class="poster-item" data-bg="https://d25unujvh7ui3r.cloudfront.net/home_1_thumbnail.jpg"
+      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf">4</li>
+    <li class="poster-item" data-bg="https://d25unujvh7ui3r.cloudfront.net/home_1_thumbnail.jpg"
+      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf">5</li>
+    <li class="poster-item" data-bg="https://d25unujvh7ui3r.cloudfront.net/home_1_thumbnail.jpg"
+      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf">6</li>
+    <li class="poster-item" data-bg="https://d25unujvh7ui3r.cloudfront.net/home_1_thumbnail.jpg"
+      data-pdf="https://parksystems.com/images/media/brochures/nx20/ParkNX20210625E08AB.pdf">7</li>
+    <li class="poster-item" data-bg="https://d25unujvh7ui3r.cloudfront.net/home_1_thumbnail.jpg"
+      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf">8</li>
+    <li class="poster-item" data-bg="https://d25unujvh7ui3r.cloudfront.net/home_1_thumbnail.jpg"
+      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf">9</li>
+    <li class="poster-item" data-bg="https://d25unujvh7ui3r.cloudfront.net/home_1_thumbnail.jpg"
+      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf">10</li>
+  </ul>
+  <!-- <div class="gallery-btns"> -->
+  <div class="gallery-btn prev-btn"><i class="fas fa-arrow-circle-left"></i></div>
+  <div class="gallery-btn next-btn"><i class="fas fa-arrow-circle-right"></i></div>
+  <!-- </div> -->
+  <div class="gallery-overlay">
+  </div>
+  <div class="pdf-frame-wrap">
+    <iframe class="pdf-frame" frameborder="0">
+    </iframe>
+
+    <i class="fas fa-times-circle"></i>
+  </div>
+</div>
+
+<style>
+  /* reset */
+  body,
+  ul {
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .gallery-wrap {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .poster-item {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  /* poster */
+  .poster-list {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 50%;
+    perspective: 1000px;
+  }
+
+  .poster-item {
+    position: absolute;
+    width: 300px;
+    height: 350px;
+    top: 14%;
+    left: 42%;
+    display: inline-block;
+    transform-style: preserve-3d;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 2px 9px black;
+  }
+
+  /**
+   * buttons
+   **/
+  .gallery-btn {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .gallery-btn .fas {
+    font-size: 35px;
+    opacity: 0.35;
+    transition: opacity 0.3s ease-out;
+  }
+
+  .gallery-btn .fas:hover {
+    opacity: 1;
+  }
+
+  .gallery-btn.prev-btn {
+    left: 2.4%;
+  }
+
+  .gallery-btn.next-btn {
+    right: 2.4%;
+  }
+
+  /* iframe */
+  .pdf-frame-wrap {
+    visibility: hidden;
+    position: absolute;
+    width: 80%;
+    height: 75%;
+    left: 50%;
+    top: 53%;
+    transform: translate(-50%, -50%);
+  }
+
+  .pdf-frame {
+    width: 100%;
+    height: 100%;
+  }
+
+  .pdf-frame-wrap .fas {
+    position: absolute;
+    top: 10%;
+    left: 98%;
+    font-size: 40px;
+    transform: translateX(-100%);
+    opacity: 0.4;
+    cursor: pointer;
+    color: #000;
+    transition: opacity 0.3s ease-out
+  }
+
+  .pdf-frame-wrap .fas:hover {
+    opacity: 1;
+  }
+
+  /* overlay */
+  .gallery-overlay {
+    visibility: hidden;
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 0%;
+    background-color: #000;
+    opacity: 0;
+  }
+
+  .gallery-overlay.active {
+    visibility: visible;
+    height: 100%;
+    opacity: 0.5;
+  }
+</style>
+
+<script>
+  (function () {
+    /**
+     * local var
+     **/
+    var _index = 0,
+      _gallery = [],
+      $gallery = null,
+      $prevBtn = null,
+      $nextBtn = null,
+      $pdf = null,
+      $pdf_wrap = null,
+      $pdf_exit = null,
+      $overlay = null,
+      _oldX = 0,
+      counter = 0,
+      TRANSFORM = "transform",
+      OFFSET = 200,
+      ZINDEX = "zIndex",
+      BASE_Z = 10,
+      ACTIVE_Z = 25,
+      DRAG_TH = 35;
+
+    /**
+     * transform Images
+     **/
+    function render() {
+      for (var i = 0; i < _gallery.length; i++) {
+        if (i < _index) {
+          _gallery[i].style[TRANSFORM] = `translateX(-${OFFSET * (_index - i)}px) rotateY(45deg)`;
+          _gallery[i].style[ZINDEX] = BASE_Z + i;
+          resetIframe(i);
+          leftEvent(i);
+        }
+        else if (i === _index) {
+          _gallery[i].style[TRANSFORM] = "translateZ(150px) rotateY(0deg)";
+          _gallery[i].style[ZINDEX] = ACTIVE_Z;
+          resetIframe(i);
+        }
+        else {
+          _gallery[i].style[TRANSFORM] = `translateX(${OFFSET * (i - _index)}px) rotateY(-45deg)`;
+          _gallery[i].style[ZINDEX] = BASE_Z + (_gallery.length - i);
+          resetIframe(i);
+          rightEvent(i);
+        }
+      }
+      setIframe();
+    }
+
+    /**
+     * Flow Left & Right
+     **/
+    function flowLeft() {
+      var $tmp = _gallery.pop();
+      _gallery.unshift($tmp);
+      render();
+    }
+    function flowRight() {
+      var $tmp = _gallery.shift();
+      _gallery.push($tmp);
+      render();
+    }
+
+    /**
+     * drag to flow
+     **/
+    function dragOver() {
+      e = window.event;
+      var dragX = e.pageX;
+      if (_oldX < dragX) {
+        counter--;
+        if (counter === -1 * DRAG_TH) {
+          flowLeft();
+          counter = 0;
+        }
+      } else if (_oldX > dragX) {
+        counter++;
+        if (counter === DRAG_TH) {
+          flowRight();
+          counter = 0;
+        }
+      }
+      // console.log(counter);
+      _oldX = dragX;
+    }
+
+    /**
+     * flow by arrow
+     **/
+    function keyDown(event) {
+      switch (event.keyCode) {
+        case 37:
+          flowLeft();
+          break; // left
+        case 39:
+          flowRight();
+          break; // right
+      }
+    }
+
+    /**
+     * reset drag ghost image
+     **/
+
+    function resetGhost(e) {
+      var img = document.createElement("img");
+      img.src = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
+      e.dataTransfer.setDragImage(img, 0, 0);
+      e.dataTransfer.effectAllowed = "none";
+    }
+
+    /**
+     * iframe
+     **/
+    function setIframe() {
+      _gallery[_index].addEventListener("click", showIframe, false)
+    }
+
+    function resetIframe(i) {
+      _gallery[i].removeEventListener("click", showIframe, false)
+      _gallery[i].removeEventListener("click", flowLeft, false)
+      _gallery[i].removeEventListener("click", flowRight, false)
+    }
+
+    function showIframe() {
+      const pdf_url = _gallery[_index].getAttribute("data-pdf");
+      $pdf.src = pdf_url;
+      $pdf_wrap.style["visibility"] = "visible";
+      $overlay.classList.toggle("active");
+    }
+
+    function leftEvent(i) {
+      _gallery[i].addEventListener("click", flowLeft, false);
+    }
+    function rightEvent(i) {
+      _gallery[i].addEventListener("click", flowRight, false);
+    }
+
+    function hideIframe() {
+      $pdf.src = "";
+      $pdf_wrap.style["visibility"] = "hidden";
+      $overlay.classList.toggle("active");
+    }
+    /**
+     * add eventlisnter
+     **/
+    function addEvents() {
+      $prevBtn.addEventListener("click", flowLeft, false);
+      $nextBtn.addEventListener("click", flowRight, false);
+      document.addEventListener("keydown", keyDown, false);
+      $gallery.addEventListener("dragover", dragOver, false);
+      $pdf_exit.addEventListener("click", hideIframe, false);
+      $overlay.addEventListener("click", hideIframe, false)
+      document.querySelector(".gallery-wrap").addEventListener("dragstart", function (e) { resetGhost(e) }, false);
+    }
+
+    /**
+     * initializer
+     **/
+    function init() {
+      // set local var
+      _gallery = [].slice.call(document.querySelectorAll(".poster-item"));
+      _index = Math.floor(_gallery.length / 2);
+
+      // get DOM
+      $gallery = document.querySelector(".gallery-wrap");
+      $prevBtn = document.querySelector(".prev-btn");
+      $nextBtn = document.querySelector(".next-btn");
+      $pdf_wrap = document.querySelector(".pdf-frame-wrap");
+      $pdf = document.querySelector(".pdf-frame");
+      $pdf_exit = document.querySelector(".pdf-frame-wrap .fas")
+      $overlay = document.querySelector(".gallery-overlay")
+
+      // lazy load
+      for (var i = 0; i < _gallery.length; i++) {
+        var url = _gallery[i].getAttribute("data-bg");
+        _gallery[i].style.backgroundImage = "url(" + url + ")";
+      }
+      // add event listener
+      addEvents();
+      render();
+    }
+    init();
+  })();
+</script>

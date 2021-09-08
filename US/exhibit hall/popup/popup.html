@@ -1,0 +1,14 @@
+// popup
+var p_icon_1 = document.querySelector(".popup-icon-1");
+var pop_1 = document.querySelector(".popup-1");
+
+p_icon_1.addEventListener("mouseover", 
+    () => {
+    p_icon_1.classList.add("popup-icon-1--active");
+    pop_1.classList.add("popup-1--active");
+}, false);
+
+p_icon_1.addEventListener("mouseout", () => {
+    p_icon_1.classList.remove("popup-icon-1--active");
+    pop_1.classList.remove("popup-1--active");
+}, false);

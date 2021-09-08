@@ -1,0 +1,63 @@
+<iframe
+  src="https://latam.nanoscientific.org/blog/zoom-meetings/?pak=dUE1Sk5aZWdrbkNla1FaNGZXZ1pzQT09&amp;join=YUhBUkE1L1hGUkYwcHYwYkg5ays4dz09&amp;type=meeting">
+  Your browser doesn't support iframes
+</iframe>
+<div class="overlay active">
+  <div class="loadingspinner"></div>
+</div>
+
+<style>
+  iframe {
+    position: relative;
+    top: 63px;
+    height: calc(100vh - 63px);
+
+  }
+
+  .overlay {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s;
+    z-index: 10;
+  }
+
+  .loadingspinner {
+    pointer-events: none;
+    width: 2.5em;
+    height: 2.5em;
+    border: 0.4em solid transparent;
+    border-color: #eee;
+    border-top-color: #3E67EC;
+    border-radius: 50%;
+    animation: loadingspin 1s linear infinite;
+    left: 49%;
+    top: 49%;
+    position: relative;
+  }
+
+  @keyframes loadingspin {
+    100% {
+      transform: rotate(360deg)
+    }
+  }
+
+  .overlay.active {
+    visibility: visible;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, visibility 0s 0.3s;
+  }
+</style>
+<script>
+
+  window.addEventListener("load", function () {
+    jQuery(".overlay").removeClass("active")
+  });
+
+
+</script>

@@ -1,0 +1,161 @@
+<video id="myVideo" src="http://event.nanoscientific.org/wp-content/uploads/2021/07/0to90.mp4" width="100%" autoplay muted></video>
+<div class="slider-wrap">
+	<div class="helper-wrap-1 helper-wrap-1--active" onclick="degZero()">
+		<div class="helper-1 helper-1--active"></div>
+	</div>
+	<div class="helper-wrap-2" onclick="degNinty()">
+		<div class="helper-2"></div>
+	</div>
+	<div class="helper-wrap-3" onclick="degOneEighty()">
+		<div class="helper-3"></div>
+	</div>
+</div>
+
+
+
+<script>
+	var cur_deg = 1; // 1: 0 deg, 2: 90deg, 3: 180deg
+	var bar_zero = document.querySelector(".helper-1");
+	var bar_zero_wrap = document.querySelector(".helper-wrap-1");
+	var bar_ninty = document.querySelector(".helper-2");
+	var bar_ninty_wrap = document.querySelector(".helper-wrap-2");
+	var bar_oneeighty = document.querySelector(".helper-3");
+	var bar_oneeighty_wrap = document.querySelector(".helper-wrap-3");
+	
+	var _video = document.querySelector('#myVideo');
+	
+	// helper bar color change & play video
+	function degZero(){
+		console.log("degZero()");
+		bar_zero.classList.add("helper-1--active");
+		bar_zero_wrap.classList.add("helper-wrap-1--active");
+		bar_ninty.classList.remove("helper-2--active");
+		bar_ninty_wrap.classList.remove("helper-wrap-2--active");
+		bar_oneeighty.classList.remove("helper-3--active");
+		bar_oneeighty_wrap.classList.remove("helper-wrap-3--active");
+		switch (cur_deg){
+			case 2:
+				console.log("90 -> 0");
+				_video.removeAttribute('src');
+				_video.src = 'http://event.nanoscientific.org/wp-content/uploads/2021/07/90to0.mp4';
+				_video.load();
+				_video.play();
+				break;
+			case 3:
+				console.log("180 -> 0");
+				break;
+		}
+		cur_deg = 1;
+		
+		
+		
+	}
+	
+	function degNinty(){
+		console.log("degNinty()");
+		bar_ninty.classList.add("helper-2--active");
+		bar_ninty_wrap.classList.add("helper-wrap-2--active");
+		bar_zero.classList.remove("helper-1--active");
+		bar_zero_wrap.classList.remove("helper-wrap-1--active");
+		bar_oneeighty.classList.remove("helper-3--active");
+		bar_oneeighty_wrap.classList.remove("helper-wrap-3--active");
+		
+		
+		switch (cur_deg){
+			case 1:
+				console.log("0 -> 90");
+				_video.removeAttribute('src');
+				_video.src = 'http://event.nanoscientific.org/wp-content/uploads/2021/07/0to90.mp4';
+				_video.load();
+				_video.play();
+				break;
+			case 3:
+				console.log("180 -> 90");
+				_video.removeAttribute('src');
+				_video.src = 'http://event.nanoscientific.org/wp-content/uploads/2021/07/180to90.mp4';
+				_video.load();
+				_video.play();
+				break;
+		}
+		cur_deg = 2;
+	}
+	
+	function degOneEighty(){
+		console.log("degOneEighty()");
+		bar_oneeighty.classList.add("helper-3--active");
+		bar_oneeighty_wrap.classList.add("helper-wrap-3--active");
+		bar_zero.classList.remove("helper-1--active");
+		bar_zero_wrap.classList.remove("helper-wrap-1--active");
+		bar_ninty.classList.remove("helper-2--active");
+		bar_ninty_wrap.classList.remove("helper-wrap-2--active");
+		
+		switch (cur_deg){
+			case 1:
+				console.log("0 -> 180");
+				break;
+			case 2:
+				console.log("90 -> 180");
+				_video.removeAttribute('src');
+				_video.src = 'http://event.nanoscientific.org/wp-content/uploads/2021/07/90to180.mp4';
+				_video.load();
+				_video.play();
+				break;
+		}
+		cur_deg = 3;
+	}
+</script>
+
+<style>
+#myVideo {
+	width:1520px; 
+        height: 855px;
+}
+.slider-wrap{
+	display: flex;
+	align-items: center;
+}
+.helper-wrap-1,
+.helper-wrap-2,
+.helper-wrap-3 {
+	display: flex;
+	align-items:center;
+	width:120px;
+	height:20px;
+	cursor: pointer;
+}
+
+.helper-1, 
+.helper-2, 
+.helper-3{
+	width: 120px;
+	height: 2px;
+	background-color: white;
+
+}
+.helper-wrap-1:hover .helper-1, 
+.helper-wrap-2:hover .helper-2, 
+.helper-wrap-3:hover .helper-3 {
+	transition: background-color 0.5s;
+	background-color: blue;
+}
+
+.helper-wrap-1--active,
+.helper-wrap-2--active,
+.helper-wrap-3--active {
+	height: 2px;
+	background-color: white;
+}
+.helper-wrap-2--active {
+	justify-content: center;
+
+}
+.helper-wrap-3--active {
+	justify-content: flex-end;
+}
+.helper-1--active,
+.helper-2--active,
+.helper-3--active {
+	background-color: blue;
+	width: 90px;
+}
+</style>

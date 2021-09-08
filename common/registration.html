@@ -1,0 +1,24 @@
+<style>
+  #ur_register_pre_form_message {
+    display: none;
+  }
+
+  body.logged-in .reg-head,
+  body.logged-in .elementor-divider,
+  body.logged-in .reg-form {
+    display: none;
+  }
+</style>
+
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    if (jQuery("body").hasClass("logged-in")) {
+      window.location =
+        window.location.search === ""
+          ? "/"
+          : decodeURIComponent(
+            window.location.search.replace("?url=", "")
+          );
+    }
+  });
+</script>

@@ -1,0 +1,312 @@
+<script src="https://kit.fontawesome.com/9082949df5.js" crossorigin="anonymous"></script>
+
+<div class="main-wrap">
+  <section class="logo-wrap">
+    <img class="logo" draggable="false" src="https://d25unujvh7ui3r.cloudfront.net/event/NS_landingpage_logo.svg" alt=""
+      class="">
+  </section>
+
+  <section class="desc-wrap">
+    <span class="desc desc-1">
+      NanoScientific Symposiums are global events that join researchers and experts together to explore ideas and
+      foster new relationships. Posters and oral presentations add to the excitement as an opportunity for new
+      researchers to showcase their state-of-the art technical presentations.
+    </span>
+    <span class="desc desc-2">
+      NanoScientific and Park Systems are sponsoring global conferences that includes both in person and virtual
+      NanoScientific Symposiums, Forums, Live Demos and more.
+    </span>
+    <span class="desc desc-3">
+      We invite you to join the NanoScientific Community by attending, presenting and networking with pioneers in
+      nanotechnology innovation at any of our conferences.
+    </span>
+  </section>
+
+  <section class="date-wrap">
+
+  </section>
+
+  <section class="background-wrap">
+    <img class="background" draggable="false" src="https://d25unujvh7ui3r.cloudfront.net/event/NSS_mobile_bg.png" alt=""
+      class="">
+  </section>
+
+  <ul class="summarize-wrap">
+    <li class="sum-item">
+      <h1 class="sum-head">60+</h1>
+      <p class="sum-desc">Sessions in 7 countries</p>
+    </li>
+    <li class="sum-item">
+      <h1 class="sum-head">55</h1>
+      <p class="sum-desc">Featured Speakers</p>
+    </li>
+    <li class="sum-item">
+      <h1 class="sum-head small">Ask the <br>Experts</h1>
+      <p class="sum-desc">Live 1:1 Q&A</p>
+    </li>
+    <li class="sum-item">
+      <h1 class="sum-head small">Hands-on <br>Sessions</h1>
+      <p class="sum-desc">Park Systems AFMs</p>
+    </li>
+  </ul>
+
+  <section class="sponsor-wrap">
+    <span class="sponsor-title">Sponsored by</span>
+    <ul class="sponsor-list">
+      <li class="sponsor-item" onclick="window.open('https://parksystems.com')">
+        <img class="sponsor-img" src="https://d25unujvh7ui3r.cloudfront.net/event/park_logo.png">
+      </li>
+      <li class="sponsor-item" onclick="window.open('https://nanoscientific.org')">
+        <img class="sponsor-img" src="https://d25unujvh7ui3r.cloudfront.net/event/nano_logo.png">
+      </li>
+    </ul>
+  </section>
+
+</div>
+
+<style>
+  /* reset */
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+
+  button {
+    border: none;
+    margin: 0;
+  }
+
+  /* wrap */
+  .main-wrap {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 10px;
+  }
+
+  /* logo */
+  .logo {
+    width: 70%;
+    /* min-width: 300px; */
+  }
+
+  /* description */
+  .desc-wrap {
+    display: inline-block;
+    width: 100%;
+    margin: 25px 0 5px 0;
+  }
+
+  .desc {
+    display: inline-block;
+    width: 100%;
+    color: #949393;
+    font-size: 11px;
+    line-height: 1.3;
+    letter-spacing: 0px;
+  }
+
+  .desc:not(:last-child) {
+    margin-bottom: 6px;
+  }
+
+  /* date hotspot */
+  .map-wrap {
+    cursor: pointer;
+    transition: top 0.3s ease-in-out, left 0.3s ease-in-out;
+    z-index: 10;
+  }
+
+  /* button */
+  .hotspot-wrap {
+    margin-bottom: 10px;
+  }
+
+  .hotspot-btn {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(90deg, #fff, #fff);
+    border-radius: 12px;
+    color: #000;
+    box-shadow: 2px 2px 3px #00000030;
+  }
+
+
+  .hotspot-title,
+  .hotspot-date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .hotspot-title {
+    border: 5px solid #fff;
+    width: 100%;
+    height: 45%;
+    padding: 0 10px;
+    border-radius: 17px;
+    background: linear-gradient(90deg, rgba(45, 173, 228, 1), rgba(33, 56, 114, 1));
+    color: #fff;
+    white-space: nowrap;
+  }
+
+  .date-wrap {
+    display: flex;
+    width: 100%;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .hotspot-date {
+    width: 100%;
+    height: 55%;
+  }
+
+  /* summarize */
+  .summarize-wrap {
+    display: flex;
+    position: relative;
+    margin-bottom: 30px;
+    justify-content: space-between;
+  }
+
+  .sum-item {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+  }
+
+  .sum-item .sum-head {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    height: 50px;
+  }
+
+  .sum-item .sum-head.small {
+    font-size: 15px;
+    white-space: nowrap;
+  }
+
+  .sum-item .sum-desc {
+    margin: 0;
+    font-size: 12px;
+  }
+
+  /* sponsor */
+  .sponsor-wrap {
+    display: flex;
+    flex-direction: column;
+    top: 0%;
+    right: 0%;
+  }
+
+  .sponsor-title {
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .sponsor-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .sponsor-item {
+    display: inline-block;
+    cursor: pointer;
+    width: 140px;
+  }
+
+  /* temporarily disable */
+  .hotspot-wrap.deact {
+    opacity: 0.5;
+    cursor: default;
+  }
+</style>
+
+<script>
+  var class_name = null,
+    coor = null,
+    coorA = "",
+    left = 0,
+    top = 0,
+    width = 0,
+    height = 0;
+
+  var left_coor = [],
+    top_coor = [],
+    widthA = [],
+    heightA = [];
+
+  function generateButton(className, title, date, url, deactivated) {
+    var $btn = jQuery(`
+    <div class="${className}-hotspot-wrap hotspot-wrap ${deactivated ? "deact" : ""}">
+      <button class="hotspot-btn" data-url="${url}">
+        <div class="hotspot-title">
+          <span class="hotspot-span">
+            ${title}
+          </span>
+        </div>
+        <div class="hotspot-date">
+          <span class="hotspot-span">
+            ${date}
+          </span>
+        </div>
+        <div class="hotspot-effect"></div>
+      </button>
+    </div>
+    `);
+
+    $btn.appendTo(jQuery(`.date-wrap`));
+  }
+
+  function generateButtons() {
+    generateButton("china", "NSS China", "Aug 18",
+      "https://www.parksystems.cn/events/meetings-exhibits/1975-2021-nanoscientific-symposium-china-program-nssc-2021", false);
+    generateButton("europe", "NSF Europe", "Sep 15-17",
+      "https://www.nanoscientificforum.com/", false);
+    generateButton("latam", "NSS LatAm", "Oct 14-15",
+      "https://latam.nanoscientific.org", false);
+    generateButton("asia", "NSS Asia", "Oct 28",
+      "https://asia.nanoscientific.org");
+    generateButton("japan", "NSS Japan", "Nov 22",
+      "https://jp.nanoscientific.org");
+    generateButton("korea", "NSS Korea", "Nov 25",
+      "https://kr.nanoscientific.org");
+    generateButton("us", "NSS US", "Mar 24, 2022",
+      "https://us.nanoscientific.org", false);
+  }
+
+  function openUrl() {
+    window.open(this.querySelector(".hotspot-btn").getAttribute("data-url"));
+  }
+  function registerEvent() {
+    jQuery(".hotspot-wrap").each(function () {
+      var $this = this;
+
+      // div click
+      jQuery($this).on("click", openUrl);
+    });
+    // temporarily disabled
+    jQuery(".hotspot-wrap.deact").each(function () {
+      // div click
+      jQuery(this).off("click", openUrl);
+    });
+  }
+
+  function init() {
+    generateButtons();
+    registerEvent();
+  }
+
+  init();
+
+</script>

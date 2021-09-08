@@ -1,0 +1,69 @@
+<div class="video-wrap">
+  <video id="sponsors-video" src="https://d25unujvh7ui3r.cloudfront.net/sponsor_jp.mp4" autoplay loop muted>
+  </video>
+  <img class="map-thumb" src="https://d25unujvh7ui3r.cloudfront.net/sponsor_thumbnail.jpg" usemap="#image-map">
+
+  <map name="image-map" id="image-map">
+    <area target="" class="sponsor-link-1" alt="sponsor-link-1" title="sponsor-link-1" coords="452,375,715,548"
+      shape="rect" onclick="window.open('https://mscenter.kanto-gakuin.ac.jp/')">
+    <area target="" class="sponsor-link-2" alt="sponsor-link-2" title="sponsor-link-2" coords="790,376,921,549"
+      shape="rect" onclick="window.open('https://parksystems.com/')">
+    <area target="" class="sponsor-link-3" alt="sponsor-link-3" title="sponsor-link-3" coords="938,376,1018,547"
+      shape="rect" onclick="window.open('https://www.yamato-material.co.jp/')">
+    <area target="" class="sponsor-link-4" alt="sponsor-link-4" title="sponsor-link-4" coords="1035,380,1233,549"
+      shape="rect" onclick="window.open('https://nanoscientific.org/')">
+    <area target="" class="sponsor-link-5" alt="sponsor-link-5" title="sponsor-link-5" coords="1307,380,1552,543"
+      shape="rect" onclick="window.open('https://www.nikkan.co.jp/')">
+  </map>
+</div>
+
+<style>
+  .map-thumb {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100% !important;
+  }
+
+  .video-wrap {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+  }
+
+  #sponsors-video {
+    position: relative;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    -o-object-fit: fill;
+  }
+
+  /* map */
+  map area {
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  img[usemap] {
+    width: 100%;
+    height: 100%;
+  }
+
+  .map-wrap {
+    cursor: pointer;
+    transition-property: left, top, width, height;
+    transition-duration: 0.2s, 0.2s, 0.2s, 0.2s;
+    transition-timing-function: ease, ease, ease, ease;
+  }
+
+  .img-link-icon {
+    width: 13%;
+    position: absolute;
+    left: 90%;
+  }
+</style>

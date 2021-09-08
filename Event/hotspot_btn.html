@@ -1,0 +1,89 @@
+<div class="area-korea-map-wrap map-wrap"
+  style="position: absolute; left: 963px; width: 197px; height: 130px; top: 261px;">
+  <div class="hotspot-btn">
+    <div class="hotspot-title">
+      <span class="hotspot-span">
+        NSS US
+      </span>
+    </div>
+    <div class="hotspot-date">
+      <span class="hotspot-span">
+        OCT 10-13
+      </span>
+    </div>
+  </div>
+</div>
+
+<style>
+  body {
+    background-color: black;
+  }
+
+  /* button */
+  .hotspot-btn {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    height: 60px;
+    background: linear-gradient(90deg, #fff, #fff);
+    border-radius: 12px;
+    color: #000;
+    max-width: 300px;
+    min-width: 100px;
+    opacity: 0.5;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .hotspot-btn::before {
+    content: "";
+    border-color: #fff;
+    position: absolute;
+    width: 98%;
+    height: 98%;
+    border-radius: 12px;
+    border: 1px solid #fff;
+    background-color: transparent;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+  .hotspot-title,
+  .hotspot-date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+  }
+
+  .hotspot-title {
+    border: 5px solid #fff;
+    height: 45%;
+    padding: 0 10px;
+    border-radius: 17px;
+    background: linear-gradient(90deg, rgba(45, 173, 228, 1), rgba(33, 56, 114, 1));
+    color: #fff;
+  }
+
+  .hotspot-date {
+    height: 55%;
+  }
+
+  /* hover */
+  .hotspot-btn.hover {
+    opacity: 1;
+  }
+
+  .hotspot-btn.hover::before {
+    opacity: 0;
+    transform: scale(1.7, 1.2);
+  }
+</style>
+
+<script>
+  document.querySelector(".hotspot-btn").addEventListener("mouseover", function () {
+    document.querySelector(".hotspot-btn").classList.add("hover");
+  })
+  document.querySelector(".hotspot-btn").addEventListener("mouseout", function () {
+    document.querySelector(".hotspot-btn").classList.remove("hover");
+  })
+</script>

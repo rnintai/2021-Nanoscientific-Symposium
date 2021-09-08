@@ -1,0 +1,586 @@
+<script src="https://kit.fontawesome.com/9082949df5.js" crossorigin="anonymous"></script>
+<div class="gallery-wrap" draggable=true>
+  <article class="poster-list">
+    <section class="poster-item p-6"
+      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf"></section>
+    <section class="poster-item p-7"
+      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf"></section>
+    <section class="poster-item p-8"
+      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf"></section>
+    <section class="poster-item p-9"
+      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf"></section>
+    <section class="poster-item p-1"
+      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf"></section>
+    <section class="poster-item p-2"
+      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf"></section>
+    <section class="poster-item p-3"
+      data-pdf="https://parksystems.com/images/media/brochures/nx20/ParkNX20210625E08AB.pdf"></section>
+    <section class="poster-item p-4"
+      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf"></section>
+    <section class="poster-item p-5"
+      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf"></section>
+  </article>
+  <!-- <div class="gallery-btns"> -->
+  <div class="gallery-btn prev-btn">
+    <svg viewBox="0 0 67.68 138.38" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <style>
+          .cls-1 {
+            fill: none;
+            stroke: #fff;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 7px;
+            transition: stroke 0.3s ease-in-out;
+          }
+        </style>
+      </defs>
+      <g data-name="레이어 2">
+        <g data-name="레이어 1">
+          <polyline class="cls-1" points="65.68 2 2 69.19 65.68 136.38" />
+        </g>
+      </g>
+    </svg>
+
+  </div>
+  <div class="gallery-btn next-btn">
+
+    <svg viewBox="0 0 67.68 138.38" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <style>
+          .cls-1 {
+            fill: none;
+            stroke: #fff;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 7px;
+            transition: stroke 0.3s ease-in-out;
+          }
+        </style>
+      </defs>
+      <g data-name="레이어 2">
+        <g data-name="레이어 1">
+          <polyline class="cls-1" points="2 136.38 65.68 69.19 2 2" />
+        </g>
+      </g>
+    </svg>
+
+
+  </div>
+  <!-- </div> -->
+  <div class="gallery-overlay">
+  </div>
+  <div class="pdf-frame-wrap">
+    <iframe class="pdf-frame" frameborder="0">
+    </iframe>
+
+    <i class="fas fa-times-circle"></i>
+  </div>
+</div>
+
+<style>
+  /* reset */
+  body,
+  ul {
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .gallery-wrap {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background: url("https://d25unujvh7ui3r.cloudfront.net/poster-hall/latam/background.png");
+    background-size: cover;
+  }
+
+  .poster-item {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .item-wrap {
+    display: flex;
+    height: 100%;
+  }
+
+  .left-gradient,
+  .right-gradient {
+    min-width: 15px;
+    padding: 20px 0;
+  }
+
+  .left-gradient {
+    background: linear-gradient(270deg, rgb(255, 255, 255) 0 50%, rgb(237, 246, 251) 87%, rgb(255, 255, 255) 100%);
+  }
+
+  .right-gradient {
+    background: linear-gradient(90deg, rgb(255, 255, 255) 0 50%, rgb(237, 246, 251) 87%, rgb(255, 255, 255) 100%);
+  }
+
+  .poster-flexbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+  }
+
+  /* poster */
+  .poster-list {
+    width: 100%;
+    height: 100%;
+    perspective: 460px;
+  }
+
+  .poster-item {
+    position: absolute;
+    width: 400px;
+    height: 500px;
+    top: 17%;
+    left: 39%;
+    display: inline-block;
+    transform-style: preserve-3d;
+    transition: all 0.3s ease-in-out;
+    background-color: #fff;
+    box-shadow: 0px 5px 11px #9fb4d4cf;
+  }
+
+
+  .poster-author {
+    font-size: 16px;
+  }
+
+  .poster-horline {
+    width: 100%;
+    min-height: 3px;
+    background: linear-gradient(45deg, transparent, #1d2088, transparent);
+  }
+
+  .poster-inst {
+    color: #1d2088;
+    line-height: 1.2;
+    font-size: 13px;
+    margin: 8px 0;
+  }
+
+  .poster-title {
+    line-height: 1.2;
+    font-size: 18px;
+    background-color: #1d2088;
+    color: #fff;
+    padding: 5px 2px;
+    margin-bottom: 10px;
+  }
+
+  .poster-img-wrap {
+    width: 82%;
+  }
+
+  .poster-num {
+    margin-top: auto;
+  }
+
+  .poster-overlay {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(46, 132, 206, 0.7);
+    transition: opacity 0.4s ease;
+  }
+
+  .poster-item.current:hover .poster-overlay {
+    opacity: 1;
+  }
+
+  .fas.fa-search-plus {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 22px;
+  }
+
+  /**
+   * buttons
+   **/
+  .gallery-btn {
+    display: inline-block;
+    width: 20px;
+    position: absolute;
+    top: calc(50% - 40px);
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .gallery-btn.prev-btn {
+    left: 4.4%;
+  }
+
+  .gallery-btn.next-btn {
+    right: 4.4%;
+  }
+
+  .gallery-btn:hover .cls-1,
+  .gallery-btn:hover .cls-2 {
+    stroke: #113241;
+  }
+
+  /* iframe */
+  .pdf-frame-wrap {
+    visibility: hidden;
+    position: absolute;
+    width: 80%;
+    height: 55%;
+    left: 50%;
+    top: 47%;
+    transform: translate(-50%, -50%);
+  }
+
+  .pdf-frame {
+    width: 100%;
+    height: 100%;
+  }
+
+  .pdf-frame-wrap .fas {
+    position: absolute;
+    top: 10%;
+    left: 98%;
+    font-size: 40px;
+    transform: translateX(-100%);
+    opacity: 0.4;
+    cursor: pointer;
+    color: #000;
+    transition: opacity 0.3s ease-out
+  }
+
+  .pdf-frame-wrap .fas:hover {
+    opacity: 1;
+  }
+
+  /* overlay */
+  .gallery-overlay {
+    visibility: hidden;
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 0%;
+    background-color: #000;
+    opacity: 0;
+  }
+
+  .gallery-overlay.active {
+    visibility: visible;
+    height: 100%;
+    opacity: 0.5;
+  }
+</style>
+
+<script>
+  (function () {
+    /**
+     * local var
+     **/
+    var _index = 0,
+      _gallery = [],
+      $gallery = null,
+      $prevBtn = null,
+      $nextBtn = null,
+      $pdf = null,
+      $pdf_wrap = null,
+      $pdf_exit = null,
+      $overlay = null,
+      _oldX = 0,
+      counter = 0,
+      TRANSFORM = "transform",
+      X_OFFSET = 50,
+      Z_OFFSET = 60,
+      ZINDEX = "zIndex",
+      BASE_Z = 10,
+      ACTIVE_Z = 25,
+      DRAG_TH = 35;
+
+    /**
+     * transform Images
+     **/
+    function render() {
+      for (var i = 0; i < _gallery.length; i++) {
+        if (i < _index) {
+          _gallery[i].style[TRANSFORM] = `translate3d(-${X_OFFSET * (_index - i)}%, 0, -${Z_OFFSET * (_index - i)}px)`;
+          _gallery[i].style[ZINDEX] = BASE_Z + i;
+          _gallery[i].classList.remove("current");
+          console.log(_index - i);
+          resetIframe(i);
+          leftEvent(i);
+        }
+        else if (i === _index) {
+          _gallery[i].style[TRANSFORM] = "translate3d(0,0,0px)";
+          _gallery[i].style[ZINDEX] = ACTIVE_Z;
+          _gallery[i].classList.add("current");
+          resetIframe(i);
+        }
+        else {
+          _gallery[i].style[TRANSFORM] = `translate3d(${X_OFFSET * (i - _index)}%, 0, -${Z_OFFSET * (i - _index)}px)`;
+          _gallery[i].style[ZINDEX] = BASE_Z + (_gallery.length - i);
+          _gallery[i].classList.remove("current");
+          resetIframe(i);
+          rightEvent(i);
+        }
+      }
+      setIframe();
+    }
+
+    /**
+     * reset drag ghost image
+     **/
+
+    function resetGhost(e) {
+      var img = document.createElement("img");
+      img.src = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
+      e.dataTransfer.setDragImage(img, 0, 0);
+      e.dataTransfer.effectAllowed = "none";
+    }
+
+    /**
+     * iframe
+     **/
+    function setIframe() {
+      _gallery[_index].addEventListener("click", showIframe, false)
+    }
+
+    function resetIframe(i) {
+      _gallery[i].removeEventListener("click", showIframe, false)
+      _gallery[i].removeEventListener("click", flowLeft, false)
+      _gallery[i].removeEventListener("click", flowRight, false)
+      // _gallery[i].removeEventListener("click", event => { flowLeft(i) }, false)
+      // _gallery[i].removeEventListener("click", event => { flowRight(i) }, false)
+    }
+
+    function showIframe() {
+      const pdf_url = _gallery[_index].getAttribute("data-pdf");
+      $pdf.src = pdf_url;
+      $pdf_wrap.style["visibility"] = "visible";
+      $overlay.classList.toggle("active");
+    }
+
+    function clickToSkip(i) {
+      _gallery[i].addEventListener("click", event => {
+        flow(i);
+      })
+    }
+
+    function leftEvent(i) {
+      _gallery[i].addEventListener("click", flowLeft, false);
+      // _gallery[i].addEventListener("click", event => {
+      //   flowLeft(i);
+      // })
+    }
+    function rightEvent(i) {
+      _gallery[i].addEventListener("click", flowRight, false);
+      // _gallery[i].addEventListener("click", event => {
+      //   flowRight();
+      // })
+    }
+
+    function flowLeft(i) {
+      const from = _gallery[_index].classList[1].replace("p-", "")
+      const to = _gallery[i].classList[1].replace("p-", "")
+      const cnt = Math.abs(from - to);
+
+      for (var i = 0; i < cnt; i++) {
+        var $tmp = _gallery.pop();
+        _gallery.unshift($tmp);
+        render();
+      }
+    }
+    function flowRight(i) {
+      const from = _gallery[_index].classList[1].replace("p-", "")
+      const to = _gallery[i].classList[1].replace("p-", "")
+      const cnt = Math.abs(from - to);
+
+      for (var i = 0; i < cnt; i++) {
+        var $tmp = _gallery.shift();
+        _gallery.push($tmp);
+        render();
+      }
+    }
+
+    function hideIframe() {
+      $pdf.src = "";
+      $pdf_wrap.style["visibility"] = "hidden";
+      $overlay.classList.toggle("active");
+    }
+
+    function generatePoster(index, title, author, inst) {
+      var $content = jQuery(`
+      <div class="item-wrap">
+        <div class="left-gradient">
+        </div>
+        <div class="poster-flexbox">
+          <div class="poster-title">${title}
+          </div>
+          <div class="poster-author">${author}</div>
+          <div class="poster-horline"></div>
+          <div class="poster-inst">${inst}</div>
+          <div class="poster-img-wrap">
+            <img src="https://d25unujvh7ui3r.cloudfront.net/poster-hall/latam/poster_0${index}.png" alt="" class="poster-img">
+          </div>
+          <div class="poster-num">0${index}</div>
+        </div>
+        <div class="right-gradient">
+        </div>
+      </div>
+      <div class="poster-overlay"><i class="fas fa-search-plus"></i></div>
+      `)
+      $content.appendTo(`.p-${index}`);
+    }
+
+    /**
+     * add eventlistener
+     **/
+    function addEvents() {
+      $prevBtn.addEventListener("click", flowLeft, false);
+      $nextBtn.addEventListener("click", flowRight, false);
+      document.addEventListener("keydown", keyDown, false);
+      $gallery.addEventListener("dragover", dragOver, false);
+      $pdf_exit.addEventListener("click", hideIframe, false);
+      $overlay.addEventListener("click", hideIframe, false)
+      document.querySelector(".gallery-wrap").addEventListener("dragstart", function (e) { resetGhost(e) }, false);
+    }
+
+    /**
+     * Flow Left & Right
+     **/
+    function flowLeft() {
+      var $tmp = _gallery.pop();
+      _gallery.unshift($tmp);
+      render();
+    }
+    function flowRight() {
+      var $tmp = _gallery.shift();
+      _gallery.push($tmp);
+      render();
+    }
+
+    /**
+     * drag to flow
+     **/
+    function dragOver() {
+      e = window.event;
+      var dragX = e.pageX;
+      if (_oldX < dragX) {
+        counter--;
+        if (counter === -1 * DRAG_TH) {
+          flowLeft();
+          counter = 0;
+        }
+      } else if (_oldX > dragX) {
+        counter++;
+        if (counter === DRAG_TH) {
+          flowRight();
+          counter = 0;
+        }
+      }
+      // console.log(counter);
+      _oldX = dragX;
+    }
+
+    /**
+     * flow by arrow
+     **/
+    function keyDown(event) {
+      switch (event.keyCode) {
+        case 37:
+          flowLeft();
+          break; // left
+        case 39:
+          flowRight();
+          break; // right
+      }
+    }
+
+    /**
+     * set poster contents
+     **/
+    function loadContent() {
+      generatePoster(1,
+        "Solute ion linear alignment heavy Ion Beam cancer therapy and covid-19 sterilization",
+        "Anthony Fresco",
+        "Medical Applications The Jolly Green Chlorine Machine"
+      )
+      generatePoster(2,
+        "Magnetic nanoscavengers: the new trend to improve water quality",
+        "Estephany Santiago",
+        "Center for Graduates and Research in Chemistry"
+      )
+      generatePoster(3,
+        "Ferrofuluids for Hyperthermina Applicaiton",
+        "Lynn Krushinski",
+        "Chemistry<br>Towson University"
+      )
+      generatePoster(4,
+        "Temperature dependent charge storage performance of carbon nano-onion suppoted layered MnO2 nanosheets",
+        "Shobhnath Gupta",
+        "National Centre for Nanosciences and Nanotechnology<br>University of Mumbai"
+      )
+      generatePoster(5,
+        "A Universe In A Drop Of Water",
+        "Dino Parisotto",
+        "Environmental Groundwater Consulting Earth2Water Pty Ltd"
+      )
+      generatePoster(6,
+        "The dose deternmines the magnitude of a biological response that would determine a lifespan",
+        "Yilkal Belay",
+        "Pharmacology and Therapeutics Makerere University"
+      )
+      generatePoster(7,
+        "Correlation and regression analysis in different spring wheat (triticum Aestivum L.) genotypes for different agro, morpho and phenological traits",
+        "Ayaz Latif Siyal",
+        "Plant Breeding and Genetics Sindh Agriculture University Tandojam"
+      )
+      generatePoster(8,
+        "Introducing “HELINASER” - Helical Nano Laser /  HLS - Design Protocol",
+        "Ajith & Arun Kumar",
+        "Medicine - Nano<br>Zeuderzee Technologies"
+      )
+      generatePoster(9,
+        "Mapping Surface Charge of Natural Minerals with Scanning Ion Conductance Microscopy",
+        "Cheng Zhu",
+        "Department of Chemistry<br>Indiana University"
+      )
+    }
+    /**
+     * initializer
+     **/
+    function init() {
+      // set local var
+      _gallery = [].slice.call(document.querySelectorAll(".poster-item"));
+      _index = Math.floor(_gallery.length / 2);
+
+      // get DOM
+      $gallery = document.querySelector(".gallery-wrap");
+      $prevBtn = document.querySelector(".prev-btn");
+      $nextBtn = document.querySelector(".next-btn");
+      $pdf_wrap = document.querySelector(".pdf-frame-wrap");
+      $pdf = document.querySelector(".pdf-frame");
+      $pdf_exit = document.querySelector(".pdf-frame-wrap .fas")
+      $overlay = document.querySelector(".gallery-overlay")
+
+      // load Content
+      loadContent();
+
+      // add event listener
+      addEvents();
+      render();
+    }
+
+    init();
+  })();
+</script>

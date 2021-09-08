@@ -1,0 +1,285 @@
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://kit.fontawesome.com/9082949df5.js" crossorigin="anonymous"></script>
+<script>
+  $(function () {
+    $("img[usemap]").rwdImageMaps();
+    $("#img").width("100%");
+  });
+</script>
+<link rel="stylesheet" href="./popup&3dview/hotspot.css">
+</link>
+<link rel="stylesheet" href="./popup&3dview/exhibit_rotation.css">
+</link>
+<link rel="stylesheet" href="./popup&3dview/drag_3d_view.css">
+</link>
+<link rel="stylesheet" href="./wp/css/spinner.css">
+</link>
+<div class="load-wrap">
+  <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_10_thumb.jpg" alt="loading-thumbnail">
+  <div class="lds-ring">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+<div class="exhibit-wrap">
+  <!-- XE-7 modal -->
+  <div class="modal-wrap modal-xe7">
+    <div class="modal-img">
+      <div class="modal-image-wrap">
+        <!-- <img src="" alt="" class="360-icon"> -->
+      </div>
+    </div>
+    <div class="modal-content">
+      <divs class="modal-content-text">
+        <div class="modal-name-wrap">
+          <span class="park">Park&nbsp</span>
+          <span class="model-name">XE7</span>
+        </div>
+        <p class="sub-heading">The quickest path to innovative research</p>
+        <div class="modal-description">
+          <span class="description">
+            Park NX10 produces data you can trust, replicate, and publish at the
+            highest nano resolution. From sample setting to full scan imaging,
+            measurement, and analysis, Park NX10 saves you time every step of the
+            way. With more time and better data, you can focus on doing more
+            innovative research. <br />
+            Park NX10 produces data you can trust, replicate, and publish at the
+            highest nano resolution. From sample setting to full scan imaging,
+            measurement, and analysis, Park NX10 saves you time every step of the
+            way. With more time and better data, you can focus on doing more
+            innovative research.
+          </span>
+        </div>
+      </divs>
+    </div>
+    <div class="button-exit"><span class="exit-text">X</span></div>
+  </div>
+  <!-- NX-10 modal -->
+  <div class="modal-wrap modal-nx10">
+    <div class="modal-img">
+      <div class="modal-image-wrap"></div>
+      <div class="modal-switcher-wrap">
+        <div class="product-sort">Park Research Products</div>
+        <div class="modal-switcher">
+          <span class="modal-min-index modal-index">01</span>
+          <div class="helper-bar-wrap">
+            <ul class="helper-bar active"></ul>
+            <ul class="helper-bar"></ul>
+            <ul class="helper-bar"></ul>
+            <ul class="helper-bar"></ul>
+            <ul class="helper-bar"></ul>
+            <ul class="helper-bar"></ul>
+          </div>
+          <span class="modal-max-index modal-index">06</span>
+          <div class="arrow-wrap">
+            <i class="fas fa-chevron-left modal-right-btn"></i>
+            <i class="fas fa-chevron-right modal-left-btn"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-content">
+      <div class="modal-content-text">
+        <div class="modal-name-wrap">
+          <span class="park">Park&nbsp</span>
+          <span class="model-name">NX10</span>
+        </div>
+        <p class="sub-heading">The quickest path to innovative research</p>
+        <div class="modal-description">
+          <span class="description">
+            Park NX10 produces data you can trust, replicate, and publish at the
+            highest nano resolution. From sample setting to full scan imaging,
+            measurement, and analysis, Park NX10 saves you time every step of the
+            way. With more time and better data, you can focus on doing more
+            innovative research. <br />
+            Park NX10 produces data you can trust, replicate, and publish at the
+            highest nano resolution. From sample setting to full scan imaging,
+            measurement, and analysis, Park NX10 saves you time every step of the
+            way. With more time and better data, you can focus on doing more
+            innovative research.
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="button-exit"><span class="exit-text">X</span></div>
+  </div>
+  <!-- common modal components -->
+  <div class="modal-overlay"></div>
+  <!-- background (3D hall) -->
+  <div class="exhibit-image-wrap">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_00.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_01.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_02.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_03.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_04.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_05.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_06.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_07.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_08.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_09.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_10.jpg" alt=""
+      class="hall-image-switch image-active">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_11.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_12.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_13.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_14.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_15.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_16.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_17.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_18.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_19.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_20.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_21.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_22.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_23.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_24.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_25.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_26.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_27.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_28.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_29.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_30.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_31.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_32.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_33.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_34.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_35.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_36.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_37.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_38.jpg" alt="" class="hall-image-switch">
+    <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_39.jpg" alt="" class="hall-image-switch">
+
+    <!-- A section(industrial) -->
+    <div class="tooltip-a tooltip-section--active">
+      <!-- NX-Wafer tooltip -->
+      <div class="tooltip-wrap tooltip-nxwafer">
+      </div>
+    </div>
+    <!-- B section(industrial) -->
+    <div class="tooltip-b">
+      <!-- XE7 tooltip -->
+      <div class="tooltip-wrap tooltip-xe7">
+      </div>
+      <!-- NX10 tooltip -->
+      <div class="tooltip-wrap tooltip-nx10">
+      </div>
+      <!-- NX-TSH tooltip -->
+      <div class="tooltip-wrap tooltip-nxtsh">
+      </div>
+    </div>
+    <!-- C section(research) -->
+    <div class="tooltip-c">
+
+      <!-- FX40 tooltip -->
+      <div class="tooltip-wrap tooltip-fx40">
+      </div>
+    </div>
+    <!-- D section(research) -->
+    <div class="tooltip-d">
+      <!-- NX-Hivac tooltip -->
+      <div class="tooltip-wrap tooltip-nxhivac">
+      </div>
+    </div>
+
+    <!-- Image Map Generated by https://www.image-map.net/ -->
+    <img class="front-thumb" src="https://us.nanoscientific.org/wp-content/uploads/2021/07/exhibit_00.jpg"
+      usemap="#image-map">
+
+    <map name="image-map">
+      <!-- <area class="front-xe7" target="" alt="xe7-area" title="xe7-area" href="#" coords="287,285,341,339" shape="rect"> -->
+      <area class="front-xe7" target="" alt="area-xe7" title="area-xe7" href="#" coords="462,587,493,650" shape="rect">
+      <area class="front-nx10" target="" alt="area-nx10" title="area-nx10" href="#" coords="629,597,669,659"
+        shape="rect">
+      <!-- <area class="front-fx40" target="" alt="area-fx40" title="area-fx40" href="#" coords="1203,566,1253,638"
+        shape="rect"> -->
+      <!-- <area class="front-nx10" target="" alt="xe7-area" title="xe7-area" href="#" coords="287,585,341,639" shape="rect"> -->
+      <!-- <area class="front-fx40" target="" alt="xe7-area" title="xe7-area" href="#" coords="287,585,341,639" shape="rect"> -->
+      <!-- <area class="front-nx10" target="" alt="nx10-area" title="nx10-area" href="#" coords="436,404,517,517"
+        shape="rect"> -->
+      <!-- <area class="front-fx40" target="" alt="fx40-area" title="fx40-area" href="#" coords="612,435,696,558"
+        shape="rect"> -->
+    </map>
+
+    <div class="arrows-wrap">
+      <button class="arrow-left-wrap" onclick="clickLeft()">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="arrow-right-wrap" onclick="clickRight()">
+        <i class="fas fa-chevron-left" style="transform: rotate(180deg);"></i>
+      </button>
+    </div>
+    <div class="slider-wrap">
+      <div class="slider-text">
+        <span class="a">
+          Industrial AFM
+        </span><span class="a">
+          Research AFM
+        </span>
+        </span>
+      </div>
+      <div class="helper-wrap">
+        <button class="helper-wrap-1 helper-wrap-1--active" onclick="degA()">
+          <div class="helper-1 helper-1--active"></div>
+        </button>
+        <div class="helper-btwn"></div>
+        <button class="helper-wrap-2" onclick="degB()">
+          <div class="helper-2 "></div>
+        </button>
+        <div class="helper-btwn"></div>
+        <button class="helper-wrap-3" onclick="degC()">
+          <div class="helper-3"></div>
+        </button>
+        <div class="helper-btwn"></div>
+        <button class="helper-wrap-4" onclick="degD()">
+          <div class="helper-4"></div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal-switcher-wrap {
+    position: relative;
+    width: 100%;
+    height: 30%;
+  }
+</style>
+
+<script>
+
+  $(document).ready(function () {
+    var imageLoaded = 0;
+    var total_cnt = $(".exhibit-image-wrap img").length;
+    $(".exhibit-image-wrap img").each(function () {
+      if ($(this)[0].complete) {
+        disableSpinner();
+        return false;
+      }
+      else {
+        $(this)[0].onload = function () {
+          imageLoaded++;
+          if (imageLoaded === total_cnt) {
+            disableSpinner();
+          }
+        }
+      }
+    });
+  });
+
+  function disableSpinner() {
+    $(".load-wrap").css("display", "none");
+  }
+</script>
+
+<script>
+
+</script>
+
+
+<script type="text/javascript" src="./wp/js/unused/RIM_object_separated_ver_0729.js"></script>
+<script type="text/javascript" src="./popup&3dview/responsive_hotspot.js"></script>
+<script type="text/javascript" src="./popup&3dview/exhibit_rotation_circular.js"></script>
+<script type="text/javascript" src="./popup&3dview/hotspot.js"></script>
