@@ -1,0 +1,33 @@
+#BEGIN Really Simple SSL LETS ENCRYPT
+RewriteRule ^.well-known/(.*)$ - [L]
+#END Really Simple SSL LETS ENCRYPT
+
+# BEGIN rlrssslReallySimpleSSL rsssl_version[5.0.2]
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
+# END rlrssslReallySimpleSSL
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+Header set Access-Control-Allow-Origin "*"
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+# BEGIN FRedirect_ErrorDocument
+# The directives (lines) between "BEGIN FRedirect_ErrorDocument" and "END FRedirect_ErrorDocument" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+ErrorDocument 404 /index.php?error=404
+# END FRedirect_ErrorDocument
