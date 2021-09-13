@@ -334,7 +334,7 @@
         }
       }
       setIframe();
-      setQueryParam();
+      setPageTitle();
     }
 
     /**
@@ -370,12 +370,14 @@
       $overlay.classList.toggle("active");
     }
 
-    function setQueryParam() {
+    function initPageTitle() {
+      document.querySelector("title").innerText += " - Poster 1"
+    }
+
+    function setPageTitle() {
       var poster_num = document.querySelector(".poster-item.current").classList[1].replace("p-", "");
-      if (history.pushState) {
-        var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + `?poster=${poster_num}`;
-        window.history.pushState({ path: newurl }, '', newurl);
-      }
+      var title = document.querySelector("title").innerText;
+      document.querySelector("title").innerText = title.substring(0, title.length - 1) + poster_num;
     }
 
     function leftEvent(i) {
@@ -565,6 +567,9 @@
       // set local var
       _gallery = [].slice.call(document.querySelectorAll(".poster-item"));
       _index = Math.floor(_gallery.length / 2);
+
+      // initialize page title
+      initPageTitle();
 
       // get DOM
       $gallery = document.querySelector(".gallery-wrap");
