@@ -1,0 +1,629 @@
+<script src="https://kit.fontawesome.com/9082949df5.js" crossorigin="anonymous"></script>
+
+<nav class="nav-wrap">
+  <section class="col-logo">
+    <a href="/" class="logo-link">
+      <img src="https://d25unujvh7ui3r.cloudfront.net/latam/NS_logo.svg" alt="">
+    </a>
+    <div class="mobile-menu-btn">
+      <i class="fas fa-bars"></i>
+    </div>
+  </section>
+  <section class="col-menu">
+    <ul class="menu-list">
+      <li class="menu-item deactivated">
+        <a class="menu-link" href="/speakers">SPEAKERS</a>
+      </li>
+      <li class="menu-item deactivated">
+        <a class="menu-link" href="/programs/program">PROGRAMS</a>
+      </li>
+      <li class="menu-item">
+        <a class="menu-link" href="/abstract">ABSTRACT</a>
+      </li>
+      <li class="menu-item">
+        <a class="menu-link" href="/lecture-hall">LECTURE HALL</a>
+      </li>
+      <li class="menu-item has-submenu">
+        <a class="menu-link">EXHIBIT HALL
+          <i class="fas fa-caret-down"></i>
+        </a>
+        <div class="drop-down-wrap">
+          <ul class="drop-down-list">
+            <li class="drop-down-item">
+              <a class="submenu-link" href="/exhibit-hall/park-systems">PARK SYSTEMS</a>
+            </li>
+            <li class="drop-down-item">
+              <a class="submenu-link" href="/exhibit-hall/nanoscientific">NANOSCIENTIFIC</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="menu-item deactivated">
+        <a class="menu-link" href="/poster-hall">POSTER HALL</a>
+      </li>
+      <li class="menu-item">
+        <a class="menu-link" href="/sponsors">SPONSORS</a>
+      </li>
+    </ul>
+  </section>
+  <section class="col-login">
+    <ul class="login-list">
+      <li class="login-item menu-logged-in">
+        <a class="menu-link" href="/wp-login.php?action=logout">SIGN OUT</a>
+      </li>
+      <li class="login-item menu-logged-out">
+        <a class="menu-link remember-prev" href="/sign-in">SIGN IN</a>
+      </li>
+      <li class="login-item menu-logged-out">
+        <a class="menu-link boxed remember-prev" href="/registration">REGISTRATION</a>
+      </li>
+    </ul>
+  </section>
+</nav>
+
+<style>
+  /* reset */
+  body,
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000
+  }
+
+  a:hover {
+    color: #7a7a7a;
+  }
+
+  /*  */
+  .nav-wrap {
+    z-index: 998;
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    align-items: center;
+    padding: 0 15px;
+    text-align: center;
+    background-color: #E6E7EC;
+    top: 0px;
+    border-bottom-right-radius: 10%;
+  }
+
+  /*  */
+  .col-logo {
+    /* display: inline-block; */
+    flex-basis: 15%;
+    min-width: 250px;
+  }
+
+  .col-logo img {
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  /*  */
+  .col-menu {
+    /* display: inline-block; */
+    /* flex-basis: 50%; */
+    flex-grow: 1;
+    margin-left: 10px;
+  }
+
+  .col-menu .menu-list {
+    display: flex;
+  }
+
+  .menu-item {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .menu-item:not(:last-child) {
+    margin-right: 15px;
+  }
+
+  .menu-link {
+    padding: 25px 10px;
+    font-size: 15px;
+    color: #7A7A7A;
+    cursor: pointer;
+  }
+
+  .menu-item.has-submenu,
+  .menu-item.has-submenu .menu-link {
+    cursor: default;
+  }
+
+  .menu-list .menu-item.active .menu-link,
+  .menu-list .menu-item.highlighted .menu-link {
+    color: #21ade5;
+  }
+
+  .menu-list .menu-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 0%;
+    height: 3px;
+    background-color: #21ade5;
+    visibility: hidden;
+    transition: width 150ms ease-in-out;
+  }
+
+  .menu-list .menu-item.highlighted::after,
+  .menu-list .menu-item.active::after {
+    visibility: visible;
+    width: 100%;
+  }
+
+  .menu-list .menu-item.has-submenu::after {
+    display: none;
+  }
+
+  /* submenu */
+  .menu-item.has-submenu {
+    cursor: default;
+  }
+
+  .has-submenu.highlighted {
+    color: #21ade5;
+  }
+
+  .drop-down-wrap {
+    visibility: hidden;
+    position: absolute;
+    top: 22px;
+    width: 100%;
+    opacity: 0;
+    transition: visibility 0.3s ease, opacity 0.3s ease-in-out, top 0.3s ease-in-out;
+    z-index: 999
+  }
+
+  .drop-down-list {
+    margin: 0;
+    display: inline-block;
+    box-shadow: 2px 2px 3px 0px #00000038;
+  }
+
+  .has-submenu.active .drop-down-wrap {
+    visibility: visible;
+    position: absolute;
+    top: 43px;
+    opacity: 1;
+  }
+
+  .drop-down-item {
+    cursor: pointer;
+    text-align: left;
+    background-color: #fff;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out
+  }
+
+
+  .drop-down-item.highlighted {
+    background-color: #21ade5;
+  }
+
+
+  .submenu-link {
+    display: block;
+    font-size: 12px;
+    color: #7A7A7A;
+    cursor: pointer;
+    padding: 5px 10px;
+    white-space: nowrap;
+  }
+
+  .drop-down-item.active .submenu-link {
+    color: #21ade5;
+  }
+
+  .drop-down-item.highlighted .submenu-link {
+    color: #fff
+  }
+
+  /*  */
+  .col-login {
+    flex-basis: 9%;
+  }
+
+  .col-login .login-list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .menu-logged-in {
+    display: none;
+  }
+
+  .logged-in .menu-logged-in {
+    display: inline-block;
+  }
+
+  .logged-in .menu-logged-out {
+    display: none;
+  }
+
+  .login-list .login-item {
+    min-width: 78px;
+  }
+
+  .login-item .menu-link:hover {
+    color: #000;
+  }
+
+  .login-list .menu-link.boxed {
+    padding: 10px 6px;
+    /* padding: 0; */
+    color: #FFF;
+    background-color: #009FE8;
+    border-radius: 6px;
+  }
+
+  .login-list .menu-link.boxed:hover {
+    background-color: #0b80b5;
+  }
+
+
+  @media (max-width: 1246px) {
+    .menu-link {
+      font-size: 12px;
+    }
+
+    .submenu-link {
+      font-size: 10px;
+    }
+  }
+
+  /**********/
+  /* mobile */
+  /**********/
+
+  .mobile-menu-btn {
+    visibility: hidden;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    padding: 14px;
+    cursor: pointer;
+    color: #7a7a7a;
+    transition: color 0.2s ease
+  }
+
+  .mobile-menu-btn:hover {
+    color: #21ade5;
+  }
+
+  @media (max-width: 1090px) {
+    .nav-wrap {
+      border-bottom-right-radius: 0;
+    }
+
+    .col-menu,
+    .col-login {
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-wrap.mobile-menu-on .col-menu,
+    .nav-wrap.mobile-menu-on .col-login {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .mobile-menu-btn {
+      visibility: visible;
+    }
+
+    .nav-wrap {
+      flex-direction: column;
+      height: 52px;
+      /* -> 315px? */
+    }
+
+    .col-menu {
+      position: relative;
+      top: -2px;
+      width: calc(100% + 30px);
+      margin-left: 0;
+      background-color: #E6E7EC;
+    }
+
+    .menu-list {
+      flex-direction: column;
+    }
+
+    .menu-item {
+      padding-bottom: 6px;
+    }
+
+    .menu-link {
+      padding: 0;
+    }
+
+    .menu-list .menu-item.highlighted::after,
+    .menu-list .menu-item.active::after {
+      visibility: hidden;
+    }
+
+    .menu-item:not(:last-child) {
+      margin-right: 0;
+    }
+
+    /* submenu */
+    .has-submenu .drop-down-item {
+      text-align: center;
+    }
+
+    .drop-down-wrap {
+      top: 0px;
+      transition: none;
+    }
+
+    .drop-down-list {
+      display: block;
+      box-shadow: none;
+    }
+
+    .has-submenu.active .drop-down-wrap {
+      visibility: visible;
+      position: relative;
+      top: 0px;
+      opacity: 1;
+    }
+
+    /* login */
+    .col-login {
+      position: relative;
+      top: -2px;
+      width: calc(100% + 30px);
+      background-color: #E6E7EC;
+    }
+
+    .login-list {
+      height: 34px;
+    }
+
+    .menu-link {
+      display: block;
+    }
+
+    .login-list .menu-link.boxed {
+      padding: 2px 5px;
+      margin-right: 5px;
+    }
+  }
+
+  /* deactivated */
+  .menu-item.deactivated,
+  .menu-item.deactivated .menu-link {
+    cursor: default;
+  }
+
+  .menu-item.deactivated .menu-link::after {
+    display: inline-block;
+    content: 'COMING SOON';
+    position: absolute;
+    /* white-space: nowrap; */
+    top: -12%;
+    left: 0px;
+    width: 100%;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    border: 2px solid #b5b5b5;
+    border-radius: 10px;
+    background-color: #FFF;
+    padding: 3px 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .menu-item.deactivated .menu-link:hover::after {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  var $submenu = null,
+    $dropdown = null,
+    $dropdown_link = null,
+    $menu = null,
+    $remember_a = null,
+    $mobile_menu_btn = null;
+
+  /**
+   * highlight current url's corresponding menu
+   **/
+  function currentHighlight() {
+    var result = location.pathname.split("/");
+    const result_length = result.length;
+    result = "/" + result.filter(result => result !== "").join("/");
+    var $menu_a = jQuery('.nav-wrap a[href^="' + result + '"]');
+    if (result_length === 3) {
+      $menu_a[0].parentNode.classList.add("highlighted")
+    }
+    else if (result_length === 4) {
+      $menu_a[0].parentNode.classList.add("highlighted")
+      if ($menu_a.hasClass("submenu-link")) {
+        $menu_a[0].parentNode.parentNode.parentNode.parentNode.classList.add("highlighted");
+      }
+    }
+  }
+  /**
+   * check if url is contained in nav menu
+   **/
+  function isNavitem() {
+    var b = false;
+
+    var result = location.pathname.split("/");
+    result = "/" + result.filter(result => result !== "").join("/");
+
+    var $menu_a = jQuery(".menu-link");
+    var $submenu_a = jQuery(".submenu-link");
+
+    $menu_a.each(function () {
+      var menu_href = this.href.replace(`https://${location.hostname}`, "").split("/");
+      menu_href = "/" + menu_href.filter(menu_href => menu_href !== "").join("/");
+
+      b = b || (result === menu_href);
+      if (b === true) {
+        return b;
+      }
+    });
+
+    $submenu_a.each(function () {
+      var submenu_href = this.href.replace(`https://${location.hostname}`, "").split("/");
+      submenu_href = "/" + submenu_href.filter(submenu_href => submenu_href !== "").join("/");
+
+      b = b || (result === submenu_href);
+      if (b === true) {
+        return b;
+      }
+    });
+
+    return b;
+  }
+
+  /**
+   * set Query Parameter when login button is clicked.
+   **/
+  function setQueryParam() {
+    if (location.search !== "") {
+      $remember_a[0].href += location.search;
+      $remember_a[1].href += location.search;
+    }
+    else {
+      const encoded_URI = encodeURIComponent(location.pathname);
+      $remember_a[0].href += `?url=${encoded_URI}`
+      $remember_a[1].href += `?url=${encoded_URI}`
+    }
+  }
+
+  function registerEvent() {
+    // menu hover
+    $menu.on("mouseover", function () {
+      this.classList.add("active");
+    });
+    $menu.on("mouseout", function () {
+      this.classList.remove("active");
+    });
+    $menu.on("click", function () {
+      location.href = this.querySelector(".menu-link").href;
+    });
+    // deactivate submenu click
+    jQuery(".menu-item.has-submenu").off("click")
+    // inside dropdown hover
+    $dropdown.on("mouseover", function () {
+      this.classList.add("active")
+    });
+    $dropdown.on("mouseout", function () {
+      this.classList.remove("active")
+    });
+    // dropdown click
+    $dropdown.on("click", function () {
+      location.href = this.querySelector(".submenu-link").href;
+    });
+
+    // mobile
+    $mobile_menu_btn.on("click", function () {
+      jQuery(".nav-wrap").toggleClass("mobile-menu-on")
+    })
+
+    // temporarily deactivated
+    deact_event(0);
+    deact_event(1);
+    deact_event(5);
+    // 
+
+    // media query event
+    if (window.matchMedia("screen and (max-width: 768px)").matches) {
+      $submenu.each(function () {
+        jQuery(this).off("mouseover");
+        jQuery(this).off("mouseout");
+        jQuery(this).on("click", function () {
+          this.classList.toggle("active");
+        });
+      })
+      // dropdown click
+    } else {
+      $submenu.each(function () {
+        jQuery(this).on("mouseover", function () {
+          this.classList.add("active");
+        });
+        jQuery(this).on("mouseout", function () {
+          this.classList.remove("active");
+        });
+        jQuery(this).off("click");
+      })
+    }
+    addMQL();
+  }
+
+  function deact_event(index){
+    jQuery($menu[index]).off("click");
+    jQuery($menu[index]).off("mouseover");
+    $menu[index].children[0].href = "#";
+  }
+
+  function addMQL() {
+    var mql = window.matchMedia("screen and (max-width: 768px)");
+
+    mql.addListener(function (e) {
+      if (e.matches) {
+        $submenu.each(function () {
+          jQuery(this).off("mouseover");
+          jQuery(this).off("mouseout");
+          jQuery(this).on("click", function () {
+            this.classList.toggle("active");
+          });
+        })
+        // dropdown click
+      } else {
+        $submenu.each(function () {
+          jQuery(this).on("mouseover", function () {
+            this.classList.add("active");
+          });
+          jQuery(this).on("mouseout", function () {
+            this.classList.remove("active");
+          });
+          jQuery(this).off("click");
+        })
+      }
+
+    })
+
+  }
+
+  function init() {
+    $submenu = jQuery(".menu-item.has-submenu");
+    $menu = jQuery(".menu-item");
+    $dropdown = jQuery(".drop-down-item");
+    $mobile_menu_btn = jQuery(".mobile-menu-btn");
+    $remember_a = jQuery(".remember-prev");
+
+    // set login params
+    if ($remember_a !== null) {
+      setQueryParam();
+    }
+
+    if (isNavitem()) {
+      currentHighlight();
+    }
+    registerEvent();
+  }
+
+  init();
+
+</script>
