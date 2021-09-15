@@ -143,8 +143,9 @@
   function filter_meetings(index, $this) {
     var start = $this.children[0].innerText.indexOf('[') + 1;
     var end = $this.children[0].innerText.indexOf(']');
+    var tag = $this.children[0].innerText.substring(start, end).toLowerCase();
 
-    return $this.children[0].innerText.substring(start, end).toLowerCase() === nation
+    return (tag === nation || tag === nation_alt);
   }
 
   function init() {
