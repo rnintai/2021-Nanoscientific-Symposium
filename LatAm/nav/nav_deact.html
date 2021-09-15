@@ -15,10 +15,11 @@
         <a class="menu-link" href="/speakers">SPEAKERS</a>
       </li>
       <li class="menu-item deactivated">
-        <a class="menu-link" href="/programs/program">PROGRAMS</a>
+        <a class="menu-link" href="/programs/program">PROGRAM</a>
       </li>
       <li class="menu-item">
-        <a class="menu-link" href="/abstract">ABSTRACT</a>
+        <a class="menu-link" href="/abstract">ABSTRACT SUBMISSION</a>
+      </li>
       </li>
       <li class="menu-item">
         <a class="menu-link" href="/lecture-hall">LECTURE HALL</a>
@@ -440,6 +441,7 @@
     $dropdown = null,
     $dropdown_link = null,
     $menu = null,
+    $menu_deactivated = null,
     $remember_a = null,
     $mobile_menu_btn = null;
 
@@ -542,10 +544,7 @@
     })
 
     // temporarily deactivated
-    deact_event(0);
-    deact_event(1);
-    deact_event(5);
-    // 
+    deact_event();
 
     // media query event
     if (window.matchMedia("screen and (max-width: 768px)").matches) {
@@ -571,10 +570,12 @@
     addMQL();
   }
 
-  function deact_event(index){
-    jQuery($menu[index]).off("click");
-    jQuery($menu[index]).off("mouseover");
-    $menu[index].children[0].href = "#";
+  function deact_event() {
+    $menu_deactivated.each(function () {
+      jQuery(this).off("click");
+      jQuery(this).off("mouseover");
+      this.children[0].href = "#";
+    })
   }
 
   function addMQL() {
@@ -609,6 +610,7 @@
   function init() {
     $submenu = jQuery(".menu-item.has-submenu");
     $menu = jQuery(".menu-item");
+    $menu_deactivated = jQuery(".menu-item.deactivated");
     $dropdown = jQuery(".drop-down-item");
     $mobile_menu_btn = jQuery(".mobile-menu-btn");
     $remember_a = jQuery(".remember-prev");
