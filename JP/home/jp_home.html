@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="/wp-content/themes/oceanwp/assets/css/pages/exhibit_hall/spinner.css">
 </link>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+  rel="stylesheet">
 
 <!-- loading -->
 <div class="load-wrap">
@@ -26,46 +28,42 @@
     <div class="vo-header flex">
       <img class="logo" src="https://d25unujvh7ui3r.cloudfront.net/NS_logo_white.svg" alt="singh logo">
       <div class="vo-eventdata flex-col">
-        <span class="vo-title white">NanoScientific Symposium on Global Collaboration<br />
-          2021 JAPAN</span>
+        <span class="vo-title white">ナノ科学シンポジウム2021<br>NanoScientific Symposium Japan 2021</span>
         <div class="vo-info-visit flex">
           <div class="vo-date-place flex-col">
             <div class="vo-date-place-wrap">
               <div class="vo-date-place-title">
-                <span class="bg-white">Date:&nbsp;</span>
+                <span class="bg-white">日時：&nbsp;</span>
               </div>
-              <span class="vo-date white">2021 November 22
+              <span class="vo-date white">2021年11月22日月曜日
               </span>
             </div>
             <div class="vo-date-place-wrap">
               <div class="vo-date-place-title">
-                <span class="bg-white">Place:</span>
+                <span class="bg-white">場所：</span>
               </div>
               <span class="vo-place white">
-                Virtual Event</span>
+                オンライン・オフラインハイブリッド開催<br>（横浜KGU関内メディアセンター）</span>
               </span>
             </div>
 
           </div>
           <div class="visit-wrap">
             <button class="btn-visit">
-              <img class="visit-img" src="https://d25unujvh7ui3r.cloudfront.net/visit now_skyblue.svg">
+              こちらからアクセス！
             </button>
             <button class="btn-visit-m">
-              <img class="visit-img" src="https://d25unujvh7ui3r.cloudfront.net/visit now_skyblue.svg">
+              こちらからアクセス！
             </button>
           </div>
         </div>
       </div>
     </div>
-    <div class="vo-footer">
+    <!-- <div class="vo-footer">
       <span class="footer-desc white">
-        &nbsp;NanoScientific Symposium on Global Collaboration (NSGC) will highlight the research and new applications
-        in
-        engineering, live sciences, medical devices, sustainability, future cities, space exploration, AI, robotics,
-        automation and more achieved by uniting scientific minds.
+       
       </span>
-    </div>
+    </div> -->
   </section>
   <div class="skip-btn-wrap">
     <button class="skip-btn">Skip</button>
@@ -110,8 +108,8 @@
 
 
 <style>
-  * {
-    font-family: "Open Sans", sans-serif;
+  body {
+    font-family: "Noto Sans JP", sans-serif !important;
   }
 
   body,
@@ -211,7 +209,7 @@
   .vo-eventdata {
     font-size: 23px;
     font-weight: 700;
-    height: 80%;
+    height: 90%;
     justify-content: space-between;
   }
 
@@ -256,6 +254,10 @@
 
   .btn-visit,
   .btn-visit-m {
+    background-color: #2dafe6;
+    color: white;
+    border: 2px #fff solid;
+
     opacity: 0.65;
     transition: opacity 0.3s ease;
   }

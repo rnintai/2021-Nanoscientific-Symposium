@@ -1,4 +1,6 @@
 <script src="https://kit.fontawesome.com/9082949df5.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+  rel="stylesheet">
 
 <nav class="nav-wrap">
   <section class="col-logo">
@@ -12,19 +14,19 @@
   <section class="col-menu">
     <ul class="menu-list">
       <li class="menu-item">
-        <a class="menu-link" href="/greeting">GREETING</a>
+        <a class="menu-link" href="/greeting">ごあいさつ</a>
       </li>
       <li class="menu-item deactivated">
-        <a class="menu-link" href="/speakers">SPEAKERS</a>
+        <a class="menu-link" href="/speakers">講演者</a>
       </li>
       <li class="menu-item deactivated">
-        <a class="menu-link" href="/programs">PROGRAMS</a>
+        <a class="menu-link" href="/programs">プログラム</a>
       </li>
       <li class="menu-item">
-        <a class="menu-link" href="/lecture-hall">LECTURE HALL</a>
+        <a class="menu-link" href="/lecture-hall">Web講演会</a>
       </li>
       <li class="menu-item has-submenu">
-        <a class="menu-link">EXHIBIT HALL
+        <a class="menu-link">展示会
           <i class="fas fa-caret-down"></i>
         </a>
         <div class="drop-down-wrap">
@@ -39,26 +41,34 @@
         </div>
       </li>
       <li class="menu-item">
-        <a class="menu-link" href="/sponsors">SPONSORS</a>
+        <a class="menu-link" href="/sponsors">スポンサー</a>
       </li>
     </ul>
   </section>
   <section class="col-login">
     <ul class="login-list">
       <li class="login-item menu-logged-in">
-        <a class="menu-link" href="/wp-login.php?action=logout">SIGN OUT</a>
+        <a class="menu-link" href="/wp-login.php?action=logout">ログアウト</a>
       </li>
       <li class="login-item menu-logged-out">
-        <a class="menu-link remember-prev" href="/sign-in">SIGN IN</a>
+        <a class="menu-link remember-prev" href="/sign-in">ログイン</a>
       </li>
       <li class="login-item menu-logged-out">
-        <a class="menu-link boxed remember-prev" href="/registration">REGISTRATION</a>
+        <a class="menu-link boxed remember-prev" href="/registration">参加登録</a>
       </li>
     </ul>
   </section>
 </nav>
 
 <style>
+  body {
+    font-family: "Noto Sans JP", sans-serif !important;
+  }
+
+  .fas {
+    font-family: "Font Awesome 5 Free" !important
+  }
+
   /* reset */
   body,
   ul {
