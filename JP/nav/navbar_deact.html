@@ -35,9 +35,6 @@
           </ul>
         </div>
       </li>
-      <li class="menu-item deactivated">
-        <a class="menu-link" href="/poster-hall">POSTER HALL</a>
-      </li>
       <li class="menu-item">
         <a class="menu-link" href="/sponsors">SPONSORS</a>
       </li>
@@ -49,10 +46,10 @@
         <a class="menu-link" href="/wp-login.php?action=logout">SIGN OUT</a>
       </li>
       <li class="login-item menu-logged-out">
-        <a class="menu-link login-link" href="/sign-in">SIGN IN</a>
+        <a class="menu-link remember-prev" href="/sign-in">SIGN IN</a>
       </li>
       <li class="login-item menu-logged-out">
-        <a class="menu-link boxed" href="/registration">REGISTRATION</a>
+        <a class="menu-link boxed remember-prev" href="/registration">REGISTRATION</a>
       </li>
     </ul>
   </section>
@@ -402,24 +399,17 @@
     }
   }
 
-  /* 1152px ~ 1024px -> font 12px */
-  /* max-width: 1024px -> hamburger menu */
-
-  /* deactivation */
+  /* deactivated */
   .menu-item.deactivated,
   .menu-item.deactivated .menu-link {
     cursor: default;
-  }
-
-  .menu-item.deactivated {
-    min-width: 105px;
   }
 
   .menu-item.deactivated .menu-link::after {
     display: inline-block;
     content: 'COMING SOON';
     position: absolute;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     top: -12%;
     left: 0px;
     width: 100%;
@@ -429,7 +419,7 @@
     border: 2px solid #b5b5b5;
     border-radius: 10px;
     background-color: #FFF;
-    padding: 7px 4px;
+    padding: 3px 5px;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
   }
@@ -444,7 +434,8 @@
     $dropdown = null,
     $dropdown_link = null,
     $menu = null,
-    $login = null,
+    $menu_deactivated = null,
+    $remember_a = null,
     $mobile_menu_btn = null;
 
   /**
@@ -499,16 +490,19 @@
 
     return b;
   }
+
   /**
    * set Query Parameter when login button is clicked.
    **/
   function setQueryParam() {
     if (location.search !== "") {
-      $login[0].href += location.search;
+      $remember_a[0].href += location.search;
+      $remember_a[1].href += location.search;
     }
     else {
       const encoded_URI = encodeURIComponent(location.pathname);
-      $login[0].href += `?url=${encoded_URI}`
+      $remember_a[0].href += `?url=${encoded_URI}`
+      $remember_a[1].href += `?url=${encoded_URI}`
     }
   }
 
@@ -543,13 +537,11 @@
     })
 
     // temporarily deactivated
-    deact(0);
-    deact(1);
-    deact(4);
+    deact_event();
     // 
 
     // media query event
-    if (window.matchMedia("screen and (max-width: 1090px)").matches) {
+    if (window.matchMedia("screen and (max-width: 768px)").matches) {
       $submenu.each(function () {
         jQuery(this).off("mouseover");
         jQuery(this).off("mouseout");
@@ -572,14 +564,16 @@
     addMQL();
   }
 
-  function deact(index) {
-    jQuery($menu[index]).off("click");
-    jQuery($menu[index]).off("mouseover");
-    $menu[index].children[0].href = "#";
+  function deact_event() {
+    $menu_deactivated.each(function () {
+      jQuery(this).off("click");
+      jQuery(this).off("mouseover");
+      this.children[0].href = "#";
+    })
   }
 
   function addMQL() {
-    var mql = window.matchMedia("screen and (max-width: 1090px)");
+    var mql = window.matchMedia("screen and (max-width: 768px)");
 
     mql.addListener(function (e) {
       if (e.matches) {
@@ -610,12 +604,13 @@
   function init() {
     $submenu = jQuery(".menu-item.has-submenu");
     $menu = jQuery(".menu-item");
+    $menu_deactivated = jQuery(".menu-item.deactivated");
     $dropdown = jQuery(".drop-down-item");
     $mobile_menu_btn = jQuery(".mobile-menu-btn");
-    $login = jQuery(".login-link");
+    $remember_a = jQuery(".remember-prev");
 
     // set login params
-    if ($login !== null) {
+    if ($remember_a !== null) {
       setQueryParam();
     }
 
