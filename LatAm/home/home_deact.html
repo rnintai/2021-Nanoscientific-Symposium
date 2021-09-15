@@ -1,3 +1,4 @@
+<script src="https://kit.fontawesome.com/9082949df5.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/wp-content/themes/oceanwp/assets/css/pages/exhibit_hall/spinner.css">
 </link>
 
@@ -12,14 +13,11 @@
 </div>
 <!--  -->
 
-<script src="https://kit.fontawesome.com/9082949df5.js" crossorigin="anonymous"></script>
-
 <div class="home-wrap">
-
   <div class="video-wrap">
-    <video id="video-1" class="lazy" src="https://d25unujvh7ui3r.cloudfront.net/jp/home_1.mp4" muted
+    <video id="video-1" class="lazy" src="https://d25unujvh7ui3r.cloudfront.net/latam/home_1_latam.mp4" muted
       preload="auto"></video>
-    <video id="video-2" class="lazy" src="https://d25unujvh7ui3r.cloudfront.net/jp/home_2.mp4" loop muted
+    <video id="video-2" class="lazy" src="https://d25unujvh7ui3r.cloudfront.net/latam/home_2_latam.mp4" loop muted
       preload="auto"></video>
   </div>
   <section class="video-overlay flex-col">
@@ -27,22 +25,21 @@
       <img class="logo" src="https://d25unujvh7ui3r.cloudfront.net/NS_logo_white.svg" alt="singh logo">
       <div class="vo-eventdata flex-col">
         <span class="vo-title white">NanoScientific Symposium on Global Collaboration<br />
-          2021 JAPAN</span>
+          2021 LATIN AMERICA BRAZIL</span>
         <div class="vo-info-visit flex">
           <div class="vo-date-place flex-col">
             <div class="vo-date-place-wrap">
               <div class="vo-date-place-title">
                 <span class="bg-white">Date:&nbsp;</span>
               </div>
-              <span class="vo-date white">2021 November 22
+              <span class="vo-date white">2021 October 14-15
               </span>
             </div>
             <div class="vo-date-place-wrap">
               <div class="vo-date-place-title">
                 <span class="bg-white">Place:</span>
               </div>
-              <span class="vo-place white">
-                Virtual Event</span>
+              <span class="vo-place white">Virtual Event</span>
               </span>
             </div>
 
@@ -60,9 +57,14 @@
     </div>
     <div class="vo-footer">
       <span class="footer-desc white">
-        &nbsp;NanoScientific Symposium on Global Collaboration (NSGC) will highlight the research and new applications
-        in
-        engineering, live sciences, medical devices, sustainability, future cities, space exploration, AI, robotics,
+        &nbsp;The Nano Revolution has pioneered the gratest scientific advances since the beginning of mankind. In the
+        midst of the pandemic, global collaboration on virtual platforms have created the most extensive opportunity
+        for
+        Global Collaboration on Nanoscale advances. NanoScientific Symposium on Global Collaboration (NSGC) will
+        highlight
+        the research and new applications in engineering, live sciences, medical devices, sustainability, future
+        cities,
+        space exploration, AI, robotics,
         automation and more achieved by uniting scientific minds.
       </span>
     </div>
@@ -71,15 +73,15 @@
     <button class="skip-btn">Skip</button>
   </div>
   <div class="btns-wrap">
-    <img src="https://d25unujvh7ui3r.cloudfront.net/jp/home_1_thumb.jpg" class="home-thumb home-1-m" />
-    <img src="https://d25unujvh7ui3r.cloudfront.net/jp/home_2_thumb.jpg" class="home-thumb home-2-m"
+    <img src="https://d25unujvh7ui3r.cloudfront.net/latam/home_1_thumb.jpg" class="home-thumb home-1-m" />
+    <img src="https://d25unujvh7ui3r.cloudfront.net/latam/home_2_thumb.jpg" class="home-thumb home-2-m"
       usemap="#image-map" />
 
     <map name="image-map" id="image-map">
       <area target="" alt="play" title="play" class="play" href="#" coords="748,275,1189,498" shape="rect"
-        onmouseover="areaHover(this)" onmouseout="areaLeave(this)" />
-      <area target="" alt="program" title="Program" class="program" href="/programs" coords="240,541,514,715"
-        shape="rect" onmouseover="areaHover(this);" onmouseout="areaLeave(this);" />
+        onmouseover="areaHover(this)" onmouseout="areaLeave(this)" onclick="play_click()" />
+      <area target="" alt="program" title="Program" class="program" coords="240,541,514,715" shape="rect"
+        onmouseover="areaHover(this);" onmouseout="areaLeave(this);" />
       <area target="" alt="lecture hall" title="Lecture Hall" class="lecture" href="/lecture-hall"
         coords="738,500,1197,720" shape="rect" onmouseover="areaHover(this);" onmouseout="areaLeave(this);" />
       <area target="" alt="exhibit hall" title="Exhibit Hall" class="exhibit" href="/exhibit-hall"
@@ -89,10 +91,10 @@
     <section class="mobile-btns-wrap mobile">
       <div class="play-btn-m" onclick="play_click()">
         <button class="play-btn">
-          <i class="play-icon fab fa-youtube" aria-hidden="true"></i>
+          <i class="play-icon fab fa-youtube"></i>
         </button>
       </div>
-      <div class="program-btn-m" onclick="alert('coming soon')"></div>
+      <div class="program-btn-m" onclick="alert('coming soon'"></div>
       <div class="lecture-btn-m" onclick="location.href='/lecture-hall'"></div>
       <div class="exhibit-btn-m" onclick="location.href='/exihibit-hall/park-systems'"></div>
     </section>
@@ -100,14 +102,13 @@
 
   <div class="modal-overlay"></div>
   <div class="video-modal-wrap">
-    <iframe data-src="" title="YouTube video player" frameborder="0"
+    <iframe data-src="https://www.youtube.com/embed/McUWQiwzjzk" title="YouTube video player" frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
     <button class="button-exit">
       <i class="fas fa-times"></i>
     </button>
   </div>
 </div>
-
 
 <style>
   * {
@@ -219,6 +220,10 @@
     line-height: 120%;
   }
 
+  .vo-info-visit {
+    justify-content: space-between;
+  }
+
   .vo-date-place {
     margin-right: 20px;
     line-height: 130%;
@@ -230,6 +235,10 @@
 
   .vo-date-place-title {
     margin-right: 8px;
+  }
+
+  .vo-date {
+    white-space: nowrap;
   }
 
   .vo-footer {
@@ -698,6 +707,7 @@
   .btn-visit-m {
     visibility: hidden;
     display: none;
+    min-width: 100px;
   }
 
   .home-2-m {
@@ -793,7 +803,7 @@
       left: -5%;
       width: 110%;
       height: 100%;
-      background: url("https://d25unujvh7ui3r.cloudfront.net/jp/home_1_thumb.jpg");
+      background: url("https://d25unujvh7ui3r.cloudfront.net/latam/home_1_thumb.jpg");
       filter: blur(23px);
     }
 
@@ -802,7 +812,7 @@
     }
 
     .home-wrap.visit::before {
-      background: url("https://d25unujvh7ui3r.cloudfront.net/jp/home_2_thumb.jpg");
+      background: url("https://d25unujvh7ui3r.cloudfront.net/latam/home_2_thumb.jpg");
     }
 
     .home-thumb {
@@ -920,19 +930,6 @@
       width: 90%;
       font-size: 10px;
     }
-  }
-
-  /* temp */
-  .play {
-    cursor: default;
-  }
-
-  .play-map-wrap {
-    display: none;
-  }
-
-  .play-btn-m {
-    display: none;
   }
 </style>
 
@@ -1093,8 +1090,6 @@
   }
 
   function init() {
-
-
     jQuery("area").each(function () {
       var class_name = jQuery(this).attr("class");
       var href = jQuery(this).attr("href");

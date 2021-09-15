@@ -88,7 +88,7 @@
           <i class="play-icon fab fa-youtube" aria-hidden="true"></i>
         </button>
       </div>
-      <div class="program-btn-m" onclick="location.href='/programs'"></div>
+      <div class="program-btn-m" onclick="alert('coming soon')"></div>
       <div class="lecture-btn-m" onclick="location.href='/lecture-hall'"></div>
       <div class="exhibit-btn-m" onclick="location.href='/exihibit-hall/park-systems'"></div>
     </section>
@@ -1132,7 +1132,7 @@
         $a.appendTo(`.${class_name}-map-wrap`);
         if (class_name === "program") {
           $arrowL.appendTo(`.${class_name}-map-wrap`);
-          jQuery(`.${class_name}-map-wrap`).attr("onclick", "location.href='/program'")
+          jQuery(`.${class_name}-map-wrap`).attr("onclick", "alert('coming soon')")
         }
         else if (class_name === "lecture") {
           $arrowC.appendTo(`.${class_name}-map-wrap`);
