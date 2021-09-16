@@ -24,7 +24,7 @@ var $nx10_textbox = generateTextbox(
 );
 var $fx40_textbox = generateTextbox(
 	"FX40",
-	"A Groundbreaking New Class of Atomic Force Microscope for Nanoscientific Research: The Autonomous AFM"
+	"A New Class of Atomic Force Microscope: The Automatic AFM. <em>Accelerate your research!</em>"
 );
 //
 var $nxhivac_textbox = generateTextbox(
