@@ -3,6 +3,108 @@
 <article class="program-wrap">
 </article>
 
+<script>
+  var cnt = 0;
+
+  /**
+   * USAGE
+   * 
+   * Session Title:     
+   *  generate_title("session title")
+   * 
+   * Program:           
+   *  generate_program("time", "program title", "description")
+   * 
+   * Program(last one): 
+   *  generate_program_last("time", "program title", "description")
+   * 
+   * DON'T forget to use 'generate_program_last' on last program!
+   */
+
+  generate_title("Morning Session");
+  generate_program(
+    "08:40 AM",
+    "Welcome Message - Stefan Kaemmer",
+    "General Manage, Park Systems"
+  );
+  generate_program(
+    "09:15 AM",
+    "Dr. Ye Tao",
+    "RowlandFellow, The Rowland Institute at Harvard Mirrors for Earth’s Energy Rebalancing (MEERreflEction)"
+  );
+  generate_program(
+    "09:45 AM",
+    "Prof. Jia Deng",
+    "Assistant Professor, Department of Sysmtems Science and Industrial Engineering External Engergy Assisted Nanmachining Using Soft AFM Probes"
+  );
+  generate_program(
+    "10:15 AM",
+    "Morning Break - Nanofab South Rotunda",
+    ""
+  );
+  generate_program(
+    "10:30 AM",
+    "Dr. Ji UngLee",
+    "Professor of Nanoscale Engineering, SUNY Polytechnic Institute 2D Reconfigurable Devices"
+  );
+  generate_program(
+    "11:00 AM",
+    "Phil Kaszuba",
+    "Senior Member of Technical Staffand Lead Engineer, Scanning Probe Microscope Laboratory, Global Foundries (SFM)"
+  );
+  generate_program_last(
+    "11:30 AM",
+    "Dr. Lane Bakera",
+    "James L.Jackson Professor of Chemistry, Indiana University Measuring lons and Electrons with Nanoscale"
+  );
+
+
+  /**
+   * Don't fix below here.
+   */
+  function generate_title(title) {
+    jQuery(`
+    <section class="timeline-wrap timeline-${cnt} m-20">
+      <table class="styled-table">
+        <tr class="styled-tr">
+          <td>${title}
+        </tr>
+      </table>
+
+      <ul class="cbp_tmtimeline">
+      </ul>
+    </section>
+    `).appendTo(".program-wrap");
+  }
+
+  function generate_program(time, heading, desc) {
+    jQuery(`
+    <li>
+      <time class="cbp_tmtime"><span>${time}</span></time>
+      <div class="cbp_tmicon"></div>
+      <div class="cbp_tmlabel">
+        <h2>${heading}</h2>
+        <p>${desc}</p>
+      </div>
+    </li>
+    `).appendTo(jQuery(jQuery(".cbp_tmtimeline")[cnt]));
+  }
+
+  function generate_program_last(time, heading, desc) {
+    jQuery(`
+    <li class="last-program">
+      <time class="cbp_tmtime"><span>${time}</span></time>
+      <div class="cbp_tmicon"></div>
+      <div class="cbp_tmlabel">
+        <h2>${heading}</h2>
+        <p>${desc}</p>
+      </div>
+    </li>
+    `).appendTo(jQuery(jQuery(".cbp_tmtimeline")[cnt]));
+    cnt++;
+  }
+</script>
+
 <style>
   .m-20 {
     margin: 20px;
@@ -239,105 +341,3 @@
     margin-bottom: 50px
   }
 </style>
-
-<script>
-  var cnt = 0;
-
-  /**
-   * USAGE
-   * 
-   * Session Title:     
-   *  generate_title("session title")
-   * 
-   * Program:           
-   *  generate_program("time", "program title", "description")
-   * 
-   * Program(last one): 
-   *  generate_program_last("time", "program title", "description")
-   * 
-   * DON'T forget to use 'generate_program_last' on last program!
-   */
-
-  generate_title("Morning Session");
-  generate_program(
-    "08:40 AM",
-    "Welcome Message - Stefan Kaemmer",
-    "General Manage, Park Systems"
-  );
-  generate_program(
-    "09:15 AM",
-    "Dr. Ye Tao",
-    "RowlandFellow, The Rowland Institute at Harvard Mirrors for Earth’s Energy Rebalancing (MEERreflEction)"
-  );
-  generate_program(
-    "09:45 AM",
-    "Prof. Jia Deng",
-    "Assistant Professor, Department of Sysmtems Science and Industrial Engineering External Engergy Assisted Nanmachining Using Soft AFM Probes"
-  );
-  generate_program(
-    "10:15 AM",
-    "Morning Break - Nanofab South Rotunda",
-    ""
-  );
-  generate_program(
-    "10:30 AM",
-    "Dr. Ji UngLee",
-    "Professor of Nanoscale Engineering, SUNY Polytechnic Institute 2D Reconfigurable Devices"
-  );
-  generate_program(
-    "11:00 AM",
-    "Phil Kaszuba",
-    "Senior Member of Technical Staffand Lead Engineer, Scanning Probe Microscope Laboratory, Global Foundries (SFM)"
-  );
-  generate_program_last(
-    "11:30 AM",
-    "Dr. Lane Bakera",
-    "James L.Jackson Professor of Chemistry, Indiana University Measuring lons and Electrons with Nanoscale"
-  );
-
-
-  /**
-   * Don't fix below here.
-   */
-  function generate_title(title) {
-    jQuery(`
-    <section class="timeline-wrap timeline-${cnt} m-20">
-      <table class="styled-table">
-        <tr class="styled-tr">
-          <td>${title}
-        </tr>
-      </table>
-
-      <ul class="cbp_tmtimeline">
-      </ul>
-    </section>
-    `).appendTo(".program-wrap");
-  }
-
-  function generate_program(time, heading, desc) {
-    jQuery(`
-    <li>
-      <time class="cbp_tmtime"><span>${time}</span></time>
-      <div class="cbp_tmicon"></div>
-      <div class="cbp_tmlabel">
-        <h2>${heading}</h2>
-        <p>${desc}</p>
-      </div>
-    </li>
-    `).appendTo(jQuery(jQuery(".cbp_tmtimeline")[cnt]));
-  }
-
-  function generate_program_last(time, heading, desc) {
-    jQuery(`
-    <li class="last-program">
-      <time class="cbp_tmtime"><span>${time}</span></time>
-      <div class="cbp_tmicon"></div>
-      <div class="cbp_tmlabel">
-        <h2>${heading}</h2>
-        <p>${desc}</p>
-      </div>
-    </li>
-    `).appendTo(jQuery(jQuery(".cbp_tmtimeline")[cnt]));
-    cnt++;
-  }
-</script>
