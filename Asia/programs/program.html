@@ -3,6 +3,102 @@
 <article class="program-wrap">
 </article>
 
+<script>
+  /**
+   * USAGE
+   * 
+   * Session Title:     
+   *  generate_title("session title")
+   * 
+   * Program:           
+   *  generate_program("time", "program title", "description")
+   * 
+   * Program(last one): 
+   *  generate_program_last("time", "program title", "description")
+   * 
+   * DON'T forget to use 'generate_program_last' on last program!
+   */
+
+  generate_title("AM Session");
+  generate_program(
+    "10:00 AM - 10:05 AM",
+    "Welcome Message",
+    "Jessica Kang"
+  );
+  generate_program(
+    "10:05 AM - 10:10 AM",
+    "Opening Message",
+    "Dr. Sang-Joon Cho"
+  );
+  generate_program(
+    "10:10 AM - 11:00 AM",
+    "Invited Talks 1",
+    ""
+  );
+  generate_program(
+    "10:10 AM",
+    "Mr. John Yik",
+    "Micro Optics Technologies Pte Ltd, Singapore"
+  );
+  generate_program(
+    "10:35 AM",
+    "Dr. Jake Kim",
+    "Park Systems, Korea"
+  );
+  generate_program(
+    "11:00 AM",
+    "BREAK",
+    ""
+  );
+  generate_program(
+    "11:05 AM",
+    "Mr. Xin Lyu",
+    "Curtin University, Australia"
+  );
+  generate_program_last(
+    "11:30 AM - 12:00 PM",
+    "Featured Talk - Prof. Nam-joon Cho",
+    "Nanyang Technological University, Singapore"
+  );
+
+  generate_title("PM Session");
+  generate_program(
+    "2:30 PM – 3:00 PM",
+    "Keynote Talk - Prof. Simone Ruggeri",
+    "Wageningen University, Netherlands"
+  );
+  generate_program(
+    "3:00 PM – 4:20 PM",
+    "Invited Talks 2",
+    ""
+  );
+  generate_program(
+    "3:00 PM",
+    "Dr. Vladimir Korolkov",
+    "Park Systems, United Kingdom"
+  );
+  generate_program(
+    "3:25 PM",
+    "BREAK",
+    ""
+  );
+  generate_program(
+    "3:30 PM",
+    "Dr. Alok Ranjan",
+    "Singapore University of Technology and Design, Singapore"
+  );
+  generate_program(
+    "3:55 PM",
+    "Dr. Ashutosh Valavade",
+    "Park Systems, India"
+  );
+  generate_program_last(
+    "4:20 PM – 4:30 PM",
+    "Closing Message",
+    "Beng Seng Poo"
+  );
+</script>
+
 <style>
   .m-20 {
     margin: 20px;
@@ -241,105 +337,11 @@
 </style>
 
 <script>
-  var cnt = 0;
-
-  /**
-   * USAGE
-   * 
-   * Session Title:     
-   *  generate_title("session title")
-   * 
-   * Program:           
-   *  generate_program("time", "program title", "description")
-   * 
-   * Program(last one): 
-   *  generate_program_last("time", "program title", "description")
-   * 
-   * DON'T forget to use 'generate_program_last' on last program!
-   */
-
-  generate_title("AM Session");
-  generate_program(
-    "10:00 AM - 10:05 AM",
-    "Welcome Message",
-    "Jessica Kang"
-  );
-  generate_program(
-    "10:05 AM - 10:10 AM",
-    "Opening Message",
-    "Dr. Sang-Joon Cho"
-  );
-  generate_program(
-    "10:10 AM - 11:00 AM",
-    "Invited Talks 1",
-    ""
-  );
-  generate_program(
-    "10:10 AM",
-    "Mr. John Yik",
-    "Micro Optics Technologies Pte Ltd, Singapore"
-  );
-  generate_program(
-    "10:35 AM",
-    "Dr. Jake Kim",
-    "Park Systems, Korea"
-  );
-  generate_program(
-    "11:00 AM",
-    "BREAK",
-    ""
-  );
-  generate_program(
-    "11:05 AM",
-    "Mr. Xin Lyu",
-    "Curtin University, Australia"
-  );
-  generate_program_last(
-    "11:30 AM - 12:00 PM",
-    "Featured Talk - Prof. Nam-joon Cho",
-    "Nanyang Technological University, Singapore"
-  );
-
-  generate_title("PM Session");
-  generate_program(
-    "2:30 PM – 3:00 PM",
-    "Keynote Talk - Prof. Simone Ruggeri",
-    "Wageningen University, Netherlands"
-  );
-  generate_program(
-    "3:00 PM – 4:20 PM",
-    "Invited Talks 2",
-    ""
-  );
-  generate_program(
-    "3:00 PM",
-    "Dr. Vladimir Korolkov",
-    "Park Systems, United Kingdom"
-  );
-  generate_program(
-    "3:25 PM",
-    "BREAK",
-    ""
-  );
-  generate_program(
-    "3:30 PM",
-    "Dr. Alok Ranjan",
-    "Singapore University of Technology and Design, Singapore"
-  );
-  generate_program(
-    "3:55 PM",
-    "Dr. Ashutosh Valavade",
-    "Park Systems, India"
-  );
-  generate_program_last(
-    "4:20 PM – 4:30 PM",
-    "Closing Message",
-    "Beng Seng Poo"
-  );
-
   /**
    * Don't fix below here.
    */
+  var cnt = 0;
+
   function generate_title(title) {
     jQuery(`
     <section class="timeline-wrap timeline-${cnt} m-20">
