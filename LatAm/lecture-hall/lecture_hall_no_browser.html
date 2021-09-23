@@ -44,11 +44,13 @@
     display: flex;
     flex-direction: column;
     background-color: #ebf5fc;
+    max-width: 275px;
+    margin-bottom: 15px;
     align-items: center;
     padding: 25px;
     border-radius: 15px;
     box-shadow: 3px 3px 12px #00000070;
-    margin-bottom: 15px;
+    text-align: center;
   }
 
   .card:not(:last-child) {
@@ -110,7 +112,6 @@
     $vcz_list.each(function () {
       var $this = this;
       var i = 0;
-      var browser_link = jQuery(".vczapi-btn-link")[card_idx].href;
       jQuery($this.children).each(function () {
         if (this.children.length === 0) {
           // text
@@ -131,12 +132,8 @@
           <a href="${metadata_arr[3]}"
           class="link-btn link-zoom-app" target="_blank">Join
           via Zoom App</a>
-          </div>
-          <div class="link-btn-wrap">
-            <a href="${browser_link}" target="_blank" class="link-btn"
-            class="browser_link">Join via browser</a>
-            </div>
-            </div>
+        </div>
+      </div>
       `);
       $card_template.appendTo($container);
       card_idx++;
