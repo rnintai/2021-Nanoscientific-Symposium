@@ -285,6 +285,10 @@
     height: 100%;
     opacity: 0.5;
   }
+
+  .poster-form {
+    display: none;
+  }
 </style>
 
 <script>
@@ -467,7 +471,7 @@
       $pdf_exit.addEventListener("click", hideIframe, false);
       $overlay.addEventListener("click", hideIframe, false)
       $pdf_exit.addEventListener("click", hideForm, false);
-      $overlay.addEventListener("click", hideForm, false)
+      $overlay.addEventListener("click", hideForm, false);
       document.querySelector(".gallery-wrap").addEventListener("dragstart", function (e) { resetGhost(e) }, false);
     }
 
