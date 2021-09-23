@@ -285,15 +285,6 @@
     height: 100%;
     opacity: 0.5;
   }
-
-  /* form */
-  .poster-1-form {
-    display: none;
-  }
-
-  .poster-1-form.display {
-    display: inline-block;
-  }
 </style>
 
 <script>
@@ -303,6 +294,7 @@
      **/
     var _index = 0,
       _gallery = [],
+      _form = [],
       $gallery = null,
       $prevBtn = null,
       $nextBtn = null,
@@ -325,7 +317,6 @@
      * transform Images
      **/
     function render() {
-      current_poster = jQuery(".poster-item.current")[0].classList[1].replace("p-", "");
       for (var i = 0; i < _gallery.length; i++) {
         if (i < _index) {
           _gallery[i].style[TRANSFORM] = `translate3d(-${X_OFFSET * (_index - i)}%, 0, -${Z_OFFSET * (_index - i)}px)`;
@@ -386,6 +377,9 @@
 
     function leftEvent(i) {
       _gallery[i].addEventListener("click", flowLeft, false);
+      // for(var i=0; i<_index - i; i++){
+
+      // }
     }
     function rightEvent(i) {
       _gallery[i].addEventListener("click", flowRight, false);
@@ -420,8 +414,22 @@
       $overlay.classList.toggle("active");
     }
 
-    function setQuestionButton() {
+    function hideForm() {
+      jQuery(".poster-form").each(function () {
+        jQuery(this).hide();
+      })
+    }
 
+    function setQuestionButton() {
+      current_poster = jQuery(".poster-item.current")[0].classList[1].replace("p-", "");
+      for (var i = 1; i <= _gallery.length; i++) {
+        jQuery(".fas.fa-question-circle").off("click");
+      }
+      jQuery(".fas.fa-question-circle").on("click", question_event);
+
+      function question_event() {
+        jQuery(`.poster-${current_poster}-form`).toggle();
+      }
     }
 
     function generatePoster(index, title, author, inst) {
@@ -458,6 +466,8 @@
       $gallery.addEventListener("dragover", dragOver, false);
       $pdf_exit.addEventListener("click", hideIframe, false);
       $overlay.addEventListener("click", hideIframe, false)
+      $pdf_exit.addEventListener("click", hideForm, false);
+      $overlay.addEventListener("click", hideForm, false)
       document.querySelector(".gallery-wrap").addEventListener("dragstart", function (e) { resetGhost(e) }, false);
     }
 
@@ -575,15 +585,22 @@
       $nextBtn = document.querySelector(".next-btn");
       $pdf_wrap = document.querySelector(".pdf-frame-wrap");
       $pdf = document.querySelector(".pdf-frame");
-      $pdf_exit = document.querySelector(".pdf-frame-wrap .fas")
+      $pdf_exit = document.querySelector(".pdf-frame-wrap .fas.fa-times-circle")
       $overlay = document.querySelector(".gallery-overlay")
 
       // load Content
       loadContent();
 
-      // add event listener
-      addEvents();
-      render();
+      window.addEventListener("DOMContentLoaded", function () {
+        // local var
+        _form = [].slice.call(document.querySelectorAll(".poster-form"));
+
+        // render poster
+        render();
+
+        // add event listener
+        addEvents();
+      })
     }
     init();
   })();
