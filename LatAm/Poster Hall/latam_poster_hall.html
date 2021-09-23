@@ -73,7 +73,7 @@
   <div class="pdf-frame-wrap">
     <iframe class="pdf-frame" frameborder="0">
     </iframe>
-
+    <i class="fas fa-question-circle"></i>
     <i class="fas fa-times-circle"></i>
   </div>
 </div>
@@ -261,6 +261,10 @@
     transition: opacity 0.3s ease-out
   }
 
+  .pdf-frame-wrap .fas.fa-question-circle {
+    left: 95%
+  }
+
   .pdf-frame-wrap .fas:hover {
     opacity: 1;
   }
@@ -281,6 +285,15 @@
     height: 100%;
     opacity: 0.5;
   }
+
+  /* form */
+  .poster-1-form {
+    display: none;
+  }
+
+  .poster-1-form.display {
+    display: inline-block;
+  }
 </style>
 
 <script>
@@ -299,6 +312,7 @@
       $overlay = null,
       _oldX = 0,
       counter = 0,
+      current_poster = null,
       TRANSFORM = "transform",
       X_OFFSET = 50,
       Z_OFFSET = 60,
@@ -311,6 +325,7 @@
      * transform Images
      **/
     function render() {
+      current_poster = jQuery(".poster-item.current")[0].classList[1].replace("p-", "");
       for (var i = 0; i < _gallery.length; i++) {
         if (i < _index) {
           _gallery[i].style[TRANSFORM] = `translate3d(-${X_OFFSET * (_index - i)}%, 0, -${Z_OFFSET * (_index - i)}px)`;
@@ -334,7 +349,7 @@
         }
       }
       setIframe();
-      setPageTitle();
+      setQuestionButton();
     }
 
     /**
@@ -359,8 +374,6 @@
       _gallery[i].removeEventListener("click", showIframe, false)
       _gallery[i].removeEventListener("click", flowLeft, false)
       _gallery[i].removeEventListener("click", flowRight, false)
-      // _gallery[i].removeEventListener("click", event => { flowLeft(i) }, false)
-      // _gallery[i].removeEventListener("click", event => { flowRight(i) }, false)
     }
 
     function showIframe() {
@@ -370,27 +383,12 @@
       $overlay.classList.toggle("active");
     }
 
-    function initPageTitle() {
-      document.querySelector("title").innerText += " - Poster 1"
-    }
-
-    function setPageTitle() {
-      var poster_num = document.querySelector(".poster-item.current").classList[1].replace("p-", "");
-      var title = document.querySelector("title").innerText;
-      document.querySelector("title").innerText = title.substring(0, title.length - 1) + poster_num;
-    }
 
     function leftEvent(i) {
       _gallery[i].addEventListener("click", flowLeft, false);
-      // _gallery[i].addEventListener("click", event => {
-      //   flowLeft(i);
-      // })
     }
     function rightEvent(i) {
       _gallery[i].addEventListener("click", flowRight, false);
-      // _gallery[i].addEventListener("click", event => {
-      //   flowRight();
-      // })
     }
 
     function flowLeft(i) {
@@ -422,6 +420,10 @@
       $overlay.classList.toggle("active");
     }
 
+    function setQuestionButton() {
+
+    }
+
     function generatePoster(index, title, author, inst) {
       var $content = jQuery(`
       <div class="item-wrap">
@@ -447,7 +449,7 @@
     }
 
     /**
-     * add eventlistener
+     * add static eventlistener
      **/
     function addEvents() {
       $prevBtn.addEventListener("click", flowLeft, false);
@@ -492,7 +494,6 @@
           counter = 0;
         }
       }
-      // console.log(counter);
       _oldX = dragX;
     }
 
@@ -568,9 +569,6 @@
       _gallery = [].slice.call(document.querySelectorAll(".poster-item"));
       _index = Math.floor(_gallery.length / 2);
 
-      // initialize page title
-      initPageTitle();
-
       // get DOM
       $gallery = document.querySelector(".gallery-wrap");
       $prevBtn = document.querySelector(".prev-btn");
@@ -587,7 +585,6 @@
       addEvents();
       render();
     }
-
     init();
   })();
 </script>
