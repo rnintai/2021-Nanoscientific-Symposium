@@ -3,27 +3,29 @@
 
 <script>
   var cnt = 0;
-  const foo = 3;
   const time_diff = new Date().getTimezoneOffset();
+  var program_arr = [];
+  var program_date = "";
 
   /**
    * USAGE
    * 
-   * PLEASE set time in UTC+0.
+   * PLEASE set program time in UTC+0.
    * 
    * Session Title:     
-   *  generate_title("session title")
+   *  generate_title("session title", "mmm dd"))
    * 
    * Program:           
-   *  generate_program("time", "program title", "description")
+   *  generate_program("UTC time", "program title", "description")
    * 
    * Program(last one): 
-   *  generate_program_last("time", "program title", "description")
+   *  generate_program_last("UTC time", "program title", "description")
    * 
    * DON'T forget to use 'generate_program_last' on last program!
-  */
+   */
+  const year = 2021;
 
-  generate_title("Day 1");
+  generate_title("Day 1", "Oct 14");
   generate_program(
     "04:00 PM",
     "Welcome Speech - Stefan Kaemmer",
@@ -90,7 +92,7 @@
     ""
   );
 
-  generate_title("Day 2");
+  generate_title("Day 2", "Oct 15");
   generate_program(
     "04:00 PM",
     "Prof. Emerson Silva",
@@ -106,11 +108,6 @@
     "Dr. Iván Ortega Blake",
     "Physics. Universidad Nacional Autónoma de México, MEXICO"
   );
-  //   generate_program(
-  //     "05:30 PM",
-  //     "",
-  //     ""
-  //   );
   generate_program(
     "05:40 PM",
     "Break",
@@ -160,7 +157,6 @@
   /**
    * Don't fix below here.
    */
-
   generate_timezone();
 
   function getTimeZone() {
@@ -168,9 +164,6 @@
       url: "http://ipinfo.io",
       dataType: "json",
       async: false,
-      success: function (data) {
-        console.log("suc");
-      },
       error: function (err) {
         console.log(err);
       }
@@ -179,7 +172,7 @@
 
   async function generate_timezone() {
     document.querySelectorAll(".cbp_tmtimeline").forEach(function ($this) {
-      $this.innerHTML = `<h3 class="timezone" style="text-align: left; margin: 0 0 30px 60px; font-size: 14px;"></h3>` + $this.innerHTML;
+      $this.innerHTML = `<h3 class="timezone" style="text-align: left; margin: 0 0 30px 2%; font-size: 14px;"></h3>` + $this.innerHTML;
     })
 
     const res = await getTimeZone();
@@ -187,7 +180,8 @@
     jQuery(".timezone").text(`Timezone: ${res.timezone}`);
   }
 
-  function generate_title(title) {
+  function generate_title(title, date) {
+    program_date = date;
     jQuery(`
     <section class="timeline-wrap timeline-${cnt} m-20">
       <table class="styled-table">
@@ -204,12 +198,7 @@
   }
 
   function generate_program(time, heading, desc) {
-    var time_arr = time.substring(0, 5).split(":");
-    var ampm = time.substr(5).trim().toLowerCase();
-    var hr = ampm === "pm" ? Number(time_arr[0]) + 12 : Number(time_arr[0]);
-    var mn = Number(time_arr[1]);
-
-    var optimized_date = new Date(foo, foo, foo, hr, mn);
+    var optimized_date = new Date(`${program_date} ${year} ${time}`)
 
     // modify time according to timezone of user
     optimized_date.setMinutes(optimized_date.getMinutes() - time_diff);
@@ -218,47 +207,48 @@
     new_hr = new_hr < 10 ? "0" + new_hr : new_hr;
     var new_mn = optimized_date.getMinutes() < 10 ? "0" + optimized_date.getMinutes() : optimized_date.getMinutes();
     var new_ampm = optimized_date.getHours() > 12 ? "PM" : "AM";
+    const date_arr = optimized_date.toDateString().split(" ");
+    var date =
+      date_arr
+        .filter(data => data === date_arr[1] || data === date_arr[2])
 
-    jQuery(`
-    <li>
-      <time class="cbp_tmtime"><span>${new_hr}:${new_mn} ${new_ampm}</span></time>
-      <div class="cbp_tmicon"></div>
-      <div class="cbp_tmlabel">
-        <h2>${heading}</h2>
-        <p>${desc}</p>
-      </div>
-    </li>
-    `)
-      .appendTo(jQuery(jQuery(".cbp_tmtimeline")[cnt]));
+    program_arr.push({
+      time: `${new_hr}:${new_mn} ${new_ampm}`,
+      date,
+      heading,
+      desc
+    })
+  }
+  function generate_program_last(time, heading, desc) {
+    generate_program(time, heading, desc);
+    append_programs();
   }
 
-  function generate_program_last(time, heading, desc) {
-    var time_arr = time.substring(0, 5).split(":");
-    var ampm = time.substr(5).trim().toLowerCase();
-    var hr = ampm === "pm" ? Number(time_arr[0]) + 12 : Number(time_arr[0]);
-    var mn = Number(time_arr[1]);
 
-    var optimized_date = new Date(foo, foo, foo, hr, mn);
-
-    // modify time according to timezone of user
-    optimized_date.setMinutes(optimized_date.getMinutes() - time_diff);
-
-    var new_hr = optimized_date.getHours() > 12 ? optimized_date.getHours() - 12 : optimized_date.getHours();
-    new_hr = new_hr < 10 ? "0" + new_hr : new_hr;
-    var new_mn = optimized_date.getMinutes() < 10 ? "0" + optimized_date.getMinutes() : optimized_date.getMinutes();
-    var new_ampm = optimized_date.getHours() > 12 ? "PM" : "AM";
-
-    jQuery(`
-    <li class="last-program">
-      <time class="cbp_tmtime"><span>${new_hr}:${new_mn} ${new_ampm}</span></time>
-      <div class="cbp_tmicon"></div>
-      <div class="cbp_tmlabel">
-        <h2>${heading}</h2>
-        <p>${desc}</p>
-      </div>
-    </li>
-    `).appendTo(jQuery(jQuery(".cbp_tmtimeline")[cnt]));
+  function append_programs() {
+    var prev_data = program_arr[0];
+    var title_date = prev_data.date.join(" ");
+    while (program_arr.length > 0) {
+      var data = program_arr[0];
+      if (prev_data.date[1] !== data.date[1]) {
+        title_date = data.date.join(" ");
+      }
+      jQuery(`
+      <li>
+        <time class="cbp_tmtime"><span>${title_date} ${data.time}</span></time>
+        <div class="cbp_tmicon"></div>
+        <div class="cbp_tmlabel">
+          <h2>${data.heading}</h2>
+          <p>${data.desc}</p>
+          </div>
+          </li>
+          `)
+        .appendTo(jQuery(jQuery(".cbp_tmtimeline")[cnt]));
+      prev_data = program_arr.shift();
+      title_date = "";
+    }
     cnt++;
+    program_arr = [];
   }
 </script>
 

@@ -1,29 +1,31 @@
 <article class="program-wrap">
 </article>
+
 <script>
   var cnt = 0;
-  const foo = 3;
   const time_diff = new Date().getTimezoneOffset();
-
+  var program_arr = [];
+  var program_date = "";
 
   /**
    * USAGE
    * 
-   * PLEASE set time in UTC+0.
+   * PLEASE set program time in UTC+0.
    * 
    * Session Title:     
-   *  generate_title("session title")
+   *  generate_title("session title", "mmm dd")
    * 
    * Program:           
-   *  generate_program("time", "program title", "description")
+   *  generate_program("UTC time", "program title", "description")
    * 
    * Program(last one): 
-   *  generate_program_last("time", "program title", "description")
+   *  generate_program_last("UTC time", "program title", "description")
    * 
    * DON'T forget to use 'generate_program_last' on last program!
    */
+  const year = 2021;
 
-  generate_title("October 28, Thursday: Plenary Session");
+  generate_title("October 28, Thursday: Plenary Session", "Oct 28");
   generate_program(
     "10:00 AM",
     "Welcome Message",
@@ -64,7 +66,7 @@
     "Prof. Nam-joon Cho, Nanyang Technological University (Singapore)"
   );
 
-  generate_title("October 28, Thursday: Plenary Session");
+  generate_title("October 28, Thursday: Plenary Session", "Oct 28");
   generate_program(
     "2:30 PM",
     "KEYNOTE TALK - Single Molecule Structural and Chemical Characterisation of Protein Self-Assembly",
@@ -104,7 +106,6 @@
   /**
    * Don't fix below here.
    */
-
   generate_timezone();
 
   function getTimeZone() {
@@ -112,9 +113,6 @@
       url: "http://ipinfo.io",
       dataType: "json",
       async: false,
-      success: function (data) {
-        console.log("suc");
-      },
       error: function (err) {
         console.log(err);
       }
@@ -123,80 +121,35 @@
 
   async function generate_timezone() {
     document.querySelectorAll(".cbp_tmtimeline").forEach(function ($this) {
-      $this.innerHTML = `<h3 class="timezone" style="text-align: left; margin: 0 0 30px 60px; font-size: 14px;"></h3>` + $this.innerHTML;
+      $this.innerHTML = `<h3 class="timezone" style="text-align: left; margin: 0 0 30px 2%; font-size: 14px;"></h3>` + $this.innerHTML;
     })
 
     const res = await getTimeZone();
+
     jQuery(".timezone").text(`Timezone: ${res.timezone}`);
   }
 
-  function generate_title(title) {
+  function generate_title(title, date) {
+    program_date = date;
     jQuery(`
-    <section class="timeline-wrap timeline-${cnt} m-20">
-      <table class="styled-table">
-        <tr class="styled-tr">
-          <td>${title}
-        </tr>
-      </table>
-
-      <ul class="cbp_tmtimeline">
-      </ul>
-    </section>
-    `)
+      <section class="timeline-wrap timeline-${cnt} m-20">
+        <table class="styled-table">
+          <tr class="styled-tr">
+            <td>${title}
+          </tr>
+        </table>
+  
+        <ul class="cbp_tmtimeline">
+        </ul>
+      </section>
+      `)
       .appendTo(".program-wrap");
   }
 
   function generate_program(time, heading, desc) {
-    if (time !== "") {
-      var time_arr = time.substring(0, 5).split(":");
-      var ampm = time.substr(5).trim().toLowerCase();
-      var hr = ampm === "pm" ? Number(time_arr[0]) + 12 : Number(time_arr[0]);
-      var mn = Number(time_arr[1]);
+    var new_time = "";
 
-      var optimized_date = new Date(foo, foo, foo, hr, mn);
-
-      // modify time according to timezone of user
-      optimized_date.setMinutes(optimized_date.getMinutes() - time_diff);
-
-      var new_hr = optimized_date.getHours() > 12 ? optimized_date.getHours() - 12 : optimized_date.getHours();
-      new_hr = new_hr < 10 ? "0" + new_hr : new_hr;
-      var new_mn = optimized_date.getMinutes() < 10 ? "0" + optimized_date.getMinutes() : optimized_date.getMinutes();
-      var new_ampm = optimized_date.getHours() > 12 ? "PM" : "AM";
-
-      jQuery(`
-      <li>
-        <time class="cbp_tmtime"><span>${new_hr}:${new_mn} ${new_ampm}</span></time>
-        <div class="cbp_tmicon"></div>
-        <div class="cbp_tmlabel">
-          <h2>${heading}</h2>
-          <p>${desc}</p>
-        </div>
-      </li>
-      `)
-        .appendTo(jQuery(jQuery(".cbp_tmtimeline")[cnt]));
-    }
-    else {
-      jQuery(`
-      <li>
-        <time class="cbp_tmtime"><span></span></time>
-        <div class="cbp_tmicon"></div>
-        <div class="cbp_tmlabel">
-          <h2>${heading}</h2>
-          <p>${desc}</p>
-        </div>
-      </li>
-      `)
-        .appendTo(jQuery(jQuery(".cbp_tmtimeline")[cnt]));
-    }
-  }
-
-  function generate_program_last(time, heading, desc) {
-    var time_arr = time.substring(0, 5).split(":");
-    var ampm = time.substr(5).trim().toLowerCase();
-    var hr = ampm === "pm" ? Number(time_arr[0]) + 12 : Number(time_arr[0]);
-    var mn = Number(time_arr[1]);
-
-    var optimized_date = new Date(foo, foo, foo, hr, mn);
+    var optimized_date = new Date(`${program_date} ${year} ${time}`)
 
     // modify time according to timezone of user
     optimized_date.setMinutes(optimized_date.getMinutes() - time_diff);
@@ -205,35 +158,68 @@
     new_hr = new_hr < 10 ? "0" + new_hr : new_hr;
     var new_mn = optimized_date.getMinutes() < 10 ? "0" + optimized_date.getMinutes() : optimized_date.getMinutes();
     var new_ampm = optimized_date.getHours() > 12 ? "PM" : "AM";
+    const date_arr = optimized_date.toDateString().split(" ");
+    var date =
+      date_arr
+        .filter(data => data === date_arr[1] || data === date_arr[2])
+    new_time = time !== "" ? `${new_hr}:${new_mn} ${new_ampm}` : "";
 
-    jQuery(`
-    <li class="last-program">
-      <time class="cbp_tmtime"><span>${new_hr}:${new_mn} ${new_ampm}</span></time>
-      <div class="cbp_tmicon"></div>
-      <div class="cbp_tmlabel">
-        <h2>${heading}</h2>
-        <p>${desc}</p>
-      </div>
-    </li>
-    `).appendTo(jQuery(jQuery(".cbp_tmtimeline")[cnt]));
+
+
+    program_arr.push({
+      time: new_time,
+      date,
+      heading,
+      desc
+    })
+
+  }
+  function generate_program_last(time, heading, desc) {
+    generate_program(time, heading, desc);
+    append_programs();
+  }
+
+  function append_programs() {
+    var prev_data = program_arr[0];
+    var title_date = prev_data.date.join(" ");
+    while (program_arr.length > 0) {
+      var data = program_arr[0];
+      console.log(data.date);
+      if (prev_data.date[1] !== data.date[1]) {
+        title_date = data.date.join(" ");
+      }
+      jQuery(`
+        <li>
+          <time class="cbp_tmtime"><span>${title_date} ${data.time}</span></time>
+          <div class="cbp_tmicon"></div>
+          <div class="cbp_tmlabel">
+            <h2>${data.heading}</h2>
+            <p>${data.desc}</p>
+            </div>
+            </li>
+            `)
+        .appendTo(jQuery(jQuery(".cbp_tmtimeline")[cnt]));
+      prev_data = program_arr.shift();
+      title_date = "";
+    }
     cnt++;
+    program_arr = [];
   }
 </script>
+
 <style>
   .m-20 {
     margin: 20px;
   }
 
   .program-wrap {
-    margin-top: 60px;
+    margin-top: 120px;
   }
 
   .styled-table {
     font-size: 3rem;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
-    font-family: 'Noto Sans KR', sans-serif;
     background-color: #009FE8;
-    font-family: 900;
     color: #ffffff;
     margin: auto;
     text-align: center;
@@ -244,17 +230,11 @@
     margin: 20px;
   }
 
-  * {
-    font-family: 'Noto Sans KR', sans-serif;
-    font-family: 500;
-  }
-
   .cbp_tmtimeline {
     margin: 30px 0 0 0;
     padding: 0;
     list-style: none;
     position: relative;
-
   }
 
   p {
