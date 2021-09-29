@@ -183,7 +183,7 @@
   function generate_title(title, date) {
     program_date = date;
     jQuery(`
-    <section class="timeline-wrap timeline-${cnt} m-20">
+    <section class="timeline-wrap timeline-${cnt}" style="margin: 20px 20px 50px 20px">
       <table class="styled-table">
         <tr class="styled-tr">
           <td>${title}
@@ -219,11 +219,11 @@
       desc
     })
   }
+
   function generate_program_last(time, heading, desc) {
     generate_program(time, heading, desc);
     append_programs();
   }
-
 
   function append_programs() {
     var prev_data = program_arr[0];
@@ -253,10 +253,6 @@
 </script>
 
 <style>
-  .m-20 {
-    margin: 20px;
-  }
-
   .program-wrap {
     margin-top: 120px;
   }
@@ -475,9 +471,5 @@
       left: auto;
       margin: -55px 5px 0 0px;
     }
-  }
-
-  .last-program {
-    margin-bottom: 50px
   }
 </style>

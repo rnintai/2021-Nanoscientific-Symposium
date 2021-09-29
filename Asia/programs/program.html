@@ -132,7 +132,7 @@
   function generate_title(title, date) {
     program_date = date;
     jQuery(`
-      <section class="timeline-wrap timeline-${cnt} m-20">
+      <section class="timeline-wrap timeline-${cnt}" style="margin: 20px 20px 50px 20px">
         <table class="styled-table">
           <tr class="styled-tr">
             <td>${title}
@@ -190,7 +190,7 @@
       }
       jQuery(`
         <li>
-          <time class="cbp_tmtime"><span>${title_date} ${data.time}</span></time>
+          <time class="cbp_tmtime"><span>${title_date} ${data.time} </span></time>
           <div class="cbp_tmicon"></div>
           <div class="cbp_tmlabel">
             <h2>${data.heading}</h2>
@@ -208,10 +208,6 @@
 </script>
 
 <style>
-  .m-20 {
-    margin: 20px;
-  }
-
   .program-wrap {
     margin-top: 120px;
   }
@@ -430,9 +426,5 @@
       left: auto;
       margin: -55px 5px 0 0px;
     }
-  }
-
-  .last-program {
-    margin-bottom: 50px
   }
 </style>
