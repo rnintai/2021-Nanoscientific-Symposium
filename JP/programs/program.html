@@ -1,0 +1,475 @@
+<article class="program-wrap">
+</article>
+
+<script>
+  var cnt = 0;
+  const time_diff = new Date().getTimezoneOffset();
+  var program_arr = [];
+  var program_date = "";
+
+  /**
+   * USAGE
+   * 
+   * PLEASE set program time in UTC+0.
+   * 
+   * Session Title:     
+   *  generate_title("session title", "mmm dd"))
+   * 
+   * Program:           
+   *  generate_program("UTC time", "program title", "description")
+   * 
+   * Program(last one): 
+   *  generate_program_last("UTC time", "program title", "description")
+   * 
+   * DON'T forget to use 'generate_program_last' on last program!
+   */
+  const year = 2021;
+
+  generate_title("Day 1", "Oct 14");
+  generate_program(
+    "04:00 PM",
+    "Welcome Speech - Stefan Kaemmer",
+    "President, Park Systems"
+  );
+  generate_program(
+    "04:10 PM",
+    "Marine Le Bouar",
+    "CEO Nanotechnology World Associations & sponsor NanoScientific Symposium"
+  );
+  generate_program(
+    "04:30 PM",
+    "The Nexus between Nanotechnology and Society 5.0 - Phil Kazuba",
+    "Senior Member of Technical Staffand Lead Engineer, Scanning Probe Microscope Laboratory, Global Foundries (SFM)"
+  );
+  generate_program(
+    "05:00 PM",
+    "Leandro A. Berti",
+    "CEO of FIBER INOVA and President of BrasilNano (Brazilian Nanotechnology Association), BRAZIL"
+  );
+  generate_program(
+    "05:30 PM",
+    "Dr. Carlos Alberto Rodrigues Costa",
+    "Nanotechnology. Brazilian Nanotechnology National Laboratory, BRAZIL"
+  );
+  generate_program(
+    "06:00 PM",
+    "Nanostructuring Electrochemical Patterning - Dr. Rigoberto Advincula",
+    "Department of Chemical & Biomolecular Engineering. Department of Chemical & Biomolecular Engineering University of Tennessee. USA."
+  );
+  generate_program(
+    "06:30 PM",
+    "Ben Schoenek",
+    "Park Systems"
+  );
+  generate_program(
+    "06:40 PM",
+    "Break",
+    ""
+  );
+  generate_program(
+    "07:00 PM",
+    "Dr. Giovanni Sáenz-Arce",
+    "Materials Science.  Universidad Nacional, COSTA RICA"
+  );
+  generate_program(
+    "07:30 PM",
+    "Dr. Santiago Casado Rojo",
+    "Nanoparticules | Nanostructures. Universidad Técnica de Ambato, ECUADOR"
+  );
+  generate_program(
+    "08:00 PM",
+    "Atomistic simulation of AFM and STM imaging including an experimentally defined tip - CEO Prof. Guo",
+    "Nanotechnology. Nanoacademic Technologies, Inc."
+  );
+  generate_program(
+    "08:20 PM",
+    "Electrical and Surface Characterization of Ga-Assisted MBE Grown Be-Doped GaAs Nanowires and Te-Doped GaAsSb Nanowires for Infrared Photodetector Application - Priyanka Ramaswamy",
+    "Nanoengineering. Department of Electrical and Computer Engineering, North Carolina A&T State University, Greensboro"
+  );
+  generate_program_last(
+    "08:40 PM",
+    "Raffle 1",
+    ""
+  );
+
+  generate_title("Day 2", "Oct 15");
+  generate_program(
+    "04:00 PM",
+    "Prof. Emerson Silva",
+    "Biophysics. Universidad Federal de São Paulo, UNIFESP, BRAZIL"
+  );
+  generate_program(
+    "04:30 PM",
+    "Dr. Jorge Chanona Pérez",
+    "Nanotechnology. Instituto Politécnico Nacional, MEXICO"
+  );
+  generate_program(
+    "05:00 PM",
+    "Dr. Iván Ortega Blake",
+    "Physics. Universidad Nacional Autónoma de México, MEXICO"
+  );
+  generate_program(
+    "05:40 PM",
+    "Break",
+    ""
+  );
+  generate_program(
+    "06:00 PM",
+    "Dr. Samuel Hevia",
+    "Physics. Pontificia Universidad Católica de Chile"
+  );
+  generate_program(
+    "06:30 PM",
+    "Dr. Arturo Galván-Hernández",
+    "Physics. Universidad Nacional Autónoma de México, MEXICO"
+  );
+  generate_program(
+    "07:00 PM",
+    "Dr. Anderson Dussan-Cuenca",
+    "Physics. Universidad Nacional, COLOMBIA"
+  );
+  generate_program(
+    "07:30 PM",
+    "Dr. Jose Juan Gervacio Arciniega",
+    "Physics. Benemérita Universidad Autónoma de Puebla BUAP, MEXICO"
+  );
+  generate_program(
+    "08:00 PM",
+    "ISO TECHNICAL STANDARDS AND LEGAL RISK MANAGEMENT OF THE NANOSCALE - Wilson Engelmann and Patrícia Santos Martins",
+    ""
+  );
+  generate_program(
+    "08:20 PM",
+    "Molecular origin of the extreme mechanical strength of an ester bond containing pathogen surface protein - Prof. Yi Cao",
+    "Biomedical medicine. Nanjic University China, Institute of Biomedical Medicine"
+  );
+  generate_program(
+    "08:40 PM",
+    "Raffle 2",
+    ""
+  );
+  generate_program_last(
+    "09:00 PM",
+    "Closure - Stefan Kaemmer",
+    "President, Park Systems"
+  );
+
+  /**
+   * Don't fix below here.
+   */
+  generate_timezone();
+
+  function getTimeZone() {
+    return jQuery.ajax({
+      url: "http://ipinfo.io",
+      dataType: "json",
+      async: false,
+      error: function (err) {
+        console.log(err);
+      }
+    })
+  }
+
+  async function generate_timezone() {
+    document.querySelectorAll(".cbp_tmtimeline").forEach(function ($this) {
+      $this.innerHTML = `<h3 class="timezone" style="text-align: left; margin: 0 0 30px 2%; font-size: 14px;"></h3>` + $this.innerHTML;
+    })
+
+    const res = await getTimeZone();
+
+    jQuery(".timezone").text(`Timezone: ${res.timezone}`);
+  }
+
+  function generate_title(title, date) {
+    program_date = date;
+    jQuery(`
+    <section class="timeline-wrap timeline-${cnt}" style="margin: 20px 20px 50px 20px">
+      <table class="styled-table">
+        <tr class="styled-tr">
+          <td>${title}
+        </tr>
+      </table>
+
+      <ul class="cbp_tmtimeline">
+      </ul>
+    </section>
+    `)
+      .appendTo(".program-wrap");
+  }
+
+  function generate_program(time, heading, desc) {
+    var optimized_date = new Date(`${program_date} ${year} ${time}`)
+
+    // modify time according to timezone of user
+    optimized_date.setMinutes(optimized_date.getMinutes() - time_diff);
+
+    var new_hr = optimized_date.getHours() > 12 ? optimized_date.getHours() - 12 : optimized_date.getHours();
+    new_hr = new_hr < 10 ? "0" + new_hr : new_hr;
+    var new_mn = optimized_date.getMinutes() < 10 ? "0" + optimized_date.getMinutes() : optimized_date.getMinutes();
+    var new_ampm = optimized_date.getHours() > 12 ? "PM" : "AM";
+    const date_arr = optimized_date.toDateString().split(" ");
+    var date =
+      date_arr
+        .filter(data => data === date_arr[1] || data === date_arr[2])
+
+    program_arr.push({
+      time: `${new_hr}:${new_mn} ${new_ampm}`,
+      date,
+      heading,
+      desc
+    })
+  }
+
+  function generate_program_last(time, heading, desc) {
+    generate_program(time, heading, desc);
+    append_programs();
+  }
+
+  function append_programs() {
+    var prev_data = program_arr[0];
+    var title_date = prev_data.date.join(" ");
+    while (program_arr.length > 0) {
+      var data = program_arr[0];
+      if (prev_data.date[1] !== data.date[1]) {
+        title_date = data.date.join(" ");
+      }
+      jQuery(`
+      <li>
+        <time class="cbp_tmtime"><span>${title_date} ${data.time}</span></time>
+        <div class="cbp_tmicon"></div>
+        <div class="cbp_tmlabel">
+          <h2>${data.heading}</h2>
+          <p>${data.desc}</p>
+          </div>
+          </li>
+          `)
+        .appendTo(jQuery(jQuery(".cbp_tmtimeline")[cnt]));
+      prev_data = program_arr.shift();
+      title_date = "";
+    }
+    cnt++;
+    program_arr = [];
+  }
+</script>
+
+<style>
+  .program-wrap {
+    margin-top: 120px;
+  }
+
+  .styled-table {
+    font-size: 3rem;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+    background-color: #009FE8;
+    color: #ffffff;
+    margin: auto;
+    text-align: center;
+  }
+
+  .styled-tr {
+    padding: 10px 20px;
+    margin: 20px;
+  }
+
+  .cbp_tmtimeline {
+    margin: 30px 0 0 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+  }
+
+  p {
+    line-height: 120%;
+  }
+
+  /* The line */
+  .cbp_tmtimeline:before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    bottom: 0;
+    width: 4px;
+    background: #fff;
+    left: 19.9%;
+    margin-top: 20px;
+    margin-left: -10px;
+  }
+
+  .cbp_tmtimeline>li {
+    position: relative;
+  }
+
+  /* The date/time */
+  .cbp_tmtimeline>li .cbp_tmtime {
+    display: block;
+    width: 25%;
+
+    padding-right: 100px;
+    position: absolute;
+
+  }
+
+
+  .cbp_tmtimeline>li .cbp_tmtime span {
+    display: block;
+    text-align: right;
+
+
+  }
+
+  .cbp_tmtimeline>li .cbp_tmtime span:first-child {
+    font-size: 0.9em;
+
+    color: #009FE8;
+  }
+
+  /* time */
+
+  .cbp_tmtimeline>li .cbp_tmtime span:last-child {
+    position: relative;
+    top: 2rem;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #009FE8;
+  }
+
+  .cbp_tmtimeline>li:nth-child(odd) .cbp_tmtime span:last-child {
+
+    color: #009FE8;
+
+  }
+
+  /* card margin */
+  .cbp_tmtimeline>li .cbp_tmlabel {
+    border-left: 4px solid #009FE8;
+    margin: 0 0 20px 25%;
+    background: #fff;
+    color: #000;
+    padding: 1.2em;
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 1.2;
+
+    position: relative;
+  }
+
+  .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel {
+    background: #fff;
+    border-left: 4px solid #009FE8;
+  }
+
+  .cbp_tmtimeline>li.cbp_tmlabel h2 {
+    margin-top: 0px;
+    padding: 0 0 10px 0;
+    border-bottom: 0px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .cbp_tmtimeline>li.cbp_tmlabel p {
+    margin-top: 0px;
+    padding: 0 0 30px 0;
+    border-bottom: 0px solid rgba(255, 255, 255, 0.4);
+  }
+
+
+  /* The triangle */
+  .cbp_tmtimeline>li .cbp_tmlabel:after {
+    right: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-right-color: #009FE8;
+    border-width: 20px;
+    top: 16px;
+  }
+
+  .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel:after {
+    border-right-color: #009FE8;
+  }
+
+  /* The icons */
+  .cbp_tmtimeline>li .cbp_tmicon {
+    width: 30px;
+    height: 30px;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    font-size: 1.4em;
+    line-height: 40px;
+    -webkit-font-smoothing: antialiased;
+    position: absolute;
+    color: #fff;
+    background: #009FE8;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px #FFF;
+    text-align: center;
+    left: 20%;
+    top: 20px;
+    margin: 0 0 0 -25px;
+  }
+
+
+  /* Example Media Queries */
+  @media screen and (max-width: 65.375em) {
+
+    .cbp_tmtimeline>li .cbp_tmtime span:last-child {
+      font-size: 1.0em;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .cbp_tmicon {
+      display: none;
+    }
+
+    .cbp_tmlabel::after {
+      display: none;
+    }
+
+    .cbp_tmtimeline:before {
+      display: none;
+    }
+
+    .cbp_tmtimeline>li .cbp_tmtime {
+      width: 100%;
+      position: relative;
+      padding: 0 0 20px 0;
+    }
+
+    .cbp_tmtimeline>li .cbp_tmtime span {
+      text-align: left;
+
+    }
+
+    .cbp_tmtimeline>li .cbp_tmlabel {
+      margin: 0 0 30px 0;
+      padding: 1em;
+      font-weight: 400;
+      font-size: 95%;
+    }
+
+    .cbp_tmtimeline>li .cbp_tmlabel:after {
+      right: auto;
+      left: 20px;
+      border-right-color: transparent;
+      border-bottom-color: #009FE8;
+      top: -20px;
+    }
+
+    .cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel:after {
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left: 4px solid #009FE8;
+    }
+
+    .cbp_tmtimeline>li .cbp_tmicon {
+      position: relative;
+      float: right;
+      left: auto;
+      margin: -55px 5px 0 0px;
+    }
+  }
+</style>
