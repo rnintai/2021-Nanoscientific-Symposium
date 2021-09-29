@@ -79,9 +79,11 @@
   }
 
   async function generate_timezone() {
-    document.querySelectorAll(".cbp_tmtimeline").forEach(function ($this) {
-      $this.innerHTML = `<h3 class="timezone" style="text-align: left; margin: 0 0 30px 2%; font-size: 14px;"></h3>` + $this.innerHTML;
-    })
+    jQuery(".cbp_tmtimeline").each(function ($this) {
+      console.log(this);
+      var $timeline_markup = jQuery(`<h3 class="timezone" style="font-size: 14px; text-align:right;"></h3>`);
+      $timeline_markup.appendTo(this.children[0].querySelector(".cbp_tmtime"));
+    });
 
     const res = await getTimeZone();
 
@@ -143,7 +145,10 @@
       }
       jQuery(`
       <li>
-        <time class="cbp_tmtime"><span>${title_date} ${data.time}</span></time>
+        <time class="cbp_tmtime">
+          <span style="display: block; text-align: right; font-size: 1.4em; font-weight: 600; color: #009FE8; line-height:1.1;">${title_date}</span>
+          <span style="display: block; text-align: right; font-size: 1.2em; font-weight: 600; color: #009FE8;">${data.time}</span>
+        </time>
         <div class="cbp_tmicon"></div>
         <div class="cbp_tmlabel">
           <h2>${data.heading}</h2>
@@ -214,36 +219,6 @@
 
     padding-right: 100px;
     position: absolute;
-
-  }
-
-
-  .cbp_tmtimeline>li .cbp_tmtime span {
-    display: block;
-    text-align: right;
-
-
-  }
-
-  .cbp_tmtimeline>li .cbp_tmtime span:first-child {
-    font-size: 0.9em;
-
-    color: #009FE8;
-  }
-
-  /* time */
-
-  .cbp_tmtimeline>li .cbp_tmtime span:last-child {
-    position: relative;
-    top: 2rem;
-    font-size: 1.2em;
-    font-weight: 600;
-    color: #009FE8;
-  }
-
-  .cbp_tmtimeline>li:nth-child(odd) .cbp_tmtime span:last-child {
-
-    color: #009FE8;
 
   }
 

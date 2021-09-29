@@ -13,7 +13,7 @@
    * PLEASE set program time in UTC+0.
    * 
    * Session Title:     
-   *  generate_title("session title", "mmm dd")
+   *  generate_title("session title", "mmm dd"))
    * 
    * Program:           
    *  generate_program("UTC time", "program title", "description")
@@ -120,9 +120,11 @@
   }
 
   async function generate_timezone() {
-    document.querySelectorAll(".cbp_tmtimeline").forEach(function ($this) {
-      $this.innerHTML = `<h3 class="timezone" style="text-align: left; margin: 0 0 30px 2%; font-size: 14px;"></h3>` + $this.innerHTML;
-    })
+    jQuery(".cbp_tmtimeline").each(function ($this) {
+      console.log(this);
+      var $timeline_markup = jQuery(`<h3 class="timezone" style="font-size: 14px; text-align:right;"></h3>`);
+      $timeline_markup.appendTo(this.children[0].querySelector(".cbp_tmtime"));
+    });
 
     const res = await getTimeZone();
 
@@ -132,23 +134,21 @@
   function generate_title(title, date) {
     program_date = date;
     jQuery(`
-      <section class="timeline-wrap timeline-${cnt}" style="margin: 20px 20px 50px 20px">
-        <table class="styled-table">
-          <tr class="styled-tr">
-            <td>${title}
-          </tr>
-        </table>
-  
-        <ul class="cbp_tmtimeline">
-        </ul>
-      </section>
-      `)
+    <section class="timeline-wrap timeline-${cnt}" style="margin: 20px 20px 50px 20px">
+      <table class="styled-table">
+        <tr class="styled-tr">
+          <td>${title}
+        </tr>
+      </table>
+
+      <ul class="cbp_tmtimeline">
+      </ul>
+    </section>
+    `)
       .appendTo(".program-wrap");
   }
 
   function generate_program(time, heading, desc) {
-    var new_time = "";
-
     var optimized_date = new Date(`${program_date} ${year} ${time}`)
 
     // modify time according to timezone of user
@@ -162,18 +162,15 @@
     var date =
       date_arr
         .filter(data => data === date_arr[1] || data === date_arr[2])
-    new_time = time !== "" ? `${new_hr}:${new_mn} ${new_ampm}` : "";
-
-
 
     program_arr.push({
-      time: new_time,
+      time: `${new_hr}:${new_mn} ${new_ampm}`,
       date,
       heading,
       desc
     })
-
   }
+
   function generate_program_last(time, heading, desc) {
     generate_program(time, heading, desc);
     append_programs();
@@ -184,20 +181,22 @@
     var title_date = prev_data.date.join(" ");
     while (program_arr.length > 0) {
       var data = program_arr[0];
-      console.log(data.date);
       if (prev_data.date[1] !== data.date[1]) {
         title_date = data.date.join(" ");
       }
       jQuery(`
-        <li>
-          <time class="cbp_tmtime"><span>${title_date} ${data.time} </span></time>
-          <div class="cbp_tmicon"></div>
-          <div class="cbp_tmlabel">
-            <h2>${data.heading}</h2>
-            <p>${data.desc}</p>
-            </div>
-            </li>
-            `)
+      <li>
+        <time class="cbp_tmtime">
+          <span style="display: block; text-align: right; font-size: 1.4em; font-weight: 600; color: #009FE8; line-height:1.1;">${title_date}</span>
+          <span style="display: block; text-align: right; font-size: 1.2em; font-weight: 600; color: #009FE8;">${data.time}</span>
+        </time>
+        <div class="cbp_tmicon"></div>
+        <div class="cbp_tmlabel">
+          <h2>${data.heading}</h2>
+          <p>${data.desc}</p>
+          </div>
+          </li>
+          `)
         .appendTo(jQuery(jQuery(".cbp_tmtimeline")[cnt]));
       prev_data = program_arr.shift();
       title_date = "";
@@ -261,36 +260,6 @@
 
     padding-right: 100px;
     position: absolute;
-
-  }
-
-
-  .cbp_tmtimeline>li .cbp_tmtime span {
-    display: block;
-    text-align: right;
-
-
-  }
-
-  .cbp_tmtimeline>li .cbp_tmtime span:first-child {
-    font-size: 0.9em;
-
-    color: #009FE8;
-  }
-
-  /* time */
-
-  .cbp_tmtimeline>li .cbp_tmtime span:last-child {
-    position: relative;
-    top: 2rem;
-    font-size: 1.2em;
-    font-weight: 600;
-    color: #009FE8;
-  }
-
-  .cbp_tmtimeline>li:nth-child(odd) .cbp_tmtime span:last-child {
-
-    color: #009FE8;
 
   }
 
