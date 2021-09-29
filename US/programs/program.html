@@ -10,8 +10,6 @@
   /**
    * USAGE
    * 
-   * PLEASE set program time in UTC+0.
-   * 
    * Session Title:     
    *  generate_title("session title", "mmm dd"))
    * 
@@ -23,133 +21,134 @@
    * 
    * DON'T forget to use 'generate_program_last' on last program!
    */
-  const year = 2021;
+  const year = 2022;
+  const NSS_TIMEZONE = -300; // (in Minute) UTC-5: Chicago
 
-  generate_title("Day 1", "Oct 14");
+  generate_title("Day 1", "Mar 24");
   generate_program(
-    "04:00 PM",
+    "01:00 PM",
     "Welcome Speech - Stefan Kaemmer",
     "President, Park Systems"
   );
   generate_program(
-    "04:10 PM",
+    "01:10 PM",
     "Marine Le Bouar",
     "CEO Nanotechnology World Associations & sponsor NanoScientific Symposium"
   );
   generate_program(
-    "04:30 PM",
+    "01:30 PM",
     "The Nexus between Nanotechnology and Society 5.0 - Phil Kazuba",
     "Senior Member of Technical Staffand Lead Engineer, Scanning Probe Microscope Laboratory, Global Foundries (SFM)"
   );
   generate_program(
-    "05:00 PM",
+    "02:00 PM",
     "Leandro A. Berti",
     "CEO of FIBER INOVA and President of BrasilNano (Brazilian Nanotechnology Association), BRAZIL"
   );
   generate_program(
-    "05:30 PM",
+    "02:30 PM",
     "Dr. Carlos Alberto Rodrigues Costa",
     "Nanotechnology. Brazilian Nanotechnology National Laboratory, BRAZIL"
   );
   generate_program(
-    "06:00 PM",
+    "03:00 PM",
     "Nanostructuring Electrochemical Patterning - Dr. Rigoberto Advincula",
     "Department of Chemical & Biomolecular Engineering. Department of Chemical & Biomolecular Engineering University of Tennessee. USA."
   );
   generate_program(
-    "06:30 PM",
+    "03:30 PM",
     "Ben Schoenek",
     "Park Systems"
   );
   generate_program(
-    "06:40 PM",
+    "03:40 PM",
     "Break",
     ""
   );
   generate_program(
-    "07:00 PM",
+    "04:00 PM",
     "Dr. Giovanni Sáenz-Arce",
     "Materials Science.  Universidad Nacional, COSTA RICA"
   );
   generate_program(
-    "07:30 PM",
+    "04:30 PM",
     "Dr. Santiago Casado Rojo",
     "Nanoparticules | Nanostructures. Universidad Técnica de Ambato, ECUADOR"
   );
   generate_program(
-    "08:00 PM",
+    "05:00 PM",
     "Atomistic simulation of AFM and STM imaging including an experimentally defined tip - CEO Prof. Guo",
     "Nanotechnology. Nanoacademic Technologies, Inc."
   );
   generate_program(
-    "08:20 PM",
+    "05:20 PM",
     "Electrical and Surface Characterization of Ga-Assisted MBE Grown Be-Doped GaAs Nanowires and Te-Doped GaAsSb Nanowires for Infrared Photodetector Application - Priyanka Ramaswamy",
     "Nanoengineering. Department of Electrical and Computer Engineering, North Carolina A&T State University, Greensboro"
   );
   generate_program_last(
-    "08:40 PM",
+    "05:40 PM",
     "Raffle 1",
     ""
   );
 
-  generate_title("Day 2", "Oct 15");
+  generate_title("Day 2", "Mar 24");
   generate_program(
-    "04:00 PM",
+    "01:00 PM",
     "Prof. Emerson Silva",
     "Biophysics. Universidad Federal de São Paulo, UNIFESP, BRAZIL"
   );
   generate_program(
-    "04:30 PM",
+    "01:30 PM",
     "Dr. Jorge Chanona Pérez",
     "Nanotechnology. Instituto Politécnico Nacional, MEXICO"
   );
   generate_program(
-    "05:00 PM",
+    "02:00 PM",
     "Dr. Iván Ortega Blake",
     "Physics. Universidad Nacional Autónoma de México, MEXICO"
   );
   generate_program(
-    "05:40 PM",
+    "02:40 PM",
     "Break",
     ""
   );
   generate_program(
-    "06:00 PM",
+    "03:00 PM",
     "Dr. Samuel Hevia",
     "Physics. Pontificia Universidad Católica de Chile"
   );
   generate_program(
-    "06:30 PM",
+    "03:30 PM",
     "Dr. Arturo Galván-Hernández",
     "Physics. Universidad Nacional Autónoma de México, MEXICO"
   );
   generate_program(
-    "07:00 PM",
+    "04:00 PM",
     "Dr. Anderson Dussan-Cuenca",
     "Physics. Universidad Nacional, COLOMBIA"
   );
   generate_program(
-    "07:30 PM",
+    "04:30 PM",
     "Dr. Jose Juan Gervacio Arciniega",
     "Physics. Benemérita Universidad Autónoma de Puebla BUAP, MEXICO"
   );
   generate_program(
-    "08:00 PM",
+    "05:00 PM",
     "ISO TECHNICAL STANDARDS AND LEGAL RISK MANAGEMENT OF THE NANOSCALE - Wilson Engelmann and Patrícia Santos Martins",
     ""
   );
   generate_program(
-    "08:20 PM",
+    "05:20 PM",
     "Molecular origin of the extreme mechanical strength of an ester bond containing pathogen surface protein - Prof. Yi Cao",
     "Biomedical medicine. Nanjic University China, Institute of Biomedical Medicine"
   );
   generate_program(
-    "08:40 PM",
+    "05:40 PM",
     "Raffle 2",
     ""
   );
   generate_program_last(
-    "09:00 PM",
+    "06:00 PM",
     "Closure - Stefan Kaemmer",
     "President, Park Systems"
   );
@@ -173,7 +172,7 @@
   async function generate_timezone() {
     jQuery(".cbp_tmtimeline").each(function ($this) {
       console.log(this);
-      var $timeline_markup = jQuery(`<h3 class="timezone" style="font-size: 14px; text-align:right;"></h3>`);
+      var $timeline_markup = jQuery(`<h3 class="timezone" style="font-size: 14px;"></h3>`);
       $timeline_markup.appendTo(this.children[0].querySelector(".cbp_tmtime"));
     });
 
@@ -203,7 +202,7 @@
     var optimized_date = new Date(`${program_date} ${year} ${time}`)
 
     // modify time according to timezone of user
-    optimized_date.setMinutes(optimized_date.getMinutes() - time_diff);
+    optimized_date.setMinutes(optimized_date.getMinutes() - NSS_TIMEZONE - time_diff);
 
     var new_hr = optimized_date.getHours() > 12 ? optimized_date.getHours() - 12 : optimized_date.getHours();
     new_hr = new_hr < 10 ? "0" + new_hr : new_hr;
@@ -238,8 +237,8 @@
       jQuery(`
       <li>
         <time class="cbp_tmtime">
-          <span style="text-align: right; font-size: 1.4em; font-weight: 600; color: #009FE8; line-height:1.1;">${title_date}</span>
-          <span style="text-align: right; font-size: 1.2em; font-weight: 600; color: #009FE8;">${data.time}</span>
+          <span style="font-size: 1.4em; font-weight: 600; color: #009FE8; line-height:1.1;">${title_date}</span>
+          <span style="font-size: 1.2em; font-weight: 600; color: #009FE8;">${data.time}</span>
         </time>
         <div class="cbp_tmicon"></div>
         <div class="cbp_tmlabel">
@@ -308,10 +307,28 @@
   .cbp_tmtimeline>li .cbp_tmtime {
     display: block;
     width: 25%;
-
     padding-right: 100px;
     position: absolute;
+  }
 
+  .timezone,
+  .cbp_tmtimeline>li .cbp_tmtime span {
+    display: block;
+    text-align: right;
+    margin: 0;
+  }
+
+  .cbp_tmtimeline>li .cbp_tmtime span:first-child {
+    font-size: 0.9em;
+    color: #009FE8;
+  }
+
+  .cbp_tmtimeline>li .cbp_tmtime span:last-child {
+    position: relative;
+    top: 2rem;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #000;
   }
 
   /* card margin */
@@ -414,9 +431,14 @@
       padding: 0 0 20px 0;
     }
 
+    .timezone,
     .cbp_tmtimeline>li .cbp_tmtime span {
       text-align: left;
+      display: inline-block;
+    }
 
+    .timezone {
+      padding-left: 10px;
     }
 
     .cbp_tmtimeline>li .cbp_tmlabel {

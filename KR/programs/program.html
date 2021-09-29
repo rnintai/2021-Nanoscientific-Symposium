@@ -10,8 +10,6 @@
   /**
    * USAGE
    * 
-   * PLEASE set program time in UTC+0.
-   * 
    * Session Title:     
    *  generate_title("session title", "mmm dd"))
    * 
@@ -24,8 +22,9 @@
    * DON'T forget to use 'generate_program_last' on last program!
    */
   const year = 2021;
+  const NSS_TIMEZONE = +540; // (in Minute) UTC+9: Seoul, Korea
 
-  generate_title("Session I");
+  generate_title("Session I", "Nov 25");
   generate_program(
     "10:00 AM",
     "개회 및 환영사",
@@ -81,7 +80,7 @@
   async function generate_timezone() {
     jQuery(".cbp_tmtimeline").each(function ($this) {
       console.log(this);
-      var $timeline_markup = jQuery(`<h3 class="timezone" style="font-size: 14px; text-align:right;"></h3>`);
+      var $timeline_markup = jQuery(`<h3 class="timezone" style="font-size: 14px;"></h3>`);
       $timeline_markup.appendTo(this.children[0].querySelector(".cbp_tmtime"));
     });
 
@@ -111,7 +110,7 @@
     var optimized_date = new Date(`${program_date} ${year} ${time}`)
 
     // modify time according to timezone of user
-    optimized_date.setMinutes(optimized_date.getMinutes() - time_diff);
+    optimized_date.setMinutes(optimized_date.getMinutes() - NSS_TIMEZONE - time_diff);
 
     var new_hr = optimized_date.getHours() > 12 ? optimized_date.getHours() - 12 : optimized_date.getHours();
     new_hr = new_hr < 10 ? "0" + new_hr : new_hr;
@@ -146,8 +145,8 @@
       jQuery(`
       <li>
         <time class="cbp_tmtime">
-          <span style="display: block; text-align: right; font-size: 1.4em; font-weight: 600; color: #009FE8; line-height:1.1;">${title_date}</span>
-          <span style="display: block; text-align: right; font-size: 1.2em; font-weight: 600; color: #009FE8;">${data.time}</span>
+          <span style="font-size: 1.4em; font-weight: 600; color: #009FE8; line-height:1.1;">${title_date}</span>
+          <span style="font-size: 1.2em; font-weight: 600; color: #009FE8;">${data.time}</span>
         </time>
         <div class="cbp_tmicon"></div>
         <div class="cbp_tmlabel">
@@ -216,10 +215,28 @@
   .cbp_tmtimeline>li .cbp_tmtime {
     display: block;
     width: 25%;
-
     padding-right: 100px;
     position: absolute;
+  }
 
+  .timezone,
+  .cbp_tmtimeline>li .cbp_tmtime span {
+    display: block;
+    text-align: right;
+    margin: 0;
+  }
+
+  .cbp_tmtimeline>li .cbp_tmtime span:first-child {
+    font-size: 0.9em;
+    color: #009FE8;
+  }
+
+  .cbp_tmtimeline>li .cbp_tmtime span:last-child {
+    position: relative;
+    top: 2rem;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #000;
   }
 
   /* card margin */
@@ -322,9 +339,14 @@
       padding: 0 0 20px 0;
     }
 
+    .timezone,
     .cbp_tmtimeline>li .cbp_tmtime span {
       text-align: left;
+      display: inline-block;
+    }
 
+    .timezone {
+      padding-left: 10px;
     }
 
     .cbp_tmtimeline>li .cbp_tmlabel {
