@@ -1,17 +1,92 @@
+<!-- ver 0.2, card css updated -->
+<!-- ver 0.3, get webinars and automatically generate cards. -->
+<!-- ver 0.4, Feat: Zoom API request -->
+<!-- ver 0.5, Fix: Get metadata according to title tag. (ex. [Asia] Session #1) -->
+<!-- ver 0.6, Fix: Get rid of Browser Link -->
+<!-- ver 0.7, Feat: Let start time be dynamic, following to user's country -->
+<!-- ver 0.8, Fix: Let the nanoscientific country's timezone offset as variable -->
+
+<!-- check logged in state. if not, redirect to sign-in page -->
 <script>
   if (jQuery("body").hasClass("logged-in")) {
-
   }
   else {
     window.location = "/sign-in?url=%2Flecture-hall%2F"
   }
 </script>
+<!--  -->
 
 <div class="lecture-hall-wrap">
-  <video src="https://d25unujvh7ui3r.cloudfront.net/lecture_hall.mp4" alt="lecture hall" muted autoplay loop></video>
+  <video src="https://d25unujvh7ui3r.cloudfront.net/lecture_hall.mp4" alt="lecture hall" muted autoplay loop
+    playsinline></video>
 </div>
 
+<div class="meeting-container"></div>
+
 <style>
+  /* reset */
+  p {
+    margin: 0;
+  }
+
+  #vczapi-show-webinars-list-table_wrapper,
+  .vczapi-wrap.vczapi-items-wrap {
+    display: none;
+    visibility: hidden;
+  }
+
+  .meeting-container {
+    display: flex;
+    top: 60px;
+    position: absolute;
+    margin: 80px;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    background-color: #ebf5fc;
+    max-width: 275px;
+    margin-bottom: 15px;
+    align-items: center;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 3px 3px 12px #00000070;
+    text-align: center;
+  }
+
+  .card:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  .link-btn-wrap {
+    margin-top: 15px;
+  }
+
+  .link-btn {
+    background-color: #21ade5;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 7px;
+    font-size: 18px;
+  }
+
+  .link-btn:hover {
+    background: #ff568f;
+    color: white;
+  }
+
+  .link-zoom-app {
+    font-size: 16px;
+  }
+
+  .zoom-start-date,
+  .zoom-timezone {
+    color: #8a8a8a;
+  }
+
+  /* background */
   .lecture-hall-wrap {
     position: relative;
     height: 100vh;
@@ -23,3 +98,116 @@
     object-position: center top;
   }
 </style>
+
+<script>
+  var $vcz_list = null,
+    $container = null;
+
+  const nation = location.host.replace(".nanoscientific.org", "");
+  const nation_alt = "alternative";
+  // these are compared to meeting filter tag.
+
+  const NSS_TIMEZONE = -300; // (in Minute) UTC-5: US
+
+  async function copy_metadata() {
+    // get each zoom api data -> allocate to each cards.
+    var $card_list = jQuery(".card");
+    var metadata_arr = [];
+    var card_idx = 0;
+    var res = await getTimeZone();
+    const time_diff = new Date().getTimezoneOffset();
+
+    $vcz_list.each(function () {
+      var $this = this;
+      var i = 0;
+      jQuery($this.children).each(function () {
+        if (this.children.length === 0) {
+          // text
+          metadata_arr[i] = this.innerText;
+        }
+        else {
+          // anchor
+          metadata_arr[i] = this.children[0].href;
+        }
+        i++;
+      });
+
+      var optimized_start_time = new Date(metadata_arr[1]);
+      // subtract time difference.
+      optimized_start_time.setMinutes(optimized_start_time.getMinutes() - NSS_TIMEZONE - time_diff);
+      // beautify the string
+      optimized_start_time = beautify_date(optimized_start_time);
+      // timezone to be displayed
+      var optimized_timezone_text = res.timezone;
+
+      var $card_template = jQuery(`
+      <div class="card">
+        <h1 class="zoom-title">${metadata_arr[0]}</h1>
+        <p class="zoom-start-date">Start:&nbsp;<strong>${optimized_start_time}</strong></p>
+        <p class="zoom-timezone">Timezone:&nbsp;<strong>${optimized_timezone_text}</strong></p>
+        <div class="link-btn-wrap">
+          <a href="${metadata_arr[3]}"
+          class="link-btn link-zoom-app" target="_blank">Join
+          via Zoom App</a>
+        </div>
+      </div>
+      `);
+      $card_template.appendTo($container);
+      card_idx++;
+    });
+  }
+
+  /**
+   * Convert the start time and timezone according to user.
+   */
+  function beautify_date(date) {
+    date = date.toString().split(" ");
+
+    var day = date[0],
+      month = date[1],
+      day_num = date[2],
+      year = date[3],
+      time_arr = date[4].split(":");
+
+    var hr = time_arr[0] > 12 ? time_arr[0] - 12 : time_arr[0];
+    var ampm = time_arr[0] <= 12 ? "AM" : "PM";
+    var mn = time_arr[1];
+
+    return `${day}, ${month} ${day_num} ${year}, ${hr}:${mn} ${ampm}`;
+  }
+
+  /**
+   * Get Timezone by API
+   */
+  function getTimeZone() {
+    return jQuery.ajax({
+      url: "http://ipinfo.io",
+      dataType: "json",
+      async: false,
+      error: function (err) {
+        console.log(err);
+      }
+    })
+  }
+
+  function filter_meetings(index, $this) {
+    var start = $this.children[0].innerText.indexOf('[') + 1;
+    var end = $this.children[0].innerText.indexOf(']');
+    var tag = $this.children[0].innerText.substring(start, end).toLowerCase();
+
+    return (tag === nation || tag === nation_alt);
+  }
+
+  function init() {
+    window.addEventListener("DOMContentLoaded", function () {
+      $vcz_list = jQuery("#vczapi-show-webinars-list-table tbody tr").filter(filter_meetings);
+      // get number of webinars
+      const num_of_webinars = $vcz_list.length;
+
+      copy_metadata();
+    }),
+      $container = jQuery(".meeting-container");
+  }
+
+  init();
+</script>

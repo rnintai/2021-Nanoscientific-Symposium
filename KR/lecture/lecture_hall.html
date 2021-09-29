@@ -104,10 +104,10 @@
     $container = null;
 
   const nation = location.host.replace(".nanoscientific.org", "");
-  const nation_alt = "alternative";
+  const nation_alt = "korea";
   // these are compared to meeting filter tag.
 
-  const NSS_TIMEZONE = -180; // (in Minute) UTC-3: Sao Paulo 
+  const NSS_TIMEZONE = +540; // (in Minute) UTC+9: KST
 
   async function copy_metadata() {
     // get each zoom api data -> allocate to each cards.
