@@ -535,12 +535,6 @@
       jQuery(".nav-wrap").toggleClass("mobile-menu-on")
     })
 
-    // temporarily deactivated
-    jQuery($menu[4]).off("click");
-    jQuery($menu[4]).off("mouseover");
-    $menu[4].children[0].href = "#";
-    // 
-
     // media query event
     if (window.matchMedia("screen and (max-width: 1090px)").matches) {
       $submenu.each(function () {
