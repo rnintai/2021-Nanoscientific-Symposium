@@ -5,24 +5,14 @@
 </section>
 <div class="gallery-wrap" draggable=true>
   <article class="poster-list">
-    <section class="poster-item p-6"
-      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf"></section>
-    <section class="poster-item p-7"
-      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf"></section>
-    <section class="poster-item p-8"
-      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf"></section>
-    <section class="poster-item p-9"
-      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf"></section>
-    <section class="poster-item p-1"
-      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf"></section>
-    <section class="poster-item p-2"
-      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf"></section>
-    <section class="poster-item p-3"
-      data-pdf="https://parksystems.com/images/media/brochures/nx20/ParkNX20210625E08AB.pdf"></section>
-    <section class="poster-item p-4"
-      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf"></section>
-    <section class="poster-item p-5"
-      data-pdf="https://parksystems.com/images/media/brochures/nx12/ParkNX12210630E12AB.pdf"></section>
+    <section class="poster-item p-3" data-pdf="https://d25unujvh7ui3r.cloudfront.net/latam/posters_pdf/poster_3.pdf">
+    </section>
+    <section class="poster-item p-4" data-pdf="https://d25unujvh7ui3r.cloudfront.net/latam/posters_pdf/poster_4.pdf">
+    </section>
+    <section class="poster-item p-1" data-pdf="https://d25unujvh7ui3r.cloudfront.net/latam/posters_pdf/poster_1.pdf">
+    </section>
+    <section class="poster-item p-2" data-pdf="https://d25unujvh7ui3r.cloudfront.net/latam/posters_pdf/poster_2.pdf">
+    </section>
   </article>
   <!-- <div class="gallery-btns"> -->
   <div class="gallery-btn prev-btn">
@@ -183,7 +173,8 @@
   }
 
   .poster-img-wrap {
-    width: 82%;
+    max-width: 53%;
+    margin: auto 0;
   }
 
   .poster-num {
@@ -537,7 +528,7 @@
           <div class="poster-horline"></div>
           <div class="poster-inst">${inst}</div>
           <div class="poster-img-wrap">
-            <img src="https://d25unujvh7ui3r.cloudfront.net/poster-hall/latam/poster_0${index}.png" alt="" class="poster-img">
+            <img src="https://d25unujvh7ui3r.cloudfront.net/latam/posters_pdf/poster_${index}_thumb.jpg" alt="" class="poster-img">
           </div>
           <div class="poster-num">0${index}</div>
         </div>
@@ -620,49 +611,24 @@
      **/
     function loadContent() {
       generatePoster(1,
-        "Solute ion linear alignment heavy Ion Beam cancer therapy and covid-19 sterilization",
-        "Anthony Fresco",
-        "Medical Applications The Jolly Green Chlorine Machine"
+        "Synthesis and doping of two-dimensional materials by CVD - MoS2 and grapheneFerrofuluids for Hyperthermina Applicaiton",
+        "Diogo José Horst",
+        "Universidade Federal de São Paulo – UNIFESP"
       )
       generatePoster(2,
-        "Magnetic nanoscavengers: the new trend to improve water quality",
-        "Estephany Santiago",
-        "Center for Graduates and Research in Chemistry"
+        "ISO TECHNICAL STANDARDS ANDLEGAL RISK MANAGEMENT OF THE NANOSCALE",
+        "Wilson Engelmann and Patrícia Santos Martins",
+        ""
       )
       generatePoster(3,
-        "Ferrofuluids for Hyperthermina Applicaiton",
-        "Lynn Krushinski",
-        "Chemistry<br>Towson University"
+        "Electrical and Surface Characterization of Ga-Assisted MBE Grown Be-Doped GaAs Nanowires and Te-Doped GaAsSb Nanowires for Infrared Photodetector Application",
+        "Priyanka Ramaswamy",
+        "North Carolina A&T State University"
       )
       generatePoster(4,
         "Temperature dependent charge storage performance of carbon nano-onion suppoted layered MnO2 nanosheets",
-        "Shobhnath Gupta",
-        "National Centre for Nanosciences and Nanotechnology<br>University of Mumbai"
-      )
-      generatePoster(5,
-        "A Universe In A Drop Of Water",
-        "Dino Parisotto",
-        "Environmental Groundwater Consulting Earth2Water Pty Ltd"
-      )
-      generatePoster(6,
-        "The dose deternmines the magnitude of a biological response that would determine a lifespan",
-        "Yilkal Belay",
-        "Pharmacology and Therapeutics Makerere University"
-      )
-      generatePoster(7,
-        "Correlation and regression analysis in different spring wheat (triticum Aestivum L.) genotypes for different agro, morpho and phenological traits",
-        "Ayaz Latif Siyal",
-        "Plant Breeding and Genetics Sindh Agriculture University Tandojam"
-      )
-      generatePoster(8,
-        "Introducing “HELINASER” - Helical Nano Laser /  HLS - Design Protocol",
-        "Ajith & Arun Kumar",
-        "Medicine - Nano<br>Zeuderzee Technologies"
-      )
-      generatePoster(9,
-        "Mapping Surface Charge of Natural Minerals with Scanning Ion Conductance Microscopy",
-        "Cheng Zhu",
-        "Department of Chemistry<br>Indiana University"
+        "Sourav Bose",
+        "Université de Lorraine, Laboratoire Matériaux Optiques, Photonique et Systèmes"
       )
     }
 
