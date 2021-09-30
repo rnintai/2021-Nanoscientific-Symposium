@@ -1,8 +1,8 @@
 <script src="https://kit.fontawesome.com/9082949df5.js" crossorigin="anonymous"></script>
 <!-- loading -->
-<!-- <section class="load-wrap">
+<section class="load-wrap">
   <div class="loader"></div>
-</section> -->
+</section>
 <div class="gallery-wrap" draggable=true>
   <article class="poster-list">
     <section class="poster-item p-6"
@@ -98,7 +98,7 @@
     position: relative;
     height: 100vh;
     overflow: hidden;
-    background: url("https://d25unujvh7ui3r.cloudfront.net/poster-hall/latam/background.png");
+    /* background: url("https://d25unujvh7ui3r.cloudfront.net/poster-hall/latam/background.png"); */
     background-size: cover;
   }
 
@@ -330,15 +330,41 @@
   }
 
   /* loading spinner */
+  .load-wrap {
+    opacity: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 10;
+  }
+
   .loader {
-    border: 16px solid #f3f3f3;
-    /* Light grey */
-    border-top: 16px solid #3498db;
-    /* Blue */
+    visibility: visible;
+    opacity: 1;
+    transition: all 0s 0.5s;
+    position: absolute;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
+    width: 50px;
+    height: 50px;
     animation: spin 2s linear infinite;
+    left: 50%;
+    top: 43%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* .load-wrap .enable {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0s 0.5s;
+  } */
+
+  .load-wrap.disabled {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s 0s
   }
 
   @keyframes spin {
@@ -377,6 +403,8 @@
       BASE_Z = 10,
       ACTIVE_Z = 25,
       DRAG_TH = 35;
+
+    var bg_loaded = false;
 
     /**
      * transform Images
@@ -655,6 +683,53 @@
         })
       })
     }
+
+    function check_if_loaded() {
+      var image_total_cnt = jQuery("img").length;
+      var image_arr = jQuery("img");
+      var loaded_index = 0;
+
+      var src = "https://d25unujvh7ui3r.cloudfront.net/poster-hall/latam/background.png";
+      var image = new Image();
+      if (jQuery(".gallery-wrap")[0].style.backgroundImage !== "") {
+        image.addEventListener('load', function () {
+          jQuery(".gallery-wrap")[0].style.backgroundImage = 'url(' + src + ')';
+          if (jQuery(".gallery-wrap")[0].style.backgroundImage !== "") {
+            bg_loaded = true;
+          }
+        });
+      }
+      image.src = src;
+
+      if (!isLoaded()) {
+        enable_spinner();
+        image_arr.each(function () {
+          jQuery(this).on("load", function () {
+            loaded_index++;
+            if (loaded_index === image_total_cnt && bg_loaded === true) {
+              disable_spinner();
+            }
+          })
+        })
+      }
+      else {
+        disable_spinner();
+      }
+    }
+
+    function isLoaded() {
+      var image_total_cnt = jQuery("img").length;
+      var image_arr = jQuery("img");
+
+      return jQuery(image_arr[image_total_cnt - 1])[0].complete === true;
+    }
+
+    function enable_spinner() {
+      jQuery(".load-wrap").removeClass("disabled");
+    }
+    function disable_spinner() {
+      jQuery(".load-wrap").addClass("disabled");
+    }
     /**
      * initializer
      **/
@@ -674,6 +749,7 @@
 
       // load Content
       loadContent();
+      check_if_loaded();
 
       window.addEventListener("DOMContentLoaded", function () {
         // local var
