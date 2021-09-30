@@ -699,6 +699,10 @@
           }
         });
       }
+      else {
+        bg_loaded = true;
+      }
+      jQuery(".gallery-wrap")[0].style.backgroundImage = 'url(' + src + ')';
       image.src = src;
 
       if (!isLoaded()) {
