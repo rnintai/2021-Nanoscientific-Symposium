@@ -651,8 +651,8 @@
     }
 
     function check_if_loaded() {
-      var image_total_cnt = jQuery("img").length;
-      var image_arr = jQuery("img");
+      var image_total_cnt = jQuery(".poster-img").length;
+      var image_arr = jQuery(".poster-img");
       var loaded_index = 0;
 
       var src = "https://d25unujvh7ui3r.cloudfront.net/poster-hall/latam/background.png";
@@ -688,8 +688,8 @@
     }
 
     function isLoaded() {
-      var image_total_cnt = jQuery("img").length;
-      var image_arr = jQuery("img");
+      var image_total_cnt = jQuery(".poster-img").length;
+      var image_arr = jQuery(".poster-img");
 
       return jQuery(image_arr[image_total_cnt - 1])[0].complete === true;
     }
