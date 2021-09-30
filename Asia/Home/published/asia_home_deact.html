@@ -35,7 +35,7 @@
               <span class="bg-white">Date:</span>&nbsp;&nbsp;2021 October 28
             </span>
             <span class="vo-place white">
-              <span class="bg-white">Place:</span>&nbsp;&nbsp;Virtual Event</span>
+              <span class="bg-white">Place:</span>&nbsp;&nbsp;cleantech one in Singapore - Hybrid Event</span>
             </span>
           </div>
           <div class="visit-wrap">
@@ -68,7 +68,7 @@
 
     <map name="image-map" id="image-map">
       <area target="" alt="play" title="play" class="play" href="#" coords="748,275,1189,498" shape="rect"
-        onmouseover="areaHover(this)" onmouseout="areaLeave(this)" />
+        onmouseover="areaHover(this)" onmouseout="areaLeave(this)" onclick="alert('coming soon');" />
       <area target="" alt="program" title="Program" class="program" href="/programs" coords="240,541,514,715"
         shape="rect" onmouseover="areaHover(this);" onmouseout="areaLeave(this);" />
       <area target="" alt="lecture hall" title="Lecture Hall" class="lecture" href="/lecture-hall"
@@ -78,9 +78,10 @@
     </map>
     <!-- mobile -->
     <section class="mobile-btns-wrap mobile">
-      <div class="play-btn-m" onclick="play_click()">
-        <button class="play-btn">
-          <i class="play-icon fab fa-youtube" aria-hidden="true"></i>
+      <!-- <div class="play-btn-m" onclick="play_click()"> -->
+      <div class="play-btn-m" onclick="alert('coming soon');"">
+        <button class=" play-btn">
+        <i class="play-icon fab fa-youtube" aria-hidden="true"></i>
         </button>
       </div>
       <div class="program-btn-m" onclick="location.href='/programs'"></div>
@@ -1070,11 +1071,20 @@
   }
 
   function play_click() {
+    const play_deact = true;
+
     var $modal_wrap = document.querySelector(".video-modal-wrap");
     var $modal_overlay = document.querySelector(".modal-overlay");
-    $modal_wrap.classList.add("active");
-    $modal_overlay.classList.add("active");
-    setTimeout(youtube_on, 500);
+
+    if (play_deact) {
+      alert("coming soon");
+    }
+    else {
+      $modal_wrap.classList.add("active");
+      $modal_overlay.classList.add("active");
+      setTimeout(youtube_on, 500);
+    }
+
   }
   function youtube_on() {
     $iframe.src = $iframe.getAttribute("data-src");
