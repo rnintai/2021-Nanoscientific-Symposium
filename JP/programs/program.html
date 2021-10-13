@@ -24,74 +24,74 @@
   const year = 2021;
   const NSS_TIMEZONE = +540; // (in Minute) UTC+9: JST
 
-  generate_title("Day 1", "Oct 14");
+  generate_title("午前の部", "Nov 22");
   generate_program(
-    "01:00 PM",
-    "Welcome Speech - Stefan Kaemmer",
-    "President, Park Systems"
+    "10:00 AM",
+    "開会の挨拶",
+    ""
   );
   generate_program(
-    "01:10 PM",
-    "Marine Le Bouar",
-    "CEO Nanotechnology World Associations & sponsor NanoScientific Symposium"
+    "10:05 AM",
+    "「半導体微細加工を発展させたMEMS（微小電気機械システム）とその開発支援」\n- 江刺 正喜",
+    "国立大学法人東北大学マイクロシステム融合研究開発センター(µSIC) 博士"
   );
   generate_program(
-    "01:30 PM",
+    "10:50 AM",
     "The Nexus between Nanotechnology and Society 5.0 - Phil Kazuba",
     "Senior Member of Technical Staffand Lead Engineer, Scanning Probe Microscope Laboratory, Global Foundries (SFM)"
   );
   generate_program(
-    "02:00 PM",
+    "02:00 AM",
     "Leandro A. Berti",
     "CEO of FIBER INOVA and President of BrasilNano (Brazilian Nanotechnology Association), BRAZIL"
   );
   generate_program(
-    "02:30 PM",
+    "02:30 AM",
     "Dr. Carlos Alberto Rodrigues Costa",
     "Nanotechnology. Brazilian Nanotechnology National Laboratory, BRAZIL"
   );
   generate_program(
-    "03:00 PM",
+    "03:00 AM",
     "Nanostructuring Electrochemical Patterning - Dr. Rigoberto Advincula",
     "Department of Chemical & Biomolecular Engineering. Department of Chemical & Biomolecular Engineering University of Tennessee. USA."
   );
   generate_program(
-    "03:30 PM",
+    "03:30 AM",
     "Ben Schoenek",
     "Park Systems"
   );
   generate_program(
-    "03:40 PM",
+    "03:40 AM",
     "Break",
     ""
   );
   generate_program(
-    "04:00 PM",
+    "04:00 AM",
     "Dr. Giovanni Sáenz-Arce",
     "Materials Science.  Universidad Nacional, COSTA RICA"
   );
   generate_program(
-    "04:30 PM",
+    "04:30 AM",
     "Dr. Santiago Casado Rojo",
     "Nanoparticules | Nanostructures. Universidad Técnica de Ambato, ECUADOR"
   );
   generate_program(
-    "05:00 PM",
+    "05:00 AM",
     "Atomistic simulation of AFM and STM imaging including an experimentally defined tip - CEO Prof. Guo",
     "Nanotechnology. Nanoacademic Technologies, Inc."
   );
   generate_program(
-    "05:20 PM",
+    "05:20 AM",
     "Electrical and Surface Characterization of Ga-Assisted MBE Grown Be-Doped GaAs Nanowires and Te-Doped GaAsSb Nanowires for Infrared Photodetector Application - Priyanka Ramaswamy",
     "Nanoengineering. Department of Electrical and Computer Engineering, North Carolina A&T State University, Greensboro"
   );
   generate_program_last(
-    "05:40 PM",
+    "05:40 AM",
     "Raffle 1",
     ""
   );
 
-  generate_title("Day 2", "Oct 15");
+  generate_title("Day 2", "Nov 22");
   generate_program(
     "01:00 PM",
     "Prof. Emerson Silva",
@@ -171,7 +171,6 @@
 
   async function generate_timezone() {
     jQuery(".cbp_tmtimeline").each(function ($this) {
-      console.log(this);
       var $timeline_markup = jQuery(`<h3 class="timezone" style="font-size: 14px;"></h3>`);
       $timeline_markup.appendTo(this.children[0].querySelector(".cbp_tmtime"));
     });
@@ -212,7 +211,7 @@
     var date =
       date_arr
         .filter(data => data === date_arr[1] || data === date_arr[2])
-
+    var date
     program_arr.push({
       time: `${new_hr}:${new_mn} ${new_ampm}`,
       date,
@@ -226,14 +225,22 @@
     append_programs();
   }
 
+  function convertDateToJapanese(orgDateStr) {
+    let date = new Date(orgDateStr);
+    let month = date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}月` : `${date.getMonth() + 1}月`;
+    let day = date.getDate() < 10 ? `0${date.getDate()}日` : `${date.getDate()}日`;
+    return month + day;
+  }
+
   function append_programs() {
     var prev_data = program_arr[0];
-    var title_date = prev_data.date.join(" ");
+    var title_date = convertDateToJapanese(prev_data.date.join(" "));
     while (program_arr.length > 0) {
       var data = program_arr[0];
       if (prev_data.date[1] !== data.date[1]) {
-        title_date = data.date.join(" ");
+        title_date = convertDateToJapanese(data.date.join(" "));
       }
+      console.log(title_date);
       jQuery(`
       <li>
         <time class="cbp_tmtime">
