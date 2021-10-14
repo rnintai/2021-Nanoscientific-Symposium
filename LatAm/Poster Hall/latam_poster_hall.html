@@ -5,8 +5,6 @@
 </section>
 <div class="gallery-wrap" draggable=true>
   <article class="poster-list">
-    <section class="poster-item p-6" data-pdf="https://d25unujvh7ui3r.cloudfront.net/latam/posters_pdf/poster_6.pdf">
-    </section>
     <section class="poster-item p-7" data-pdf="https://d25unujvh7ui3r.cloudfront.net/latam/posters_pdf/poster_7.pdf">
     </section>
     <section class="poster-item p-8" data-pdf="https://d25unujvh7ui3r.cloudfront.net/latam/posters_pdf/poster_8.pdf">
@@ -14,6 +12,8 @@
     <section class="poster-item p-9" data-pdf="https://d25unujvh7ui3r.cloudfront.net/latam/posters_pdf/poster_9.pdf">
     </section>
     <section class="poster-item p-10" data-pdf="https://d25unujvh7ui3r.cloudfront.net/latam/posters_pdf/poster_10.pdf">
+    </section>
+    <section class="poster-item p-11" data-pdf="https://d25unujvh7ui3r.cloudfront.net/latam/posters_pdf/poster_11.pdf">
     </section>
     <section class="poster-item p-1" data-pdf="https://d25unujvh7ui3r.cloudfront.net/latam/posters_pdf/poster_1.pdf">
     </section>
@@ -24,6 +24,8 @@
     <section class="poster-item p-4" data-pdf="https://d25unujvh7ui3r.cloudfront.net/latam/posters_pdf/poster_4.pdf">
     </section>
     <section class="poster-item p-5" data-pdf="https://d25unujvh7ui3r.cloudfront.net/latam/posters_pdf/poster_5.pdf">
+    </section>
+    <section class="poster-item p-6" data-pdf="https://d25unujvh7ui3r.cloudfront.net/latam/posters_pdf/poster_6.pdf">
     </section>
   </article>
   <!-- <div class="gallery-btns"> -->
@@ -625,7 +627,7 @@
           <div class="poster-img-wrap">
             <img src="https://d25unujvh7ui3r.cloudfront.net/latam/posters_pdf/poster_${index}_thumb.jpg" alt="" class="poster-img">
           </div>
-          <div class="poster-num">0${index}</div>
+          <div class="poster-num">${index < 10 ? "0" + index : index}</div>
         </div>
         <div class="right-gradient">
         </div>
@@ -753,6 +755,11 @@
       generatePoster(10,
         "The impact of a Suspension Preparation Method on Al2O3/Zeolite Composite-Films’ Performance for CO gas Adsorption",
         "Nastaran Mozaffari and Niloofar Mozaffari",
+        "Islamic Azad University"
+      );
+      generatePoster(11,
+        "The overview on the proficiency of Zeolite-doped nanocomposite films for CO removal",
+        "Niloofar Mozaffari and Nastaran Mozaffari",
         "Islamic Azad University"
       );
 
