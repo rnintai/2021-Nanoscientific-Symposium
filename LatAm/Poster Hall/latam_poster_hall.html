@@ -266,9 +266,9 @@
     left: 98%;
     font-size: 40px;
     transform: translateX(-100%);
-    opacity: 0.4;
+    opacity: 0.7;
     cursor: pointer;
-    color: #000;
+    color: #21ade5;
     transition: opacity 0.3s ease-out
   }
 
@@ -373,7 +373,8 @@
     opacity: 0;
     transition: all 0.5s 0s
   }
-  .load-wrap.disabled .loader{
+
+  .load-wrap.disabled .loader {
     visibility: hidden;
   }
 
@@ -422,7 +423,7 @@
     }
 
     .poster-title {
-      min-height:auto;
+      min-height: auto;
       font-size: 13px;
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -489,7 +490,7 @@
           _gallery[i].style[TRANSFORM] = `translate3d(-${X_OFFSET * (_index - i)}%, 0, -${Z_OFFSET * (_index - i)}px)`;
           _gallery[i].style[ZINDEX] = BASE_Z + i;
           console.log(_gallery.length);
-          if(_gallery.length % 2 === 0){
+          if (_gallery.length % 2 === 0) {
             _gallery[i].style[OPACITY] = i === 0 ? "0" : "1";
           }
           _gallery[i].classList.remove("current");
@@ -499,7 +500,7 @@
         else if (i === _index) {
           _gallery[i].style[TRANSFORM] = "translate3d(0,0,0px)";
           _gallery[i].style[ZINDEX] = ACTIVE_Z;
-          if(_gallery.length % 2 === 0){
+          if (_gallery.length % 2 === 0) {
             _gallery[i].style[OPACITY] = "1";
           }
           _gallery[i].classList.add("current");
@@ -508,7 +509,7 @@
         else {
           _gallery[i].style[TRANSFORM] = `translate3d(${X_OFFSET * (i - _index)}%, 0, -${Z_OFFSET * (i - _index)}px)`;
           _gallery[i].style[ZINDEX] = BASE_Z + (_gallery.length - i);
-          if(_gallery.length % 2 === 0){
+          if (_gallery.length % 2 === 0) {
             _gallery[i].style[OPACITY] = "1";
           }
           _gallery[i].classList.remove("current");
@@ -747,7 +748,7 @@
         "Imran Ahmad and Debasish Sahoo",
         "niTza Bioventure, CSVTU"
       );
-     
+
     }
 
     function add_close_button() {
