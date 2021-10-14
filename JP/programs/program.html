@@ -14,10 +14,10 @@
    *  generate_title("session title", "mmm dd"))
    * 
    * Program:           
-   *  generate_program("UTC time", "program title", "description")
+   *  generate_program("Start time","End Time", "program title", "description")
    * 
    * Program(last one): 
-   *  generate_program_last("UTC time", "program title", "description")
+   *  generate_program_last("Start time","End Time", "program title", "description")
    * 
    * DON'T forget to use 'generate_program_last' on last program!
    */
@@ -27,73 +27,87 @@
   generate_title("午前の部", "Nov 22");
   generate_program(
     "10:00",
+    "10:05",
     "開会の挨拶",
     ""
   );
   generate_program(
     "10:05",
+    "10:50",
     "「半導体微細加工を発展させたMEMS（微小電気機械システム）とその開発支援」<br>- 江刺 正喜",
     "国立大学法人東北大学 マイクロシステム融合研究開発センター(µSIC) 博士"
   );
   generate_program(
     "10:50",
+    "11:25",
     "「凍結割断レプリカ法を用いたメタンハイドレートの微細構造観察」<br>- 藤本亜由美",
     "株式会社カネカテクノリサーチ 分析部 大阪分析センター 第一グループ"
   );
   generate_program(
     "11:25",
+    "12:00",
     "「住宅用防汚・抗菌材料と表面分析」<br>- 井須紀文",
     "株式会社LIXIL Technology Innovation 本部 分析・環境技術開発部 リーダー"
   );
   generate_program_last(
     "12:00",
+    "13:10",
     "お昼休み",
-    "~ 13:10"
+    ""
   );
 
   generate_title("午後の部", "Nov 22");
   generate_program(
     "13:10",
+    "13:45",
     "革新的液中原子間力顕微鏡技術による未踏ナノ領域の可視化」<br>- 福間剛士",
     "金沢大学 ナノ生命科学研究所 所長・教授"
   );
   generate_program(
     "13:45",
+    "14:20",
     "「走査型プローブ顕微鏡を用いた二次元層状化合物の基礎とデバイス応用」<br>- 米田忠弘",
     "国立大学法人東北大学 多元物質科学研究所 走査プローブ計測技術研究分野 教授"
   );
   generate_program(
     "14:20",
+    "14:55",
     "「ダイヤモンド半導体の最近の進展」<br>―インチ径ヘテロエピタキシャル成長とパワー半導体デバイスの開発―<br>- 嘉数 誠",
     "佐賀大学大学院理工学研究科 教授"
   );
   generate_program(
     "14:55",
+    "15:15",
     "休憩",
     ""
   );
   generate_program(
     "15:15",
+    "15:50",
     "「積層薄膜の構造解析」<br>- 近間克己",
     "日産化学株式会社 物質科学研究所 物質解析研究部 解析研究グループ"
   );
   generate_program(
     "15:50",
+    "16:25",
     "「ナノインデンテーションによる薄膜の機械的特性評価」<br>- 高井治",
     "関東学院大学 材料・表面工学研究所 所長"
   );
   generate_program(
     "16:25",
+    "16:45",
     "企業発表",
     "①	パーク・システムズ・ジャパン株式会社<br>②	ヤマトマテリアル株式会社<br>③	英和株式会社<br>④	日刊工業新聞社"
   );
   generate_program(
     "16:45",
+    "16:50",
     "閉会の挨拶",
     ""
   );
   generate_program_last(
     "16:50",
+    "17:00",
     "写真撮影",
     ""
   );
@@ -141,30 +155,38 @@
       .appendTo(".program-wrap");
   }
 
-  function generate_program(time, heading, desc) {
-    var optimized_date = new Date(`${program_date} ${year} ${time}`)
+  function generate_program(startTime, endTime, heading, desc) {
+    var optimized_date = new Date(`${program_date} ${year} ${startTime}`);
+    var optimized_endTime = new Date(`${program_date} ${year} ${endTime}`);
 
     // modify time according to timezone of user
     optimized_date.setMinutes(optimized_date.getMinutes() - NSS_TIMEZONE - time_diff);
+    optimized_endTime.setMinutes(optimized_endTime.getMinutes() - NSS_TIMEZONE - time_diff);
 
-    var new_hr = optimized_date.getHours();
-    new_hr = new_hr < 10 ? "0" + new_hr : new_hr;
-    var new_mn = optimized_date.getMinutes() < 10 ? "0" + optimized_date.getMinutes() : optimized_date.getMinutes();
+    var startHour = optimized_date.getHours();
+    startHour = startHour < 10 ? "0" + startHour : startHour;
+    var startMinute = optimized_date.getMinutes() < 10 ? "0" + optimized_date.getMinutes() : optimized_date.getMinutes();
+
+    var endHour = optimized_endTime.getHours();
+    endHour = endHour < 10 ? "0" + endHour : endHour;
+    var endMinute = optimized_endTime.getMinutes() < 10 ? "0" + optimized_endTime.getMinutes() : optimized_endTime.getMinutes();
+
     const date_arr = optimized_date.toDateString().split(" ");
     var date =
       date_arr
         .filter(data => data === date_arr[1] || data === date_arr[2])
     var date
     program_arr.push({
-      time: `${new_hr}:${new_mn}`,
+      startTime: `${startHour}:${startMinute}`,
+      endTime: `${endHour}:${endMinute}`,
       date,
       heading,
       desc
     })
   }
 
-  function generate_program_last(time, heading, desc) {
-    generate_program(time, heading, desc);
+  function generate_program_last(startTime, endTime, heading, desc) {
+    generate_program(startTime, endTime, heading, desc);
     append_programs();
   }
 
@@ -183,12 +205,11 @@
       if (prev_data.date[1] !== data.date[1]) {
         title_date = convertDateToJapanese(data.date.join(" "));
       }
-      console.log(title_date);
       jQuery(`
       <li>
         <time class="cbp_tmtime">
           <span style="font-size: 1.4em; font-weight: 600; color: #009FE8; line-height:1.1;">${title_date}</span>
-          <span style="font-size: 1.2em; font-weight: 600; color: #009FE8;">${data.time}</span>
+          <span style="font-size: 1.2em; font-weight: 600; color: #009FE8;">${data.startTime} - ${data.endTime}</span>
         </time>
         <div class="cbp_tmicon"></div>
         <div class="cbp_tmlabel">
