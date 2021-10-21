@@ -173,6 +173,9 @@ jQuery("area").each(function () {
 	$div.appendTo(`.${tooltip_div}`);
 	$hotspot.clone().appendTo(`.${class_name}-map-wrap`);
 	eval("$" + model_name + "_textbox").appendTo(`.${class_name}-map-wrap`);
+	eval("$" + model_name + "_textbox").appendTo(
+		`.tooltip-${class_name}-mobile`
+	);
 	i = i + 1;
 });
 
