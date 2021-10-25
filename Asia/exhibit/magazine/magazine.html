@@ -1,6 +1,9 @@
 <div class="magazine-wrap">
-  <img src="https://us.nanoscientific.org/wp-content/uploads/2021/07/NS-magazine.jpg" class="background"
-    usemap="#image-map">
+  <img src="https://d25unujvh7ui3r.cloudfront.net/NS-magazine.jpg" class="background" usemap="#image-map">
+
+  <div class="jump-wrap" onclick="location.href='../park-systems'">
+    <i class="fas fa-arrow-left"></i><span class="jump-text">PARK SYSTEMS</span>
+  </div>
 
   <map id="image-map" name="image-map">
     <area class="background" target="_blank" alt="" title=""
@@ -26,6 +29,34 @@
     transition-property: left, top, width, height;
     transition-duration: 0.2s, 0.2s, 0.2s, 0.2s;
     transition-timing-function: ease, ease, ease, ease;
+  }
+
+  .jump-wrap {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 13%;
+    left: 2%;
+    cursor: pointer;
+    padding: 15px;
+  }
+
+  .jump-wrap .jump-text {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    transition: letter-spacing 0.3s ease-in-out;
+  }
+
+  .jump-wrap:hover .jump-text {
+    letter-spacing: 2px;
+  }
+
+  .jump-wrap .fas {
+    position: relative;
+    font-size: 18px;
+    margin-right: 12px;
+    top: 1px;
   }
 
   /* hotspot */
@@ -85,115 +116,6 @@
     }
   }
 
-  .outer-circle {
-    position: absolute;
-    width: 2.7em;
-    height: 2.7em;
-    background-color: #fff;
-    border-radius: 50%;
-    left: 0%;
-    top: 0%;
-    cursor: pointer;
-    transform: translate(-100%, 0);
-    z-index: 6;
-    box-shadow: 5px 5px 6px 1px rgb(0 0 0 / 25%);
-    -webkit-animation: flickerAnimation 2s ease-in-out 0.5s infinite;
-    -moz-animation: flickerAnimation 2s ease-in-out 0.5s infinite;
-    -o-animation: flickerAnimation 2s ease-in-out 0.5s infinite;
-    animation: flickerAnimation 2s ease-in-out 0.5s infinite;
-  }
-
-  .outer-circle--active {
-    border-radius: 0;
-    opacity: 1;
-    transition: border-radius ease 0.3s;
-    box-shadow: none;
-    z-index: 8;
-    animation: none;
-  }
-
-  /* hotspot flickering */
-
-  .inner-circle {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 2.1em;
-    height: 2.1em;
-    border: 0.45em solid #6e9dc0;
-    border-radius: 100%;
-    background-color: #005ca1;
-  }
-
-  .inner-circle--active {
-    background-color: #fff;
-    border-color: #fff;
-    transition: background-color ease 0.5s, border-color ease 0.5s;
-  }
-
-  .border {
-    background: #005ca1;
-    position: absolute;
-    height: 0.7rem;
-    width: 0.05rem;
-    opacity: 0;
-  }
-
-  .border--active {
-    height: 0.7rem;
-    width: 0.05rem;
-  }
-
-  .border:after {
-    background: #005ca1;
-    content: "";
-    position: absolute;
-    height: 0.05rem;
-    width: 0.7rem;
-  }
-
-  .border--active:after {
-    height: 0.05rem;
-    width: 0.7rem;
-  }
-
-  /* svg */
-  .cross-zoom-svg {
-    transform: scale(0.6) translate(-51.9%, -50%);
-  }
-
-  .cross--active {
-    stroke: #005ca1;
-  }
-
-  .zoom {
-    opacity: 0;
-  }
-
-  .zoom-1 {
-    transform: translate(20%, 20%);
-  }
-
-  .zoom-2 {
-    transform: translate(-20%, 20%);
-  }
-
-  .zoom-3 {
-    transform: translate(20%, -20%);
-  }
-
-  .zoom-4 {
-    transform: translate(-20%, -20%);
-  }
-
-  .zoom--active {
-    opacity: 1;
-    stroke: #005ca1;
-    transform: translate(0, 0);
-    transition: opacity 0.5s ease, transform 0.3s ease-in-out;
-  }
-
   .download-wrap {
     display: inline-block;
     position: relative;
@@ -220,9 +142,27 @@
     animation: none;
   }
 
-
   .download-wrap .fas.fa-download {
     font-size: 1.5em;
+  }
+
+  @media screen and (max-width: 768px) {
+    .magazine-wrap {
+      height: 40vh;
+    }
+
+    .download-wrap {
+      padding: 0.1em 0.4em;
+    }
+
+    .download-wrap .fas.fa-download {
+      font-size: 1em;
+    }
+
+    .jump-wrap .jump-text,
+    .jump-wrap .fas {
+      font-size: 14px;
+    }
   }
 </style>
 
