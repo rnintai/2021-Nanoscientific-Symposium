@@ -3,6 +3,8 @@
 **/*.mp4
 **/*.jpg
 **/*.svg
+**/*.gif
+**/*.webp
 **/*.png
 **/media
 **/*.zip
