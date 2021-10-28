@@ -170,7 +170,8 @@
     let $sponsorItem = jQuery(`
     <li class="sponsor-item sponsor-${index}">
         <div class="img-wrap">
-          <img src="https://d25unujvh7ui3r.cloudfront.net/sponsors/${thumb}" alt="" class="sponsor-thumb">
+          <img src="https://d25unujvh7ui3r.cloudfront.net/sponsors/${thumb}" alt="" class="sponsor-thumb"
+          onclick="window.open('${url}')">
         </div>
         <div class="desc-wrap">
           <h3 class="name">${name}</h3>
