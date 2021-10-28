@@ -122,7 +122,7 @@
     left: 100%;
     cursor: pointer;
     color: #fff;
-    padding: 0.4em;
+    padding: 0 4px;
     text-align: center;
     background-color: #21ade5;
     transition: opacity 0.3s ease-in-out;
@@ -142,7 +142,7 @@
     animation: none;
   }
 
-  .download-wrap .fas.fa-download {
+  .download-wrap .fas {
     font-size: 1.5em;
   }
 
@@ -152,10 +152,10 @@
     }
 
     .download-wrap {
-      padding: 0.1em 0.4em;
+      padding: 0px 5px;
     }
 
-    .download-wrap .fas.fa-download {
+    .download-wrap .fas {
       font-size: 1em;
     }
 
@@ -178,89 +178,13 @@
   var height = coorA[3] - coorA[1];
 
   var $div = jQuery(
-    `<div class="${class_name}-map-wrap map-wrap" onclick="window.open('https://www.parksystems.com/images/media/nanoscientific/Nano_Scientific_22_SUMMER-2021-WEB_final.pdf')"></div>`
-  ),
-
-    $download_btn = jQuery(`
+    `<div class="${class_name}-map-wrap map-wrap" onclick="window.open('https://nanoscientific.org/')"></div>`
+  ), $download_btn = jQuery(`
     <div class="download-wrap"
-    onclick="window.open('https://www.parksystems.com/images/media/nanoscientific/Nano_Scientific_22_SUMMER-2021-WEB_final.pdf')">
-    <i class="fas fa-download"></i>
+    onclick="window.open('https://nanoscientific.org/')">
+    <i class="fas fa-external-link-alt"></i>
     </div>`
-    ),
-    $hotspot = jQuery(`
-    <div class="outer-circle">
-        <div class="inner-circle">
-          <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" version="1.1"
-            preserveAspectRatio="xMidYMid meet"
-            viewBox="-1.0036289068035202 -0.9996747277614659 47.88999999999999 47.999999999999986" width="43.89"
-            height="44" class="cross-zoom-svg">
-            <defs>
-              <path class="cross cross-v"
-                d="M23.4 17.68C23.4 17.68 23.4 17.68 23.4 17.68C23.4 23.11 23.4 26.12 23.4 26.72C23.4 26.72 23.4 26.72 23.4 26.72C23.01 26.72 22.8 26.72 22.75 26.72C22.75 26.72 22.75 26.72 22.75 26.72C22.75 21.3 22.75 18.28 22.75 17.68C22.75 17.68 22.75 17.68 22.75 17.68C23.14 17.68 23.35 17.68 23.4 17.68Z"
-                id="g1biIP06Yw" />
-              <path class="cross cross-h"
-                d="M27.59 22.52C27.59 22.52 27.59 22.52 27.59 22.52C22.17 22.52 19.16 22.52 18.56 22.52C18.56 22.52 18.56 22.52 18.56 22.52C18.56 22.14 18.56 21.92 18.56 21.88C18.56 21.88 18.56 21.88 18.56 21.88C23.98 21.88 26.99 21.88 27.59 21.88C27.59 21.88 27.59 21.88 27.59 21.88C27.59 22.26 27.59 22.48 27.59 22.52Z"
-                id="aiTp6JzbI" />
-              <path class="zoom zoom-1"
-                d="M0.18 0L0 0L0 0.19L0 10.39L0.18 10.39L0.18 0.19L10.38 0.19L10.38 0L10.38 0L0.18 0Z"
-                id="a3rf5jiyfR" />
-              <path class="zoom zoom-2"
-                d="M43.89 0.19L43.89 0L43.7 0L33.5 0L33.5 0.19L43.7 0.19L43.7 10.39L43.89 10.39L43.89 10.39L43.89 0.19Z"
-                id="cBrYcMxvl" />
-              <path class="zoom zoom-3"
-                d="M0.18 44L0 44L0 43.81L0 33.61L0.18 33.61L0.18 43.81L10.38 43.81L10.38 44L10.38 44L0.18 44Z"
-                id="bHITJpG9n" />
-              <path class="zoom zoom-4"
-                d="M43.69 44L43.88 44L43.88 43.81L43.88 33.61L43.69 33.61L43.69 43.81L33.49 43.81L33.49 44L33.49 44L43.69 44Z"
-                id="c33nJnWRqb" />
-            </defs>
-            <g>
-              <g>
-                <use xlink:href="#g1biIP06Yw" opacity="1" fill="#ffffff" fill-opacity="0" />
-                <g>
-                  <use xlink:href="#g1biIP06Yw" opacity="1" fill-opacity="0" stroke="#ffffff" stroke-width="1"
-                    stroke-opacity="1" />
-                </g>
-              </g>
-              <g>
-                <use xlink:href="#aiTp6JzbI" opacity="1" fill="#ffffff" fill-opacity="0" />
-                <g>
-                  <use xlink:href="#aiTp6JzbI" opacity="1" fill-opacity="0" stroke="#ffffff" stroke-width="1"
-                    stroke-opacity="1" />
-                </g>
-              </g>
-              <g>
-                <use xlink:href="#a3rf5jiyfR" opacity="1" fill="#ffffff" fill-opacity="0" />
-                <g>
-                  <use xlink:href="#a3rf5jiyfR" opacity="1" fill-opacity="0" stroke="#ffffff" stroke-width="1"
-                    stroke-opacity="1" />
-                </g>
-              </g>
-              <g>
-                <use xlink:href="#cBrYcMxvl" opacity="1" fill="#ffffff" fill-opacity="0" />
-                <g>
-                  <use xlink:href="#cBrYcMxvl" opacity="1" fill-opacity="0" stroke="#ffffff" stroke-width="1"
-                    stroke-opacity="1" />
-                </g>
-              </g>
-              <g>
-                <use xlink:href="#c33nJnWRqb" opacity="1" fill="#ffffff" fill-opacity="0" />
-                <g>
-                  <use xlink:href="#c33nJnWRqb" opacity="1" fill-opacity="0" stroke="#ffffff" stroke-width="1"
-                    stroke-opacity="1" />
-                </g>
-              </g>
-              <g>
-                <use xlink:href="#bHITJpG9n" opacity="1" fill="#ffffff" fill-opacity="0" />
-                <g>
-                  <use xlink:href="#bHITJpG9n" opacity="1" fill-opacity="0" stroke="#ffffff" stroke-width="1"
-                    stroke-opacity="1" />
-                </g>
-              </g>
-            </g>
-          </svg>
-        </div>
-      </div>`);
+  );
 
   $div.offset({
     left: left + "px",
@@ -274,7 +198,6 @@
 
   $div.appendTo("#image-map");
   $download_btn.appendTo(`.${class_name}-map-wrap`);
-  // $hotspot.appendTo(`.${class_name}-map-wrap`);
 
   var left_coor = [];
   var top_coor = [];
@@ -314,8 +237,6 @@
     });
     var i = 0;
     jQuery(".map-wrap").each(function () {
-      // console.log(left_coor[i] + ", " + top_coor[i]);
-      // console.log(jQuery(this));
       jQuery(this).offset({
         left: left_coor[i],
         top: top_coor[i],

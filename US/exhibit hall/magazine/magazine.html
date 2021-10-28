@@ -6,7 +6,8 @@
   </div>
 
   <map id="image-map" name="image-map">
-    <area class="background" target="_blank" alt="" title="" href="https://nanoscientific.org/"
+    <area class="background" target="_blank" alt="" title=""
+      href="https://www.parksystems.com/images/media/nanoscientific/Nano_Scientific_22_SUMMER-2021-WEB_final.pdf"
       coords="1492,464,1697,731" shape="rect">
   </map>
 </div>
@@ -115,122 +116,13 @@
     }
   }
 
-  .outer-circle {
-    position: absolute;
-    width: 2.7em;
-    height: 2.7em;
-    background-color: #fff;
-    border-radius: 50%;
-    left: 0%;
-    top: 0%;
-    cursor: pointer;
-    transform: translate(-100%, 0);
-    z-index: 6;
-    box-shadow: 5px 5px 6px 1px rgb(0 0 0 / 25%);
-    -webkit-animation: flickerAnimation 2s ease-in-out 0.5s infinite;
-    -moz-animation: flickerAnimation 2s ease-in-out 0.5s infinite;
-    -o-animation: flickerAnimation 2s ease-in-out 0.5s infinite;
-    animation: flickerAnimation 2s ease-in-out 0.5s infinite;
-  }
-
-  .outer-circle--active {
-    border-radius: 0;
-    opacity: 1;
-    transition: border-radius ease 0.3s;
-    box-shadow: none;
-    z-index: 8;
-    animation: none;
-  }
-
-  /* hotspot flickering */
-
-  .inner-circle {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 2.1em;
-    height: 2.1em;
-    border: 0.45em solid #6e9dc0;
-    border-radius: 100%;
-    background-color: #005ca1;
-  }
-
-  .inner-circle--active {
-    background-color: #fff;
-    border-color: #fff;
-    transition: background-color ease 0.5s, border-color ease 0.5s;
-  }
-
-  .border {
-    background: #005ca1;
-    position: absolute;
-    height: 0.7rem;
-    width: 0.05rem;
-    opacity: 0;
-  }
-
-  .border--active {
-    height: 0.7rem;
-    width: 0.05rem;
-  }
-
-  .border:after {
-    background: #005ca1;
-    content: "";
-    position: absolute;
-    height: 0.05rem;
-    width: 0.7rem;
-  }
-
-  .border--active:after {
-    height: 0.05rem;
-    width: 0.7rem;
-  }
-
-  /* svg */
-  .cross-zoom-svg {
-    transform: scale(0.6) translate(-51.9%, -50%);
-  }
-
-  .cross--active {
-    stroke: #005ca1;
-  }
-
-  .zoom {
-    opacity: 0;
-  }
-
-  .zoom-1 {
-    transform: translate(20%, 20%);
-  }
-
-  .zoom-2 {
-    transform: translate(-20%, 20%);
-  }
-
-  .zoom-3 {
-    transform: translate(20%, -20%);
-  }
-
-  .zoom-4 {
-    transform: translate(-20%, -20%);
-  }
-
-  .zoom--active {
-    opacity: 1;
-    stroke: #005ca1;
-    transform: translate(0, 0);
-    transition: opacity 0.5s ease, transform 0.3s ease-in-out;
-  }
-
   .download-wrap {
     display: inline-block;
     position: relative;
     left: 100%;
     cursor: pointer;
     color: #fff;
-    padding: 0.4em;
+    padding: 0 4px;
     text-align: center;
     background-color: #21ade5;
     transition: opacity 0.3s ease-in-out;
@@ -250,9 +142,27 @@
     animation: none;
   }
 
-
-  .download-wrap .fas.fa-download {
+  .download-wrap .fas {
     font-size: 1.5em;
+  }
+
+  @media screen and (max-width: 768px) {
+    .magazine-wrap {
+      height: 40vh;
+    }
+
+    .download-wrap {
+      padding: 0px 5px;
+    }
+
+    .download-wrap .fas {
+      font-size: 1em;
+    }
+
+    .jump-wrap .jump-text,
+    .jump-wrap .fas {
+      font-size: 14px;
+    }
   }
 </style>
 
@@ -269,14 +179,12 @@
 
   var $div = jQuery(
     `<div class="${class_name}-map-wrap map-wrap" onclick="window.open('https://nanoscientific.org/')"></div>`
-  ),
-
-    $download_btn = jQuery(`
+  ), $download_btn = jQuery(`
     <div class="download-wrap"
     onclick="window.open('https://nanoscientific.org/')">
-    <i class="fas fa-download"></i>
+    <i class="fas fa-external-link-alt"></i>
     </div>`
-    );
+  );
 
   $div.offset({
     left: left + "px",
@@ -329,8 +237,6 @@
     });
     var i = 0;
     jQuery(".map-wrap").each(function () {
-      // console.log(left_coor[i] + ", " + top_coor[i]);
-      // console.log(jQuery(this));
       jQuery(this).offset({
         left: left_coor[i],
         top: top_coor[i],
