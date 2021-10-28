@@ -1,5 +1,6 @@
 <div class="video-wrap">
-  <video id="sponsors-video" src="https://d25unujvh7ui3r.cloudfront.net/sponsor.mp4" autoplay loop muted playsinline>
+  <video id="sponsors-video" src="https://d25unujvh7ui3r.cloudfront.net/us/sponsor/sponsor.mp4" autoplay loop muted
+    playsinline>
   </video>
   <img class="map-thumb" src="https://d25unujvh7ui3r.cloudfront.net/sponsor_thumbnail.jpg" usemap="#image-map">
 
@@ -16,6 +17,11 @@
       onclick="window.open('https://physicsworld.com/')" coords="1389,376,1638,564" shape="rect">
   </map>
 
+  <section class="mobile-wrap">
+    <ul class="sponsor-list">
+
+    </ul>
+  </section>
 </div>
 
 
@@ -32,7 +38,8 @@
   .video-wrap {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 50px);
+    background-color: #fff;
   }
 
   #sponsors-video {
@@ -48,4 +55,122 @@
   area {
     cursor: pointer;
   }
+
+  .mobile-wrap {
+    display: none;
+    margin-top: 15px;
+    height: 62%;
+    overflow-y: scroll;
+  }
+
+  .mobile-wrap::before {
+    content: "";
+    width: 90%;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+    background: linear-gradient(transparent, white);
+  }
+
+  .sponsor-list {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+  }
+
+  .sponsor-item {
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .sponsor-item .img-wrap {
+    width: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+  }
+
+  .sponsor-item .img-wrap .sponsor-thumb {
+    width: 100px;
+    max-height: 100%;
+  }
+
+  .desc-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 55%;
+  }
+
+  .desc-wrap .name {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .desc-wrap .sponsor-desc-link {
+    font-size: 11px;
+    text-decoration: underline;
+  }
+
+  .mobile-wrap::-webkit-scrollbar {
+    background-color: #013b821e;
+    border-radius: 15px;
+    width: 12px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+  }
+
+  .mobile-wrap::-webkit-scrollbar-thumb {
+    background-color: #013c82;
+    border-radius: 15px;
+    background-clip: padding-box;
+    border: 3px solid transparent;
+  }
+
+  @media screen and (max-width: 768px) {
+    #sponsors-video {
+      height: 30%;
+    }
+
+    .map-thumb {
+      height: 30% !important;
+    }
+
+    .mobile-wrap {
+      display: inline-block;
+      width: 98%;
+    }
+  }
 </style>
+
+<script>
+  const $sponsorList = jQuery(".sponsor-list");
+
+  function generateMobileSponsorItem(index, name, thumb, url) {
+    let $sponsorItem = jQuery(`
+    <li class="sponsor-item sponsor-${index}">
+        <div class="img-wrap">
+          <img src="https://d25unujvh7ui3r.cloudfront.net/sponsors/${thumb}" alt="" class="sponsor-thumb"
+          onclick="window.open('${url}')">
+        </div>
+        <div class="desc-wrap">
+          <h3 class="name">${name}</h3>
+          <a href="${url}" target="_blank"
+            class="sponsor-desc-link">${url}</a>
+        </div>
+      </li>
+    `);
+
+    $sponsorItem.appendTo($sponsorList);
+  }
+
+  generateMobileSponsorItem(1, "Park Systems", "park_logo.gif", "https://parksystems.com/");
+  generateMobileSponsorItem(2, "NANOscientific", "ns_logo.jpg", "https://nanoscientific.org/");
+  generateMobileSponsorItem(3, "Nanotechnology World Association", "nwa_logo.webp", "https://www.nanotechnologyworld.org/");
+  generateMobileSponsorItem(4, "Research & Development World", "rnd_logo.svg", "https://www.rdworldonline.com/");
+  generateMobileSponsorItem(5, "Physics World", "physics_logo.svg", "https://physicsworld.com/");
+
+</script>
