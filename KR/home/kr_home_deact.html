@@ -24,43 +24,46 @@
     <div class="vo-header flex">
       <img class="logo" src="https://d25unujvh7ui3r.cloudfront.net/NS_logo_white.svg" alt="singh logo">
       <div class="vo-eventdata flex-col">
-        <span class="vo-title white">NanoScientific Symposium on Global Collaboration<br />
-          2021 KOREA</span>
+        <span class="vo-title white">2021 NanoScientific Symposium Korea</span>
         <div class="vo-info-visit flex">
           <div class="vo-date-place flex-col">
             <div class="vo-date-place-wrap">
               <div class="vo-date-place-title">
-                <span class="bg-white">Date:&nbsp;</span>
+                <span class="bg-white">일자:&nbsp;</span>
               </div>
-              <span class="vo-date white">2021 November 25
+              <span class="vo-date white">2021. 11. 25 (목)
               </span>
             </div>
             <div class="vo-date-place-wrap">
               <div class="vo-date-place-title">
-                <span class="bg-white">Place:</span>
+                <span class="bg-white">장소:&nbsp;</span>
               </div>
-              <span class="vo-place white">Virtual Event</span>
+              <span class="vo-place white">서플러스글로벌 반도체장비클러스터(Semiconductor Equipment Cluster) - Hybrid Event</span>
               </span>
             </div>
-
-          </div>
-          <div class="visit-wrap">
-            <button class="btn-visit">
-              <img class="visit-img" src="https://d25unujvh7ui3r.cloudfront.net/visit now_skyblue.svg">
-            </button>
-            <button class="btn-visit-m">
-              <img class="visit-img" src="https://d25unujvh7ui3r.cloudfront.net/visit now_skyblue.svg">
-            </button>
+            <div class="vo-date-place-wrap">
+              <div class="vo-date-place-title">
+                <span class="bg-white">주제:&nbsp;</span>
+              </div>
+              <span class="vo-topic white">4차 산업혁명의 핵심 기술, 나노기술의 새로운 도약과 SPM!</span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="visit-wrap">
+      <button class="btn-visit">
+        <img class="visit-img" src="https://d25unujvh7ui3r.cloudfront.net/visit now_skyblue.svg">
+      </button>
+      <button class="btn-visit-m">
+        <img class="visit-img" src="https://d25unujvh7ui3r.cloudfront.net/visit now_skyblue.svg">
+      </button>
+    </div>
     <div class="vo-footer">
       <span class="footer-desc white">
-        &nbsp;NanoScientific Symposium on Global Collaboration (NSGC) will highlight the research and new applications
-        in engineering, live sciences, medical devices, sustainability, future cities, space exploration, AI, robotics,
-        automation and more achieved by uniting scientific minds.
-      </span>
+        &nbsp;2021 NanoScientific Symposium Korea는 SPM 전문 심포지엄으로 국내 원자현미경 분야의 연구자들을 위한 소통의 장이 될 것입니다.<br>
+        원자현미경 분야의 전문가들을 모시고 유익한 강연들을 준비하였으니, 여러분의 많은 관심과 참여 바랍니다.</span>
     </div>
   </section>
   <div class="skip-btn-wrap">
@@ -182,7 +185,7 @@
     position: absolute;
     transform: translateY(-100%);
     width: 100%;
-    height: 333px;
+    height: 383px;
     top: 100%;
     background-color: #000000bd;
     opacity: 1;
@@ -207,8 +210,8 @@
   .vo-eventdata {
     font-size: 23px;
     font-weight: 700;
-    height: 80%;
-    justify-content: space-between;
+    height: 100%;
+    justify-content: space-around;
   }
 
   .vo-title {
@@ -222,6 +225,7 @@
   .vo-date-place {
     margin-right: 20px;
     line-height: 130%;
+    font-size: 19px;
   }
 
   .vo-date-place-wrap {
@@ -247,6 +251,12 @@
     overflow-y: scroll;
     text-align: center;
     line-height: 120%;
+  }
+
+  .footer-desc a {
+    color: #00b4ff;
+    font-weight: 700;
+    text-decoration: underline;
   }
 
   .footer-desc::-webkit-scrollbar {
@@ -279,7 +289,8 @@
 
   .bg-white {
     background-color: #fff;
-    color: black
+    color: black;
+    white-space: nowrap;
   }
 
   .bg-white.half {
@@ -697,6 +708,7 @@
   .visit-wrap {
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   .btn-visit-m {
@@ -903,7 +915,7 @@
 
     /* overlay */
     .video-overlay {
-      height: 233px;
+      height: 303px;
     }
 
     .vo-header .logo {
@@ -914,9 +926,12 @@
       width: 160px;
     }
 
+    .vo-date-place {
+      font-size: 10px;
+    }
+
     .vo-eventdata {
       font-size: 14px;
-      height: 90%;
     }
 
     .footer-desc {
