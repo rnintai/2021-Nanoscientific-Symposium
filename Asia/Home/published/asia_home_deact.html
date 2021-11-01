@@ -68,7 +68,7 @@
 
     <map name="image-map" id="image-map">
       <area target="" alt="play" title="play" class="play" href="#" coords="748,275,1189,498" shape="rect"
-        onmouseover="areaHover(this)" onmouseout="areaLeave(this)" onclick="alert('coming soon');" />
+        onmouseover="areaHover(this)" onmouseout="areaLeave(this)" onclick="play_click()" />
       <area target="" alt="program" title="Program" class="program" href="/programs" coords="240,541,514,715"
         shape="rect" onmouseover="areaHover(this);" onmouseout="areaLeave(this);" />
       <area target="" alt="lecture hall" title="Lecture Hall" class="lecture" href="/lecture-hall"
@@ -78,10 +78,10 @@
     </map>
     <!-- mobile -->
     <section class="mobile-btns-wrap mobile">
-      <!-- <div class="play-btn-m" onclick="play_click()"> -->
-      <div class="play-btn-m" onclick="alert('coming soon');"">
-        <button class=" play-btn">
-        <i class="play-icon fab fa-youtube" aria-hidden="true"></i>
+      <div class="play-btn-m" onclick="play_click()">
+        <!-- <div class="play-btn-m"> -->
+        <button class="play-btn">
+          <i class="play-icon fab fa-youtube" aria-hidden="true"></i>
         </button>
       </div>
       <div class="program-btn-m" onclick="location.href='/programs'"></div>
@@ -92,14 +92,13 @@
 
   <div class="modal-overlay"></div>
   <div class="video-modal-wrap">
-    <iframe data-src="" title="YouTube video player" frameborder="0"
+    <iframe data-src="https://www.youtube.com/embed/o_0noa9fSrY" title="YouTube video player" frameborder="0"
       allow="muted; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
     <button class="button-exit">
       <i class="fas fa-times"></i>
     </button>
   </div>
 </div>
-
 <style>
   * {
     font-family: "Open Sans", sans-serif;
@@ -915,7 +914,7 @@
   }
 
   /* temp */
-  .play {
+  /* .play {
     cursor: default;
   }
 
@@ -925,7 +924,7 @@
 
   .play-btn-m {
     display: none;
-  }
+  } */
 </style>
 
 <script>
@@ -1071,7 +1070,7 @@
   }
 
   function play_click() {
-    const play_deact = true;
+    const play_deact = false;
 
     var $modal_wrap = document.querySelector(".video-modal-wrap");
     var $modal_overlay = document.querySelector(".modal-overlay");
