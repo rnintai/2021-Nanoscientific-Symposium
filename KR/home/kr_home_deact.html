@@ -20,6 +20,7 @@
     <video id="video-2" class="lazy" src="https://d25unujvh7ui3r.cloudfront.net/kr/home_2_kr.mp4" loop muted
       preload="auto"></video>
   </div>
+  <button class="intro-btn"><i class="fas fa-arrow-left"></i></button>
   <section class="video-overlay flex-col">
     <div class="vo-header flex">
       <img class="logo" src="https://d25unujvh7ui3r.cloudfront.net/NS_logo_white.svg" alt="singh logo">
@@ -91,7 +92,7 @@
           <i class="play-icon fab fa-youtube" aria-hidden="true"></i>
         </button>
       </div>
-      <div class="program-btn-m" onclick="alert('coming soon')"></div>
+      <div class="program-btn-m" onclick="location.href='/programs'"></div>
       <div class="lecture-btn-m" onclick="location.href='/lecture-hall'"></div>
       <div class="exhibit-btn-m" onclick="location.href='/exhibit-hall/park-systems'"></div>
     </section>
@@ -178,6 +179,28 @@
   .video-wrap.active #video-2 {
     opacity: 1;
     visibility: visible;
+  }
+
+  .intro-btn {
+    /* 인트로 버튼 */
+    display: none;
+    position: absolute;
+    top: 75px;
+    left: 20px;
+    padding: 0px;
+    font-size: 22px;
+    color: white;
+    transition: all 0.2s ease-in-out;
+    z-index: 10;
+  }
+
+  .intro-btn:hover {
+    color: #21ade5;
+  }
+
+  .home-wrap.visit .intro-btn,
+  .home-wrap.hide .intro-btn {
+    display: inline-block;
   }
 
   /* video-overlay */
@@ -312,7 +335,7 @@
   .home-wrap.hide .text-wrap {
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.5s ease, visibility 0.1s ease 0.5s;
+    /* transition: opacity 0.5s ease, visibility 0.1s ease 0.5s; */
   }
 
   .home-wrap.hide .home-1-thumb {
@@ -335,15 +358,15 @@
     font-size: 17px;
     border-radius: 3px;
 
-    transition: opacity 1s ease,
-      visibility 0s ease 1s;
+    /* transition: opacity 1s ease,
+      visibility 0s ease 1s; */
   }
 
   .skip-btn-wrap.active {
     opacity: 0.6;
     visibility: visible;
-    transition: opacity 1s ease,
-      visibility 0s ease;
+    /* transition: opacity 1s ease,
+      visibility 0s ease; */
   }
 
   .skip-btn {
@@ -963,6 +986,8 @@
     $play_btn = null,
     $modal_close = document.querySelector(".button-exit"),
     $iframe = document.querySelector(".video-modal-wrap iframe"),
+    $homeWrap = document.querySelector(".home-wrap"),
+    $videoWrap = document.querySelector(".video-wrap"),
     left_coor_a = [],
     top_coor_a = [],
     width_a = [],
@@ -1012,6 +1037,7 @@
     $ctrlVideo_1.play();
     document.querySelector(".home-wrap").classList.add("hide");
     document.querySelector(".skip-btn-wrap").classList.add("active");
+    $homeWrap.classList.add("visit");
   });
 
   function areaHover(element) {
@@ -1066,7 +1092,18 @@
       $ctrlVideo_2.play();
       document.querySelector(".btns-wrap").classList.add("active");
       document.querySelector(".skip-btn-wrap").classList.remove("active");
+      if (getCookie("nss-home-visited") === undefined) {
+        document.cookie = "nss-home-visited=true";
+      }
     });
+
+    let $introBtn = document.querySelector(".intro-btn");
+    $introBtn.addEventListener("click", () => {
+      deleteCookie("nss-home-visited");
+      setTimeout(function () {
+        window.location.reload();
+      }, 500);
+    })
 
     // modal
     var $play_div = document.querySelector(".play-map-wrap");
@@ -1094,6 +1131,9 @@
     var $home_wrap = document.querySelector(".home-wrap");
     $visit_m.addEventListener("click", function () {
       $home_wrap.classList.add("visit");
+      if (getCookie("nss-home-visited") === undefined) {
+        document.cookie = "nss-home-visited=true";
+      }
     })
   }
 
@@ -1112,6 +1152,11 @@
   }
 
   function init() {
+    if (checkVisited()) {
+      $homeWrap.classList.add("hide");
+      $homeWrap.classList.add("visit");
+      $videoWrap.classList.add("active");
+    }
     jQuery("area").each(function () {
       var class_name = jQuery(this).attr("class");
       var href = jQuery(this).attr("href");
@@ -1147,7 +1192,8 @@
         $a.appendTo(`.${class_name}-map-wrap`);
         if (class_name === "program") {
           $arrowL.appendTo(`.${class_name}-map-wrap`);
-          jQuery(`.${class_name}-map-wrap`).attr("onclick", "alert('coming soon')")
+          jQuery(`.${class_name}-map-wrap`).attr("onclick", "location.href='/programs'")
+          // jQuery(`.${class_name}-map-wrap`).attr("onclick", "alert('Coming Soon')")
         }
         else if (class_name === "lecture") {
           $arrowC.appendTo(`.${class_name}-map-wrap`);
@@ -1170,6 +1216,10 @@
 
     // after page fully loaded, coordinates are calculated
     window.addEventListener("load", function () {
+      if (checkVisited()) {
+        $ctrlVideo_2.play();
+        document.querySelector(".btns-wrap").classList.add("active");
+      }
       delayed_sizing();
     })
   }
@@ -1194,6 +1244,51 @@
     });
   }
 
+  // cookie functions
+  // 주어진 이름의 쿠키를 반환하는데,
+  // 조건에 맞는 쿠키가 없다면 undefined를 반환합니다.
+  function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+  }
+
+  function setCookie(name, value, options = {}) {
+
+    options = {
+      path: '/',
+      // 필요한 경우, 옵션 기본값을 설정할 수도 있습니다.
+      ...options
+    };
+
+    if (options.expires instanceof Date) {
+      options.expires = options.expires.toUTCString();
+    }
+
+    let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+
+    for (let optionKey in options) {
+      updatedCookie += "; " + optionKey;
+      let optionValue = options[optionKey];
+      if (optionValue !== true) {
+        updatedCookie += "=" + optionValue;
+      }
+    }
+
+    document.cookie = updatedCookie;
+  }
+
+  function deleteCookie(name) {
+    setCookie(name, "", {
+      'max-age': -1
+    })
+  }
+
+  // 방문 여부 체크 후 홈 띄워주기
+  function checkVisited() {
+    return getCookie("nss-home-visited");
+  }
 
   init();
 

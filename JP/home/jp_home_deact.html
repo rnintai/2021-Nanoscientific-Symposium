@@ -1124,7 +1124,9 @@
     var $home_wrap = document.querySelector(".home-wrap");
     $visit_m.addEventListener("click", function () {
       $home_wrap.classList.add("visit");
-      document.cookie = "nss-home-visited=true";
+      if (getCookie("nss-home-visited") === undefined) {
+        document.cookie = "nss-home-visited=true";
+      }
     })
   }
 
@@ -1183,7 +1185,7 @@
         $a.appendTo(`.${class_name}-map-wrap`);
         if (class_name === "program") {
           $arrowL.appendTo(`.${class_name}-map-wrap`);
-          jQuery(`.${class_name}-map-wrap`).attr("onclick", "location.href='/program'")
+          jQuery(`.${class_name}-map-wrap`).attr("onclick", "location.href='/programs'")
         }
         else if (class_name === "lecture") {
           $arrowC.appendTo(`.${class_name}-map-wrap`);
