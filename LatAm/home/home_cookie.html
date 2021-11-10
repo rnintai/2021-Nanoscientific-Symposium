@@ -1,8 +1,6 @@
 <script src="https://kit.fontawesome.com/9082949df5.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/wp-content/themes/oceanwp/assets/css/pages/exhibit_hall/spinner.css">
 </link>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
-  rel="stylesheet">
 
 <!-- loading -->
 <div class="load-wrap">
@@ -15,13 +13,11 @@
 </div>
 <!--  -->
 
-
 <div class="home-wrap">
-
   <div class="video-wrap">
-    <video id="video-1" class="lazy" src="https://d25unujvh7ui3r.cloudfront.net/jp/home_1.mp4" muted
+    <video id="video-1" class="lazy" src="https://d25unujvh7ui3r.cloudfront.net/latam/home_1_latam.mp4" muted
       preload="auto"></video>
-    <video id="video-2" class="lazy" src="https://d25unujvh7ui3r.cloudfront.net/jp/home_2.mp4" loop muted
+    <video id="video-2" class="lazy" src="https://d25unujvh7ui3r.cloudfront.net/latam/home_2_latam.mp4" loop muted
       preload="auto"></video>
   </div>
   <button class="intro-btn"><i class="fas fa-arrow-left"></i></button>
@@ -29,56 +25,62 @@
     <div class="vo-header flex">
       <img class="logo" src="https://d25unujvh7ui3r.cloudfront.net/NS_logo_white.svg" alt="singh logo">
       <div class="vo-eventdata flex-col">
-        <span class="vo-title white">ナノ科学シンポジウム2021<br>
-          NanoScientific Symposium Japan 2021</span>
+        <span class="vo-title white">NanoScientific Symposium on Global Collaboration<br />
+          2021 LATIN AMERICA BRAZIL</span>
         <div class="vo-info-visit flex">
           <div class="vo-date-place flex-col">
             <div class="vo-date-place-wrap">
               <div class="vo-date-place-title">
-                <span class="bg-white">日時：&nbsp;</span>
+                <span class="bg-white">Date:&nbsp;</span>
               </div>
-              <span class="vo-date white">2021年11月22日月曜日
+              <span class="vo-date white">2021 October 14-15
               </span>
             </div>
             <div class="vo-date-place-wrap">
               <div class="vo-date-place-title">
-                <span class="bg-white">場所：&nbsp;</span>
+                <span class="bg-white">Place:</span>
               </div>
-              <span class="vo-place white">
-                オンライン・オフラインハイブリッド開催<br>（横浜KGU関内メディアセンター）</span>
+              <span class="vo-place white">Virtual Event</span>
               </span>
             </div>
 
           </div>
           <div class="visit-wrap">
             <button class="btn-visit">
-              こちらからアクセス！
+              <img class="visit-img" src="https://d25unujvh7ui3r.cloudfront.net/visit now_skyblue.svg">
             </button>
             <button class="btn-visit-m">
-              こちらからアクセス！
+              <img class="visit-img" src="https://d25unujvh7ui3r.cloudfront.net/visit now_skyblue.svg">
             </button>
           </div>
         </div>
       </div>
     </div>
-    <!-- <div class="vo-footer">
+    <div class="vo-footer">
       <span class="footer-desc white">
+        &nbsp;The Nano Revolution has pioneered the gratest scientific advances since the beginning of mankind. In the
+        midst of the pandemic, global collaboration on virtual platforms have created the most extensive opportunity
+        for
+        Global Collaboration on Nanoscale advances. NanoScientific Symposium on Global Collaboration (NSGC) will
+        highlight
+        the research and new applications in engineering, live sciences, medical devices, sustainability, future
+        cities,
+        space exploration, AI, robotics,
+        automation and more achieved by uniting scientific minds.
       </span>
-    </div> -->
+    </div>
   </section>
   <div class="skip-btn-wrap">
     <button class="skip-btn">Skip</button>
   </div>
   <div class="btns-wrap">
-    <img src="https://d25unujvh7ui3r.cloudfront.net/jp/home_1_thumb.jpg" class="home-thumb home-1-m" />
-    <img src="https://d25unujvh7ui3r.cloudfront.net/jp/home_2_thumb.jpg" class="home-thumb home-2-m"
+    <img src="https://d25unujvh7ui3r.cloudfront.net/latam/home_1_thumb.jpg" class="home-thumb home-1-m" />
+    <img src="https://d25unujvh7ui3r.cloudfront.net/latam/home_2_thumb.jpg" class="home-thumb home-2-m"
       usemap="#image-map" />
 
     <map name="image-map" id="image-map">
-      <!-- <area target="" alt="play" title="play" class="play" href="#" coords="748,275,1189,498" shape="rect"
-        onmouseover="areaHover(this)" onmouseout="areaLeave(this)" onclick="play_click()" /> -->
       <area target="" alt="play" title="play" class="play" href="#" coords="748,275,1189,498" shape="rect"
-        onmouseover="areaHover(this)" onmouseout="areaLeave(this)" />
+        onmouseover="areaHover(this)" onmouseout="areaLeave(this)" onclick="play_click()" />
       <area target="" alt="program" title="Program" class="program" href="/programs" coords="240,541,514,715"
         shape="rect" onmouseover="areaHover(this);" onmouseout="areaLeave(this);" />
       <area target="" alt="lecture hall" title="Lecture Hall" class="lecture" href="/lecture-hall"
@@ -88,13 +90,12 @@
     </map>
     <!-- mobile -->
     <section class="mobile-btns-wrap mobile">
-      <!-- <div class="play-btn-m" onclick="play_click()"> -->
-      <div class="play-btn-m">
+      <div class="play-btn-m" onclick="play_click()">
         <button class="play-btn">
-          <i class="play-icon fab fa-youtube" aria-hidden="true"></i>
+          <i class="play-icon fab fa-youtube"></i>
         </button>
       </div>
-      <div class="program-btn-m" onclick="location.href='/programs'"></div>
+      <div class="program-btn-m" onclick="location.href='/program'"></div>
       <div class="lecture-btn-m" onclick="location.href='/lecture-hall'"></div>
       <div class="exhibit-btn-m" onclick="location.href='/exihibit-hall/park-systems'"></div>
     </section>
@@ -102,22 +103,21 @@
 
   <div class="modal-overlay"></div>
   <div class="video-modal-wrap">
-    <iframe data-src="" title="YouTube video player" frameborder="0"
+    <iframe data-src="https://www.youtube.com/embed/McUWQiwzjzk" title="YouTube video player" frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
     <button class="button-exit">
       <i class="fas fa-times"></i>
     </button>
   </div>
+
+
 </div>
 
-
 <style>
-  body {
-    font-family: "Noto Sans JP", sans-serif;
+  * {
+    font-family: "Open Sans", sans-serif;
   }
-</style>
 
-<style>
   body,
   p {
     margin: 0;
@@ -244,7 +244,7 @@
   .vo-eventdata {
     font-size: 23px;
     font-weight: 700;
-    height: 90%;
+    height: 80%;
     justify-content: space-between;
   }
 
@@ -267,7 +267,6 @@
 
   .vo-date-place-title {
     margin-right: 8px;
-    white-space: nowrap;
   }
 
   .vo-date {
@@ -298,9 +297,6 @@
 
   .btn-visit,
   .btn-visit-m {
-    background-color: #2dafe6;
-    color: white;
-    border: 2px #fff solid;
     opacity: 0.65;
     transition: opacity 0.3s ease;
   }
