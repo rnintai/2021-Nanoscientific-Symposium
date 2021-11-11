@@ -755,6 +755,7 @@ button
 	font-weight: 600;
 	padding: 1px 10px;
 	transition: transform 0.2s ease-in-out;
+	white-space: nowrap;
 }
 
 .learn-more-btn:hover {
@@ -770,14 +771,8 @@ button
 }
 
 .modal-wrap.not-3d img {
-	transform: scale(0.6);
+	/* transform: scale(0.6); */
 	cursor: default;
-}
-
-.modal-nx20_300mm img {
-	top: 25%;
-	height: 66% !important;
-	transform: scale(0.7);
 }
 
 /* keyshot icon & rotate icon */
@@ -794,6 +789,40 @@ button
 .rotate-btn-wrap {
 	display: none;
 }
+
+.modal-hdm .modal-image-switch {
+	top: 50%;
+	left: 50%;
+	width: 260px;
+	height: 300px !important;
+	transform: translate(-50%, -50%);
+}
+
+.modal-nxtsh .modal-image-switch {
+	top: 50%;
+	left: 50%;
+	width: 330px;
+	height: 250px !important;
+	transform: translate(-50%, -50%);
+}
+
+.modal-nx20_300mm .modal-image-switch {
+	top: 50%;
+	left: 50%;
+	width: 290px;
+	height: 160px !important;
+	transform: translate(-50%, -50%);
+}
+
+.modal-smartscan .modal-image-switch {
+	top: 50%;
+	left: 50%;
+	width: 250px;
+	height: 220px !important;
+	transform: translate(-50%, -50%);
+}
+
+
 
 @media (max-width: 1220px) {
 	.tooltip-textbox {
@@ -868,9 +897,9 @@ button
 .tooltip-mobile {
 	visibility: hidden;
 	position: relative;
-	top: 265px;
-	height: 100vh;
-	padding-top: 56px;
+	top: 344px;
+	height: 50%;
+	overflow-y: scroll;
 }
 
 @media (max-width: 1024px) {
@@ -898,14 +927,14 @@ button
 
 	.exhibit-image-wrap {
 		top: 51px;
-		height: 25%;
+		height: 211px;
 		background-color: #dcdcdc;
 	}
 
 	.exhibit-image-wrap .hall-image-switch {
 		object-fit: cover;
 		height: 100%;
-		max-width: 500px;
+		max-width: 456px;
 		left: 50%;
 		transform: translateX(-50%);
 	}
@@ -944,7 +973,7 @@ button
 		justify-content: space-between;
 		flex-direction: column;
 		align-items: center;
-		top: 86%;
+		top: 198px;
 		margin: 0 auto;
 		left: 0;
 		transform: none;
@@ -1065,19 +1094,12 @@ button
 
 	.modal-image-switch {
 		top: 50%;
-		width: 50%;
+		width: 40%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 	}
 
 	.modal-wrap.not-3d img {
-		transform: translate(-50%, -50%);
-	}
-
-	.modal-nx20_300mm img {
-		width: 255px;
-		top: 50%;
-		height: 92% !important;
 		transform: translate(-50%, -50%);
 	}
 
@@ -1098,6 +1120,7 @@ button
 		transform: translate(-50%, -50%);
 		/* margin: 0 20px; */
 		opacity: 0.6;
+		z-index: 1;
 	}
 
 	.rotate-btn-wrap .fa-undo-alt {
@@ -1116,10 +1139,6 @@ button
 		cursor: pointer;
 	}
 
-
-	.modal-smartscan .modal-image-switch {
-		width: 191px;
-	}
 
 	.modal-content {
 		width: 100%;
@@ -1161,5 +1180,37 @@ button
 	.modal-description {
 		font-size: 0.9em;
 		line-height: 1.3;
+	}
+
+	.modal-hdm .modal-image-switch {
+		width: 171px;
+		height: 120px !important;
+	}
+
+	.modal-nxwafer .modal-image-switch {
+		width: 230px;
+		height: 120px !important;
+	}
+
+	.modal-nxtsh .modal-image-switch {
+		width: 170px;
+		height: 120px !important;
+	}
+
+	.modal-nx20_300mm .modal-image-switch {
+		width: 207px;
+		height: 120px !important;
+	}
+
+	.modal-nx10 .modal-image-switch,
+	.modal-fx40 .modal-image-switch,
+	.modal-nxhivac .modal-image-switch {
+		width: 207px;
+		height: 120px !important;
+	}
+
+	.modal-smartscan .modal-image-switch {
+		width: 133px;
+		height: 120px !important;
 	}
 }
