@@ -1,5 +1,4 @@
 <script>
-
   if (jQuery("body").hasClass("logged-in")) {
 
   }
@@ -19,15 +18,32 @@
     <h1 class="meeting-title">ナノ科学シンポジウム2021<br />
       <span style="display:block; text-align:center;">Web講演会</span>
     </h1>
-    <p class="meeting-start-date text-gray">開始：&nbsp;<strong>2021年11月22日月曜日 10:00</strong></p>
-    <p class="meeting-timezone text-gray">タイムゾーン：&nbsp;<strong>Tokyo, Japan</strong></p>
-    <p class="meeting-id text-gray">Meeting ID:&nbsp;<strong> 869 2544 5012</strong></p>
+    <div class="meeting-metadata">
+      <p class="meeting-start-date text-gray">開始：&nbsp;<strong>2021年11月22日月曜日 10:00</strong></p>
+      <p class="meeting-timezone text-gray">タイムゾーン：&nbsp;<strong>Tokyo, Japan</strong></p>
+    </div>
+    <!-- <p class="meeting-id text-gray">Meeting ID:&nbsp;<strong> 869 2544 5012</strong></p> -->
     <div class="link-btn-wrap">
       <a href="https://meet143.webex.com/meet143-ko/j.php?MTID=mbb4f2b1ae58850e06559399d5d7f3aea"
         class="link-btn link-meeting-app" target="_blank">Web講演会に参加する</a>
     </div>
   </div>
-  <!--  -->
+  <!-- Rehearsal -->
+  <div class="card">
+    <h1 class="meeting-title" style="text-align:center">211115_NSS2021 Test<br />
+      <!-- <span style="display:block; text-align:center;"></span> -->
+      <!-- <span style="display:block; text-align:center;">Web講演会</span> -->
+    </h1>
+    <div class="meeting-metadata">
+      <p class="meeting-start-date text-gray">開始：&nbsp;<strong>2021年11月15日月曜日 13:20</strong></p>
+      <p class="meeting-timezone text-gray">タイムゾーン：&nbsp;<strong>Tokyo, Japan</strong></p>
+    </div>
+    <!-- <p class="meeting-id text-gray">Meeting ID:&nbsp;<strong></strong></p> -->
+    <div class="link-btn-wrap">
+      <a href="https://kantogakuinuniversity-666.my.webex.com/kantogakuinuniversity-666.my/j.php?MTID=mdfab4e92f58e1bbcb5296b342938e9b4"
+        class="link-btn link-meeting-app" target="_blank">Web講演会に参加する</a>
+    </div>
+  </div>
 </div>
 
 
@@ -52,14 +68,21 @@
     flex-wrap: wrap;
   }
 
+  .disabled-link {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
   .card {
     display: flex;
     flex-direction: column;
     background-color: #ebf5fc;
+    justify-content: space-between;
     align-items: center;
     padding: 25px;
     border-radius: 15px;
     box-shadow: 3px 3px 12px #00000070;
+    margin-bottom: 20px;
   }
 
   .card:not(:last-child) {
