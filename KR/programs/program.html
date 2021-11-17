@@ -1,5 +1,9 @@
+<link rel="stylesheet" href="https://d25unujvh7ui3r.cloudfront.net/css/program.css">
 <article class="program-wrap">
 </article>
+<button class="download-btn" onclick="window.open('https://d25unujvh7ui3r.cloudfront.net/kr/NSSK_program.pdf')">
+  DOWNLOAD
+</button>
 
 <script>
   var cnt = 0;
@@ -14,10 +18,10 @@
    *  generate_title("session title", "mmm dd"))
    * 
    * Program:           
-   *  generate_program("time", "program title", "description")
+   *  generate_program("UTC time", "program title", "description")
    * 
    * Program(last one): 
-   *  generate_program_last("time", "program title", "description")
+   *  generate_program_last("UTC time", "program title", "description")
    * 
    * DON'T forget to use 'generate_program_last' on last program!
    */
@@ -28,37 +32,89 @@
   generate_program(
     "10:00 AM",
     "개회 및 환영사",
-    "SPM 연구회 조상준 위원장"
+    "박병도 전무 - 서플러스글로벌"
   );
   generate_program(
     "10:10 AM",
-    "김태곤 교수",
-    "RowlandFellow, The Rowland Institute at Harvard Mirrors for Earth’s Energy Rebalancing (MEERreflEction)"
+    "Nanoscale Study on Electrical Degradation of Lithium Ion Battery Electrodes Based on Scanning Probe Microscopy",
+    "김성헌 교수 - 전북대 물리학과"
   );
   generate_program(
-    "09:45 AM",
-    "Prof. Jia Deng",
-    "Assistant Professor, Department of Sysmtems Science and Industrial Engineering External Engergy Assisted Nanmachining Using Soft AFM Probes"
+    "10:40 AM",
+    "AFM application developments from fundamental understanding to EUV in semiconductor cleaning technology",
+    "김태곤 교수 - 한양대 스마트융합공학부"
   );
   generate_program(
-    "10:15 AM",
-    "Morning Break - Nanofab South Rotunda",
-    ""
+    "11:10 AM",
+    "Evaluation of ferroelectricity in HfO2-based ferroelectrics",
+    "김윤석 교수 - 성균관대 신소재공학부"
   );
   generate_program(
-    "10:30 AM",
-    "Dr. Ji UngLee",
-    "Professor of Nanoscale Engineering, SUNY Polytechnic Institute 2D Reconfigurable Devices"
-  );
-  generate_program(
-    "11:00 AM",
-    "Phil Kaszuba",
-    "Senior Member of Technical Staffand Lead Engineer, Scanning Probe Microscope Laboratory, Global Foundries (SFM)"
+    "11:40 AM",
+    "단체사진 촬영",
+    "Welcome Lounge"
   );
   generate_program_last(
-    "11:30 AM",
-    "Dr. Lane Bakera",
-    "James L.Jackson Professor of Chemistry, Indiana University Measuring lons and Electrons with Nanoscale"
+    "12:00 PM",
+    "점심식사",
+    "카페테리아"
+  );
+  generate_title("Session II", "Nov 25");
+  generate_program(
+    "1:00 PM",
+    "nm 초박막 두께 측정 및 고배율 현미경 교정 기술",
+    "김경중 박사 - 한국표준과학연구원"
+  );
+  generate_program(
+    "1:30 PM",
+    "Multi-Channel White Light Interferometer by using Color CCD and its applications",
+    "최수봉 교수 - 인천대 물리학과"
+  );
+  generate_program(
+    "2:00 PM",
+    "How to implement non-contact electrical metrology for Gate-All-Around FET (GAAFET)",
+    "최준영 상무 - 서플러스글로벌(SurplusGLOBAL)"
+  );
+  generate_program_last(
+    "2:30 PM",
+    "Coffee Break",
+    ""
+  );
+  generate_title("Session III", "Nov 25");
+  generate_program(
+    "2:50 PM",
+    "Measurement fast thermal decay time through Photo-induced force microscopy and Fourier coefficients",
+    "김봉수 박사 - 삼성전자 종합기술원 분석기술그룹",
+  );
+  generate_program(
+    "3:20 PM",
+    "Real-space Imaging of image polaritons in two dimensional materials",
+    "장민석 교수 - 카이스트 전기 및 전자공학부",
+  );
+  generate_program(
+    "3:50 PM",
+    "The Recent SPM technology development in Park Systems 2021 *부제: 한국의 SPM 기술개발 및 연구활동 활성화와 SPM 커뮤니티 육성을 위한 논의",
+    "조상준 상무 - 파크시스템스 응용기술센터장",
+  );
+  generate_program(
+    "4:20 PM",
+    "서플러스글로벌 기업소개(10min)",
+    "이수나 매니저 - 서플러스글로벌 마케팅"
+  );
+  generate_program(
+    "4:30 PM",
+    "반도체장비클러스터 투어(20min)",
+    "윤관석 부장 - 서플러스글로벌 Analysis Engineer"
+  );
+  generate_program(
+    "4:50 PM",
+    "AFM exhibition & Live demo - Park FX40",
+    "파크시스템스 응용기술센터"
+  );
+  generate_program_last(
+    "5:20 PM",
+    "폐회 및 기념품 증정",
+    ""
   );
 
   /**
@@ -163,5 +219,3 @@
     program_arr = [];
   }
 </script>
-
-<link rel="stylesheet" href="https://d25unujvh7ui3r.cloudfront.net/css/program.css">
