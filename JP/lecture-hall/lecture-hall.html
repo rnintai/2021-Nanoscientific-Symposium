@@ -17,19 +17,42 @@
   <div class="card">
     <h1 class="meeting-title">ナノ科学シンポジウム2021<br />
       <span style="display:block; text-align:center;">Web講演会</span>
+      <span style="display:block; text-align:center;">午前の部</span>
     </h1>
     <div class="meeting-metadata">
-      <p class="meeting-start-date text-gray">開始：&nbsp;<strong>2021年11月22日月曜日 10:00</strong></p>
+      <p class="meeting-start-date text-gray">開始：&nbsp;<strong>2021年11月22日月曜日 10:00~12:00</strong></p>
       <p class="meeting-timezone text-gray">タイムゾーン：&nbsp;<strong>Tokyo, Japan</strong></p>
+      <p class="meeting-warning text-gray" style="color: blue;">
+        <strong>※WebExにつなぐ際に参加登録時に入力したメールアドレスのご入力をお願いいたします。</strong>
+      </p>
     </div>
     <!-- <p class="meeting-id text-gray">Meeting ID:&nbsp;<strong> 869 2544 5012</strong></p> -->
     <div class="link-btn-wrap">
       <a href="https://meet143.webex.com/meet143-ko/j.php?MTID=mbb4f2b1ae58850e06559399d5d7f3aea"
-        class="link-btn link-meeting-app" target="_blank">Web講演会に参加する</a>
+        class="link-btn link-meeting-app" target="_blank">午前の部に参加する</a>
+    </div>
+  </div>
+  <!-- lecture 2 -->
+  <div class="card">
+    <h1 class="meeting-title">ナノ科学シンポジウム2021<br />
+      <span style="display:block; text-align:center;">Web講演会</span>
+      <span style="display:block; text-align:center;">午後の部</span>
+    </h1>
+    <div class="meeting-metadata">
+      <p class="meeting-start-date text-gray">開始：&nbsp;<strong>2021年11月22日月曜日 13:10~17:00</strong></p>
+      <p class="meeting-timezone text-gray">タイムゾーン：&nbsp;<strong>Tokyo, Japan</strong></p>
+      <p class="meeting-warning text-gray" style="color: blue;">
+        <strong>※WebExにつなぐ際に参加登録時に入力したメールアドレスのご入力をお願いいたします。</strong>
+      </p>
+    </div>
+    <!-- <p class="meeting-id text-gray">Meeting ID:&nbsp;<strong> 869 2544 5012</strong></p> -->
+    <div class="link-btn-wrap">
+      <a href="https://meet143.webex.com/meet143-ko/j.php?MTID=mbb4f2b1ae58850e06559399d5d7f3aea"
+        class="link-btn link-meeting-app" target="_blank">午後の部に参加する</a>
     </div>
   </div>
   <!-- Rehearsal -->
-  <div class="card">
+  <!-- <div class="card">
     <h1 class="meeting-title" style="text-align:center">[Rehearsal]<br />
       <span style="display:block; text-align:center;">ナノ科学シンポジウム2021</span>
       <span style="display:block; text-align:center;">Web講演会</span>
@@ -38,12 +61,11 @@
       <p class="meeting-start-date text-gray">開始：&nbsp;<strong>2021年11月15日月曜日 13:20</strong></p>
       <p class="meeting-timezone text-gray">タイムゾーン：&nbsp;<strong>Tokyo, Japan</strong></p>
     </div>
-    <!-- <p class="meeting-id text-gray">Meeting ID:&nbsp;<strong></strong></p> -->
     <div class="link-btn-wrap">
       <a href="https://kantogakuinuniversity-666.my.webex.com/kantogakuinuniversity-666.my/j.php?MTID=mdfab4e92f58e1bbcb5296b342938e9b4"
         class="link-btn link-meeting-app" target="_blank">Web講演会に参加する</a>
     </div>
-  </div>
+  </div> -->
 </div>
 
 
@@ -64,8 +86,8 @@
     display: flex;
     top: 60px;
     position: absolute;
-    margin: 80px;
-    flex-wrap: wrap;
+    margin: 80px 20px;
+    justify-content: center;
   }
 
   .disabled-link {
@@ -83,6 +105,7 @@
     border-radius: 15px;
     box-shadow: 3px 3px 12px #00000070;
     margin-bottom: 20px;
+    width: 380px;
   }
 
   .card:not(:last-child) {
@@ -124,5 +147,35 @@
     height: 100%;
     object-fit: cover;
     object-position: center top;
+  }
+
+  @media screen and (max-width: 768px) {
+    .meeting-container {
+      width: 100%;
+      margin: 20px auto;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .meeting-title {
+      font-size: 16px;
+    }
+
+    .meeting-metadata {
+      font-size: 12px;
+    }
+
+    .link-meeting-app {
+      font-size: 12px;
+    }
+
+    .card {
+      width: 300px;
+      padding: 15px;
+    }
+
+    .card:not(:last-child) {
+      margin-right: 0px;
+    }
   }
 </style>
