@@ -48,7 +48,7 @@
     <!-- <p class="meeting-id text-gray">Meeting ID:&nbsp;<strong> 869 2544 5012</strong></p> -->
     <div class="link-btn-wrap">
       <a href="https://meet143.webex.com/meet143-ko/j.php?MTID=mbb4f2b1ae58850e06559399d5d7f3aea"
-        class="link-btn link-meeting-app" target="_blank">午後の部に参加する</a>
+        class="link-btn link-meeting-app" target="_blank" disabled>午後の部に参加する</a>
     </div>
   </div>
   <!-- Rehearsal -->
@@ -90,7 +90,7 @@
     justify-content: center;
   }
 
-  .disabled-link {
+  .link-btn[disabled] {
     pointer-events: none;
     opacity: 0.5;
   }
