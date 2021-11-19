@@ -23,12 +23,11 @@
       <p class="meeting-start-date text-gray">開始：&nbsp;<strong>2021年11月22日月曜日 10:00~12:00</strong></p>
       <p class="meeting-timezone text-gray">タイムゾーン：&nbsp;<strong>Tokyo, Japan</strong></p>
       <p class="meeting-warning text-gray" style="color: blue;">
-        <strong>※WebExにつなぐ際に参加登録時に入力したメールアドレスのご入力をお願いいたします。</strong>
+        <strong>※名前とメールアドレスをご記入いただきましたら、ご入力のメールアドレスに自動的にWebEx参加リンクが送付されますので、メールをご確認ください。</strong>
       </p>
     </div>
-    <!-- <p class="meeting-id text-gray">Meeting ID:&nbsp;<strong> 869 2544 5012</strong></p> -->
     <div class="link-btn-wrap">
-      <a href="https://meet143.webex.com/meet143-ko/j.php?MTID=mbb4f2b1ae58850e06559399d5d7f3aea"
+      <a href="https://kantogakuinuniversity-666.my.webex.com/kantogakuinuniversity-666.my/j.php?MTID=me28416fb9c1316f8d54013b02b916298"
         class="link-btn link-meeting-app" target="_blank">午前の部に参加する</a>
     </div>
   </div>
@@ -42,12 +41,11 @@
       <p class="meeting-start-date text-gray">開始：&nbsp;<strong>2021年11月22日月曜日 13:10~17:00</strong></p>
       <p class="meeting-timezone text-gray">タイムゾーン：&nbsp;<strong>Tokyo, Japan</strong></p>
       <p class="meeting-warning text-gray" style="color: blue;">
-        <strong>※WebExにつなぐ際に参加登録時に入力したメールアドレスのご入力をお願いいたします。</strong>
+        <strong>※名前とメールアドレスをご記入いただきましたら、ご入力のメールアドレスに自動的にWebEx参加リンクが送付されますので、メールをご確認ください。</strong>
       </p>
     </div>
-    <!-- <p class="meeting-id text-gray">Meeting ID:&nbsp;<strong> 869 2544 5012</strong></p> -->
     <div class="link-btn-wrap">
-      <a href="https://meet143.webex.com/meet143-ko/j.php?MTID=mbb4f2b1ae58850e06559399d5d7f3aea"
+      <a href="https://kantogakuinuniversity-666.my.webex.com/kantogakuinuniversity-666.my/j.php?MTID=mab1506ee034ab2cbb10454db8aabd87d"
         class="link-btn link-meeting-app" target="_blank" disabled>午後の部に参加する</a>
     </div>
   </div>
@@ -67,6 +65,12 @@
     </div>
   </div> -->
 </div>
+<div class="abstract-container">
+  <div class="link-btn-wrap">
+    <a href="https://bit.ly/NSSJ2021-Abstract-Book"
+      class="link-btn link-pdf" target="_blank">要旨集ダウンロード</a>
+  </div>
+</div>
 
 
 
@@ -84,7 +88,7 @@
 
   .meeting-container {
     display: flex;
-    top: 60px;
+    top: 65px;
     position: absolute;
     margin: 80px 20px;
     justify-content: center;
@@ -149,6 +153,12 @@
     object-position: center top;
   }
 
+  .abstract-container{
+    position: absolute;
+    top:64px;
+    right:20px;
+  }
+
   @media screen and (max-width: 768px) {
     .meeting-container {
       width: 100%;
@@ -176,6 +186,17 @@
 
     .card:not(:last-child) {
       margin-right: 0px;
+    }
+
+    .abstract-container{
+      top:51px;
+      right: 6px;
+    }
+    .abstract-container .link-btn-wrap{
+      margin: 0;
+    }
+    .abstract-container .link-pdf{
+      font-size: 10px;
     }
   }
 </style>
